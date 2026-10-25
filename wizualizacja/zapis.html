@@ -504,10 +504,8 @@ form.zf { display: grid; gap: 16px; background: none; padding: 0; border-radius:
             <div class="opts">
               <label class="opt"><input class="sr" type="radio" name="pkk" value="tak" required><span><b>Mam numer PKK</b><small>dostałem go w wydziale komunikacji</small></span></label>
               <label class="opt"><input class="sr" type="radio" name="pkk" value="nie"><span><b>Nie mam jeszcze</b><small>pomożemy go załatwić</small></span></label>
-              <label class="opt"><input class="sr" type="radio" name="pkk" value="niewiem"><span><b>Nie wiem</b><small>sprawdzimy to razem przy zapisie</small></span></label>
             </div>
             <label class="field" id="pkkNum" hidden>Numer PKK (opcjonalnie)<input type="text" name="pkkNum" inputmode="numeric" placeholder="20 cyfr z profilu kandydata"></label>
-            <p class="pkk-more" id="pkkUnsure" hidden>Nic nie szkodzi. PKK to numer, który dostajesz w wydziale komunikacji po badaniu lekarskim. Biuro sprawdzi to z tobą przy zapisie. <a href="droga.html">Co to jest PKK →</a></p>
             <p class="pkk-more" id="pkkHelp" hidden>Nie szkodzi. Zacznij od badania lekarskiego, a biuro podpowie resztę. <a href="droga.html">Zobacz, jak zdobyć PKK →</a></p>
             <span class="err" data-err="pkk"></span>
             <p class="zf-hint" style="margin:4px 0 0">Kiedy możesz jeździć? Zaznacz wszystko, co pasuje.</p>
@@ -517,6 +515,7 @@ form.zf { display: grid; gap: 16px; background: none; padding: 0; border-radius:
               <label class="opt check"><input class="sr" type="checkbox" name="pora" value="wieczor"><span><b>Wieczorem</b><small>17:00–21:00</small></span></label>
               <label class="opt check"><input class="sr" type="checkbox" name="pora" value="weekend"><span><b>W weekendy</b><small>sobota i niedziela</small></span></label>
               <label class="opt check"><input class="sr" type="checkbox" name="pora" value="kazda"><span><b>Każda pora mi pasuje</b><small>dopasuję się do instruktora</small></span></label>
+              <label class="opt check"><input class="sr" type="checkbox" name="pora" value="niewiem"><span><b>Nie wiem</b><small>ustalę to z biurem</small></span></label>
             </div>
           </div>
 
@@ -596,7 +595,7 @@ form.zf { display: grid; gap: 16px; background: none; padding: 0; border-radius:
     { v: 'doszkalajace', t: 'Jazdy doszkalające', d: 'masz już kurs, chcesz poćwiczyć', b: null },
   ];
   const OFFICES = ['Kraków – Wrocławska', 'Kraków – Czarnowiejska', 'Kraków – Kalwaryjska', 'Kraków – Jerzmanowskiego', 'Wieliczka', 'Zabierzów'];
-  const PORY = { rano: 'rano', popoludnie: 'po południu', wieczor: 'wieczorem', weekend: 'w weekendy', kazda: 'każda pora' };
+  const PORY = { rano: 'rano', popoludnie: 'po południu', wieczor: 'wieczorem', weekend: 'w weekendy', kazda: 'każda pora', niewiem: 'jeszcze nie wiem' };
   const fmt = n => n.toLocaleString('pl-PL') + ' zł';
   const f = document.getElementById('zf'), $ = id => document.getElementById(id);
   const val = n => (f.querySelector(`[name="${n}"]:checked`) || {}).value;
@@ -645,14 +644,15 @@ form.zf { display: grid; gap: 16px; background: none; padding: 0; border-radius:
     f.querySelectorAll('.zf-step').forEach(s => s.classList.toggle('done', done[s.dataset.step]));
     const n = Object.values(done).filter(Boolean).length;
     $('progTxt').textContent = n + ' z 5'; $('progBar').style.width = n * 20 + '%';
-    $('pkkNum').hidden = val('pkk') !== 'tak'; $('pkkHelp').hidden = val('pkk') !== 'nie'; $('pkkUnsure').hidden = val('pkk') !== 'niewiem';
+    $('pkkNum').hidden = val('pkk') !== 'tak'; $('pkkHelp').hidden = val('pkk') !== 'nie';
   }
   const okPhone = v => v.replace(/[\s()+-]/g, '').replace(/^48(?=\d{9}$)/, '').match(/^\d{9}$/);
 
   f.addEventListener('change', e => {
     if (e.target.name === 'kat') renderCourses();
-    // „każda pora” wyklucza pozostałe godziny i odwrotnie
-    if (e.target.name === 'pora' && e.target.checked) f.querySelectorAll('[name="pora"]').forEach(i => { if ((e.target.value === 'kazda') !== (i.value === 'kazda')) i.checked = false; }); clearErr(e.target.name); update(); });
+    // „każda pora” i „nie wiem” wykluczają pozostałe godziny i odwrotnie
+    const EXCL = ['kazda', 'niewiem'];
+    if (e.target.name === 'pora' && e.target.checked) f.querySelectorAll('[name="pora"]').forEach(i => { if (i !== e.target && (EXCL.includes(e.target.value) || EXCL.includes(i.value))) i.checked = false; }); clearErr(e.target.name); update(); });
   f.addEventListener('input', e => { clearErr(e.target.name); update(); });
   const clearErr = n => { const el = f.querySelector(`[data-err="${n}"]`); if (el) el.textContent = ''; const i = f.elements[n]; if (i && i.classList) i.classList.remove('invalid'); };
 
