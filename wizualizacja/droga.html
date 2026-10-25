@@ -327,6 +327,10 @@ footer a { color: var(--white); }
 .costs { width: 100%; max-width: 720px; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
 .costs td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
 .costs tr:last-child td { border-bottom: 0; }
+.costs td small { display: block; color: var(--muted); font-size: 13px; }
+.costs tr.sum td { background: var(--paper); font-weight: 800; }
+.variants { max-width: 720px; margin: 14px 0 0; color: var(--muted); font-size: 15px; }
+.variants b { color: var(--ink); }
 .costs td:last-child { text-align: right; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
 .faq { display: grid; gap: 10px; max-width: 820px; }
 .faq details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; }
@@ -337,6 +341,7 @@ footer a { color: var(--white); }
 .faq details p { margin: 0 18px 16px; color: var(--muted); }
 .sources { margin-top: 26px; color: var(--muted); font-size: 14px; }
 .sources a { color: var(--blue); }
+@media (max-width: 560px) { .costs td { padding: 12px 14px; } .costs tr.sum td:last-child { white-space: normal; } }
 @media (max-width: 700px) { .road.left .road-step, .road.left .road-step:nth-child(even) { margin-left: 50px; } }
 </style>
 </head>
@@ -403,10 +408,10 @@ footer a { color: var(--white); }
             <p class="tip">Teorii możesz uczyć się sam i zdać ją w WORD bez zajęć w szkole. Jeśli potrzebujesz, dokupisz dodatkowe jazdy.</p>
           </details></li>
           <li class="road-step" id="krok-4"><details open><summary><span class="ico">🎓</span><span><h3>Egzamin w WORD</h3><span class="time">termin zwykle w kilka tygodni</span></span></summary>
-            <p>Zapisujesz się na egzamin w WORD w Krakowie. Najpierw teoria, potem praktyka na placu i w ruchu miejskim.</p>
-            <h4>Teoria</h4>
+            <p>W Krakowie egzaminy prowadzi MORD (Małopolski Ośrodek Ruchu Drogowego). Najpierw teoria, potem praktyka na placu i w ruchu miejskim.</p>
+            <h4>Teoria · 50 zł</h4>
             <ul><li>32 pytania w maks. 25 minut: 20 TAK/NIE i 12 z trzema odpowiedziami</li><li>zdajesz od 68 na 74 punkty</li><li>do zatwierdzonej odpowiedzi nie da się wrócić</li></ul>
-            <h4>Praktyka</h4>
+            <h4>Praktyka · 200 zł</h4>
             <p>Egzaminator ocenia przygotowanie auta, zadania na placu i jazdę w ruchu. Liczą się obserwacja, pierwszeństwo, przepisy i bezpieczne manewry.</p>
             <p class="tip">Zabierz dowód osobisty.</p>
           </details></li>
@@ -418,13 +423,18 @@ footer a { color: var(--white); }
 
   <section id="koszty">
     <div class="wrap">
-      <div class="sec-head"><span class="kicker">Opłaty urzędowe</span><h2>Ile to kosztuje poza kursem</h2></div>
+      <div class="sec-head"><span class="kicker">Koszty</span><h2>Ile kosztuje prawo jazdy kat. B</h2><p>Wszystkie wydatki od badania do odebrania dokumentu, jeśli zdasz za pierwszym razem.</p></div>
       <table class="costs">
-        <tr><td>Wygenerowanie numeru PKK</td><td>0 zł</td></tr>
+        <tr><td>Kurs kat. B w OES: 30 h teorii i 30 h jazd<small>cena regularna 4700 zł</small></td><td>4500 zł</td></tr>
         <tr><td>Badanie lekarskie</td><td>do 200 zł</td></tr>
-        <tr><td>Zdjęcie 35 × 45 mm</td><td>wg cennika fotografa</td></tr>
-        <tr><td>Wydanie prawa jazdy po zdanych egzaminach</td><td>100,50 zł</td></tr>
+        <tr><td>Zdjęcie 35 × 45 mm</td><td>u fotografa</td></tr>
+        <tr><td>Numer PKK</td><td>0 zł</td></tr>
+        <tr><td>Egzamin teoretyczny w MORD</td><td>50 zł</td></tr>
+        <tr><td>Egzamin praktyczny kat. B w MORD</td><td>200 zł</td></tr>
+        <tr><td>Wydanie prawa jazdy</td><td>100,50 zł</td></tr>
+        <tr class="sum"><td>Razem</td><td>ok. 5050 zł + zdjęcie</td></tr>
       </table>
+      <p class="variants"><b>Inne kursy kat. B w OES:</b> automatyczna skrzynia 4500 zł, indywidualny 5000 zł, przyspieszony 5300 zł, rozszerzony z 40 h jazd 5500 zł, z 50 h jazd 6400 zł. Każdy poprawkowy egzamin w MORD to kolejne 50 zł za teorię albo 200 zł za praktykę.</p>
     </div>
   </section>
 
@@ -438,7 +448,7 @@ footer a { color: var(--white); }
         <details><summary>Czy 17-latek może mieć prawo jazdy kat. B?</summary><p>Tak. Od 3 marca 2026 r. kat. B jest dostępna od 17 lat, z dodatkowymi warunkami dla niepełnoletnich, m.in. zgodą opiekuna i ograniczeniami w prowadzeniu. Kurs można zacząć do 3 miesięcy przed wymaganym wiekiem.</p></details>
         <details><summary>Czy szkoła jazdy pomoże w formalnościach?</summary><p>Tak. Wskażemy lekarza, wyjaśnimy dokumenty i pomożemy przygotować wniosek. Sam numer PKK nadaje jednak urząd.</p></details>
       </div>
-      <p class="sources">Stan na 25 października 2026 r. Przed złożeniem dokumentów sprawdź bieżące wymagania w urzędzie. Źródła: <a href="https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy">Ministerstwo Infrastruktury</a>, <a href="https://www.gov.pl/web/gov/uzyskaj-prawo-jazdy">gov.pl – uzyskaj prawo jazdy</a>, <a href="https://www.gov.pl/web/gov/kategorie-prawa-jazdy">gov.pl – kategorie prawa jazdy</a>.</p>
+      <p class="sources">Stan na 25 października 2026 r. Przed złożeniem dokumentów sprawdź bieżące wymagania w urzędzie. Źródła: <a href="https://oes.com.pl/cennik/">cennik OES</a>, <a href="https://mord.krakow.pl/informacje/wysokosc-oplat-za-egzaminy/">opłaty MORD Kraków</a>, <a href="https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy">Ministerstwo Infrastruktury</a>, <a href="https://www.gov.pl/web/gov/uzyskaj-prawo-jazdy">gov.pl – uzyskaj prawo jazdy</a>, <a href="https://www.gov.pl/web/gov/kategorie-prawa-jazdy">gov.pl – kategorie prawa jazdy</a>.</p>
     </div>
   </section>
 </main>
