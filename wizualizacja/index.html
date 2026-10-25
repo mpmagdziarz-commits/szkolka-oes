@@ -1,0 +1,597 @@
+<title>OES – strona główna</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Układ: ciemny „ekran wyboru pojazdu” jak w grze, niżej jasne sekcje z treścią.
+   Jedna, świadomie wybrana kolorystyka niebiesko-biała (bez trybu ciemnego). */
+:root {
+  --navy: #071233;
+  --navy-2: #0d1d4a;
+  --blue: #1d5bd8;
+  --blue-bright: #4c9bff;
+  --white: #ffffff;
+  --paper: #f2f6fc;
+  --ink: #0b1633;
+  --muted: #5b6a86;
+  --line: #d6dff0;
+  --on-dark-muted: #9fb2d9;
+  --glow: rgba(76, 155, 255, .35);
+  --tire: #111317;
+  --rim: #c9d1dc;
+  --chrome: #8e99a8;
+  --glass: #a9c8f0;
+  --paint: #1d5bd8;
+  --paint-2: #1546a8;
+  --amber: #ffb020;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--navy); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 640px; }
+.sec-head p { margin: 0; color: var(--muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 8px; padding: 13px 20px; font: 700 15px/1 var(--font-body); cursor: pointer; text-decoration: none; }
+.btn-primary { background: var(--blue); color: var(--white); }
+.btn-primary:hover { background: #2a68e6; }
+.btn-light { background: var(--white); color: var(--navy); }
+:focus-visible { outline: 3px solid var(--blue-bright); outline-offset: 3px; }
+.tag-mock { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(255, 176, 32, .16); color: #a86a00; }
+
+/* ---------- 1. Górny pasek ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--navy); color: var(--white); border-bottom: 1px solid rgba(255,255,255,.08); }
+.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 22px; color: var(--white); text-decoration: none; }
+.lplate { display: inline-grid; place-items: center; width: 34px; height: 34px; background: var(--blue); border-radius: 5px; font-size: 24px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a:hover { color: var(--white); }
+.top .phone { color: var(--white); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+
+/* ---------- 2. Wybór pojazdu ---------- */
+.garage { position: relative; background: radial-gradient(120% 80% at 50% 70%, #16307a 0%, var(--navy-2) 40%, var(--navy) 75%); color: var(--white); overflow: hidden; padding-block: 36px 48px; }
+.garage::before { content: ""; position: absolute; inset: auto -10% 0 -10%; height: 45%; background:
+  linear-gradient(transparent 0, rgba(7,18,51,.0) 0),
+  repeating-linear-gradient(90deg, rgba(76,155,255,.10) 0 1px, transparent 1px 80px),
+  repeating-linear-gradient(0deg, rgba(76,155,255,.10) 0 1px, transparent 1px 40px);
+  transform: perspective(500px) rotateX(58deg); transform-origin: 50% 100%; pointer-events: none; }
+.garage .wrap { position: relative; }
+.garage-head { text-align: center; display: grid; gap: 8px; justify-items: center; }
+.garage-head .kicker { color: var(--blue-bright); }
+.garage-head h1 { font-size: clamp(34px, 6.4vw, 72px); font-weight: 900; font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; }
+.garage-head p { margin: 0; color: var(--on-dark-muted); max-width: 46ch; }
+
+.picker { position: relative; height: clamp(220px, 34vw, 380px); margin-top: 14px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.spot { position: absolute; left: 50%; bottom: 6%; width: 70%; height: 22%; transform: translateX(-50%); background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
+.slot { position: absolute; left: 50%; bottom: 10%; width: min(560px, 62%); aspect-ratio: 640 / 300; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
+.slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
+.slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.right { transform: translateX(32%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.left:hover, .slot.right:hover { opacity: .85; }
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(7,18,51,.5); color: var(--white); cursor: pointer; display: grid; place-items: center; }
+.arrow:hover { border-color: var(--blue-bright); }
+.arrow svg { width: 22px; height: 22px; }
+.arrow.prev { left: 0; } .arrow.next { right: 0; }
+
+.select-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 940px; margin: 8px auto 0; }
+.select-panel > * { min-width: 0; }
+.vehicle-name { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.vehicle-name h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 900; text-transform: uppercase; }
+.vehicle-name span { color: var(--on-dark-muted); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { border: 2px solid rgba(255,255,255,.2); background: transparent; color: var(--white); border-radius: 8px; padding: 9px 14px; min-width: 62px; cursor: pointer; font-family: var(--font-display); font-weight: 900; font-stretch: 110%; font-size: 19px; line-height: 1; }
+.chip:hover { border-color: var(--blue-bright); }
+.chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 0 4px var(--glow); }
+.cat-desc { margin: 14px 0 0; color: var(--on-dark-muted); }
+.stats { display: grid; gap: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 20px; }
+.stat { display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center; }
+.stat dt { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); }
+.stat dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; min-width: 80px; }
+.bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,.1); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); border-radius: 4px; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.stats .btn { margin-top: 6px; }
+.mock-note { text-align: center; margin-top: 18px; font-size: 12px; color: var(--on-dark-muted); }
+
+/* ---------- 3. Pod maską ---------- */
+.hood { background: var(--white); }
+.hood-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: center; }
+.hood-grid > * { min-width: 0; }
+.hood-stage { position: relative; background: var(--paper); border-radius: 16px; padding: 24px 12px 12px; }
+.hood-canvas { position: relative; }
+.hood-stage svg { width: 100%; height: auto; display: block; }
+#hoodLid { transform-box: view-box; transform-origin: 470px 128px; transition: transform .9s cubic-bezier(.3,.9,.3,1); }
+.open #hoodLid { transform: rotate(-38deg); }
+.beam { opacity: 0; transition: opacity .4s; }
+.lights .beam { opacity: 1; }
+.blink { opacity: .25; }
+.lights .blink { animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 1; } 0% { opacity: .25; } }
+.engine-part { opacity: 0; transition: opacity .4s .4s; }
+.open .engine-part { opacity: 1; }
+.hotspot { position: absolute; z-index: 2; width: 28px; height: 28px; margin: -14px 0 0 -14px; line-height: 28px !important; border-radius: 50%; border: 0; background: var(--blue); color: var(--white); font: 800 14px/30px var(--font-body); cursor: pointer; box-shadow: 0 0 0 6px rgba(29,91,216,.2); transition: transform .2s, background .2s; }
+.hotspot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--blue); animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(.8); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
+.hotspot.active, .hotspot:hover { background: var(--navy); transform: scale(1.15); }
+.hotspot[hidden] { display: none !important; }
+.qlist { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+.qlist button { width: 100%; text-align: left; display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 12px 14px; cursor: pointer; font: inherit; color: inherit; }
+.qlist button b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
+.qlist button strong { display: block; }
+.qlist button span { color: var(--muted); font-size: 14px; }
+.qlist button.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,216,.12); }
+.qlist button.active b { background: var(--blue); color: var(--white); }
+.hood-controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
+.toggle { border: 2px solid var(--line); background: var(--white); border-radius: 8px; padding: 9px 14px; font: 700 14px var(--font-body); cursor: pointer; color: var(--ink); }
+.toggle[aria-pressed="true"] { border-color: var(--blue); color: var(--blue); }
+
+/* ---------- 4. Dlaczego OES ---------- */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.why { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 6px; align-content: start; }
+.why .big { font-family: var(--font-display); font-weight: 900; font-stretch: 115%; font-size: 38px; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
+.why p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* ---------- 5. Kroki ---------- */
+.steps-sec { background: var(--navy); color: var(--white); }
+.steps-sec .kicker { color: var(--blue-bright); }
+.steps-sec .sec-head p { color: var(--on-dark-muted); }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; list-style: none; margin: 0; padding: 0; }
+.steps li { position: relative; border-top: 3px solid var(--blue); padding-top: 18px; display: grid; gap: 6px; align-content: start; }
+.steps li::before { counter-increment: s; content: counter(s); font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 44px; line-height: 1; color: var(--blue-bright); }
+.steps h3 { font-size: 20px; font-weight: 800; }
+.steps p { margin: 0; color: var(--on-dark-muted); font-size: 15px; }
+
+/* ---------- 6. Opinie ---------- */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review { background: var(--white); border: 1px dashed var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.stars { color: var(--amber); letter-spacing: 2px; font-size: 18px; }
+.review p { margin: 0; color: var(--muted); }
+.review .who { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); }
+
+/* ---------- 7. Biura ---------- */
+.offices-sec { background: var(--white); }
+.offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.office { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; }
+.office h3 { font-size: 19px; font-weight: 800; font-stretch: 105%; }
+.office .addr { color: var(--muted); }
+.office .tel { font-weight: 700; font-variant-numeric: tabular-nums; user-select: all; }
+.office a.map { color: var(--blue); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+.hours { margin-top: 20px; color: var(--muted); }
+.hours b { color: var(--ink); }
+
+/* ---------- 8. Zapis ---------- */
+.signup { background: linear-gradient(135deg, var(--blue) 0%, #123f9e 100%); color: var(--white); }
+.signup-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.signup-grid > * { min-width: 0; }
+.signup .kicker { color: #cfe0ff; }
+.signup p { color: #dbe6ff; }
+form { background: var(--white); color: var(--ink); border-radius: 14px; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+form label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
+form input, form select { font: 500 16px var(--font-body); padding: 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); width: 100%; }
+form .full { grid-column: 1 / -1; }
+.form-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--blue); font-weight: 600; }
+
+/* ---------- 9. Stopka ---------- */
+footer { background: var(--navy); color: var(--on-dark-muted); padding-block: 40px; font-size: 14px; }
+footer .wrap { display: flex; gap: 24px 48px; flex-wrap: wrap; justify-content: space-between; }
+footer b { color: var(--white); }
+footer a { color: var(--white); }
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .select-panel, .hood-grid, .signup-grid { grid-template-columns: 1fr; }
+  .why-grid, .steps { grid-template-columns: 1fr 1fr; }
+  .reviews, .offices { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .top .btn { display: none; }
+  .top .phone { margin-left: auto; }
+  .slot { width: 80%; }
+  .slot.left { transform: translateX(-118%) scale(.42); }
+  .slot.right { transform: translateX(18%) scale(.42); }
+  .arrow { width: 42px; height: 42px; top: 40%; }
+  .why-grid, .steps { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .stat { grid-template-columns: 74px 1fr auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+</style>
+
+<!-- 1. Górny pasek -->
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#start"><span class="lplate">L</span>OES</a>
+    <nav class="nav" aria-label="Menu">
+      <a href="#start">Kategorie</a>
+      <a href="#pod-maska">Pod maską</a>
+      <a href="#biura">Biura</a>
+      <a href="#zapis">Zapisy</a>
+    </nav>
+    <a class="phone" href="tel:+48501294854">501 294 854</a>
+    <a class="btn btn-primary" href="#zapis">Zapisz się</a>
+  </div>
+</header>
+
+<main>
+  <!-- 2. Wybór pojazdu -->
+  <section class="garage" id="start">
+    <div class="wrap">
+      <div class="garage-head">
+        <span class="kicker">Szkoła jazdy OES · Kraków</span>
+        <h1>Wybierz swój pojazd</h1>
+        <p>Przesuń albo kliknij strzałkę, potem wybierz kategorię.</p>
+      </div>
+
+      <div class="picker" id="picker">
+        <div class="spot"></div>
+        <button class="arrow prev" id="prev" aria-label="Poprzedni pojazd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="arrow next" id="next" aria-label="Następny pojazd"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
+
+      <div class="select-panel">
+        <div>
+          <div class="vehicle-name"><h3 id="vName"></h3><span id="vModel"></span></div>
+          <div class="chips" id="chips" role="group" aria-label="Kategorie"></div>
+          <p class="cat-desc" id="catDesc"></p>
+        </div>
+        <dl class="stats">
+          <div class="stat"><dt>Wiek</dt><div class="bar"><i id="barAge"></i></div><dd id="sAge"></dd></div>
+          <div class="stat"><dt>Jazdy</dt><div class="bar"><i id="barHours"></i></div><dd id="sHours"></dd></div>
+          <div class="stat"><dt>Cena od</dt><div class="bar"><i id="barPrice"></i></div><dd id="sPrice"></dd></div>
+          <a class="btn btn-primary" href="#zapis" id="pickBtn">Wybieram ten kurs</a>
+        </dl>
+      </div>
+      <p class="mock-note"><span class="tag-mock">Wizualizacja</span> Pojazdy to grafiki zastępcze. Podmienimy je na zdjęcia i20, motocykla i ciężarówki.</p>
+    </div>
+  </section>
+
+  <!-- 3. Pod maską -->
+  <section class="hood" id="pod-maska">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Przygotuj się do egzaminu</span>
+        <h2>Zajrzyj pod maskę</h2>
+        <p>Na egzaminie praktycznym egzaminator pyta o światła i płyny. Kliknij punkt na aucie i sprawdź, co trzeba wiedzieć.</p>
+      </div>
+      <div class="hood-grid">
+        <div>
+          <div class="hood-stage" id="hoodStage">
+            <div class="hood-canvas" id="hoodCanvas"><svg viewBox="0 0 640 300" aria-hidden="true" id="hoodSvg"></svg></div>
+          </div>
+          <div class="hood-controls">
+            <button class="toggle" id="tHood" aria-pressed="false">Otwórz maskę</button>
+            <button class="toggle" id="tLights" aria-pressed="false">Włącz światła</button>
+          </div>
+        </div>
+        <ul class="qlist" id="qlist"></ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Dlaczego OES -->
+  <section id="dlaczego">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Dlaczego OES</span>
+        <h2>Uczymy jeździć od 2001 roku</h2>
+      </div>
+      <div class="why-grid">
+        <div class="why"><span class="big">25 lat</span><p>doświadczenia w szkoleniu kierowców w Krakowie</p></div>
+        <div class="why"><span class="big">15 000+</span><p>kursantów, którzy zrobili z nami prawo jazdy</p></div>
+        <div class="why"><span class="big">6 biur</span><p>w Krakowie, Wieliczce i Zabierzowie, zapisz się tam, gdzie ci wygodnie</p></div>
+        <div class="why"><span class="big">Własne place</span><p>i auta takie jak na egzaminie w WORD</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. Kroki -->
+  <section class="steps-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Krok po kroku</span>
+        <h2>Jak zdobyć prawo jazdy</h2>
+        <p>Cała droga od zera do odebrania dokumentu.</p>
+      </div>
+      <ol class="steps">
+        <li><h3>Badania i PKK</h3><p>Robisz badanie u lekarza i zakładasz profil kandydata na kierowcę w urzędzie.</p></li>
+        <li><h3>Zapis w OES</h3><p>Wybierasz kategorię i biuro. Zapiszesz się online albo telefonicznie.</p></li>
+        <li><h3>Teoria i jazdy</h3><p>Zajęcia z teorii, a potem jazdy z instruktorem na placu i w mieście.</p></li>
+        <li><h3>Egzamin w WORD</h3><p>Zdajesz teorię i praktykę, a potem odbierasz prawo jazdy.</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- 6. Opinie -->
+  <section id="opinie">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Opinie</span>
+        <h2>Co mówią kursanci</h2>
+        <p><span class="tag-mock">Miejsce na opinie</span> Tu pokażemy prawdziwe opinie z Google.</p>
+      </div>
+      <div class="reviews">
+        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
+        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
+        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 7. Biura -->
+  <section class="offices-sec" id="biura">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Nasze biura</span>
+        <h2>Zapisz się blisko domu</h2>
+      </div>
+      <div class="offices" id="offices"></div>
+      <p class="hours">Biura czynne: <b>pn–pt 10:00–18:00</b>, <b>sob 9:00–13:00</b></p>
+    </div>
+  </section>
+
+  <!-- 8. Zapis -->
+  <section class="signup" id="zapis">
+    <div class="wrap signup-grid">
+      <div>
+        <span class="kicker">Szybki zapis</span>
+        <h2 style="margin-top:10px">Zacznij kurs jeszcze w tym miesiącu</h2>
+        <p>Zostaw numer, a biuro oddzwoni i ustali z tobą termin.</p>
+      </div>
+      <form id="form">
+        <label>Imię<input id="f-name" name="name" autocomplete="given-name" placeholder="np. Kasia"></label>
+        <label>Telefon<input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="np. 600 100 200"></label>
+        <label>Kategoria<select id="f-cat" name="cat"></select></label>
+        <label>Biuro<select id="f-office" name="office"></select></label>
+        <button class="btn btn-primary full" type="submit">Wyślij zgłoszenie</button>
+        <p class="form-msg" id="formMsg" hidden>To wizualizacja, formularz jeszcze nie wysyła zgłoszeń.</p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- 9. Stopka -->
+<footer>
+  <div class="wrap">
+    <div><b>OES Ośrodek Szkolenia Kierowców</b><br>ul. Wrocławska 48, Kraków</div>
+    <div>Tel. <b>501 294 854</b>, <b>12 633 49 77</b><br>biurowroclawska@oes.com.pl</div>
+    <div><a href="https://www.facebook.com/OESKRAKOW/">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  // ---------- Dane ----------
+  const GROUPS = [
+    { id: 'moto', name: 'Motocykl', model: 'model do ustalenia', draw: motorbike, cats: [
+      { id: 'AM', age: 14, hours: 10, price: 1700, desc: 'Motorowery i skutery do 50 cm³ oraz lekkie quady.' },
+      { id: 'A1', age: 16, hours: 20, price: 2900, desc: 'Motocykle do 125 cm³ i 11 kW.' },
+      { id: 'A2', age: 18, hours: 20, price: 3500, desc: 'Motocykle do 35 kW.' },
+      { id: 'A',  age: 24, hours: 20, price: 3500, desc: 'Wszystkie motocykle, bez ograniczenia mocy.' },
+    ]},
+    { id: 'car', name: 'Samochód', model: 'Hyundai i20', draw: car, cats: [
+      { id: 'B1', age: 16, hours: 30, price: 4650, desc: 'Czterokołowce, np. większe quady.' },
+      { id: 'B',  age: 18, hours: 30, price: 4500, desc: 'Samochody osobowe. Najpopularniejszy kurs.' },
+      { id: 'B+E', age: 18, hours: 15, price: 2800, desc: 'Samochód z większą przyczepą.' },
+    ], start: 1 },
+    { id: 'truck', name: 'Ciężarówka', model: 'model do ustalenia', draw: truck, cats: [
+      { id: 'C1', age: 18, hours: null, price: null, desc: 'Ciężarówki od 3,5 do 7,5 t.' },
+      { id: 'C1+E', age: 18, hours: null, price: null, desc: 'Mniejsze ciężarówki z przyczepą.' },
+      { id: 'C',  age: 21, hours: 30, price: 5900, desc: 'Ciężarówki powyżej 3,5 t.' },
+      { id: 'C+E', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
+    ], start: 2 },
+  ];
+  const OFFICES = [
+    ['Kraków – Wrocławska', 'ul. Wrocławska 48', '501 294 854'],
+    ['Kraków – Czarnowiejska', 'ul. Czarnowiejska 13/9', '512 324 369'],
+    ['Kraków – Kalwaryjska', 'ul. Kalwaryjska 51/4', '511 337 717'],
+    ['Kraków – Jerzmanowskiego', 'ul. Jerzmanowskiego 37/106', '515 705 002'],
+    ['Wieliczka', 'ul. Reymonta 1/3', '502 846 600'],
+    ['Zabierzów', 'ul. Krakowska 26 (nad Sparem)', '508 246 946'],
+  ];
+  const QUESTIONS = [
+    { x: 574, y: 168, t: 'Światła mijania', s: 'Włącz i pokaż, gdzie świecą. Kiedy ich używamy?' },
+    { x: 600, y: 198, t: 'Kierunkowskazy i awaryjne', s: 'Sprawdź działanie przednich i tylnych kierunkowskazów.' },
+    { x: 440, y: 116, t: 'Poziom oleju', s: 'Wskaż bagnet i odczytaj poziom między MIN a MAX.', hood: true },
+    { x: 506, y: 112, t: 'Płyn chłodniczy', s: 'Pokaż zbiorniczek i oceń poziom płynu.', hood: true },
+    { x: 472, y: 100, t: 'Płyn hamulcowy', s: 'Wskaż zbiorniczek płynu hamulcowego i jego poziom.', hood: true },
+    { x: 545, y: 126, t: 'Płyn do spryskiwaczy', s: 'Pokaż, gdzie się go uzupełnia.', hood: true },
+  ];
+
+  // ---------- Rysunki pojazdów (grafiki zastępcze, viewBox 640×300, droga na y=270) ----------
+  function wheel(cx, cy, r) {
+    const sp = [0, 72, 144, 216, 288].map(a => { const t = a * Math.PI / 180; return `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(t) * r * .62).toFixed(1)}" y2="${(cy + Math.sin(t) * r * .62).toFixed(1)}" stroke="var(--chrome)" stroke-width="${Math.max(3, r * .1).toFixed(1)}" stroke-linecap="round"/>`; }).join('');
+    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--tire)"/><circle cx="${cx}" cy="${cy}" r="${r * .7}" fill="var(--rim)"/>${sp}<circle cx="${cx}" cy="${cy}" r="${r * .16}" fill="var(--chrome)"/>`;
+  }
+  const L = (x, y, w = 46, h = 22) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="var(--blue)" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h - 4.5}" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="${h - 4}" fill="#fff">L</text>`;
+  function car(opts = {}) {
+    return `
+      <path d="M42 230 L42 178 Q44 152 76 146 L168 134 Q218 86 272 81 L402 81 Q442 83 476 131 L534 144 Q568 152 570 186 L570 230 Z" fill="var(--paint)"/>
+      <path d="M42 205 L570 205 L570 230 L42 230 Z" fill="var(--paint-2)"/>
+      <path d="M188 134 Q228 96 272 93 L328 93 L328 134 Z" fill="var(--glass)"/>
+      <path d="M340 93 L396 93 Q428 96 454 134 L340 134 Z" fill="var(--glass)"/>
+      <line x1="334" y1="138" x2="334" y2="205" stroke="var(--paint-2)" stroke-width="3"/>
+      <line x1="208" y1="138" x2="208" y2="205" stroke="var(--paint-2)" stroke-width="3"/>
+      <rect x="272" y="150" width="26" height="6" rx="3" fill="var(--paint-2)"/><rect x="392" y="150" width="26" height="6" rx="3" fill="var(--paint-2)"/>
+      ${opts.engine || ''}
+      ${opts.lid || ''}
+      <path d="M552 158 L570 164 L570 180 L550 176 Z" fill="#ffe9a8"/>
+      <rect x="560" y="186" width="10" height="8" rx="2" fill="var(--amber)" class="${opts.blinkCls || ''}"/>
+      <rect x="42" y="160" width="12" height="20" rx="2" fill="#e24b4b"/>
+      <circle cx="122" cy="230" r="47" fill="var(--paint-2)"/><circle cx="462" cy="230" r="47" fill="var(--paint-2)"/>
+      ${opts.noL ? '' : L(306, 58)}
+      ${wheel(122, 230, 40)}${wheel(462, 230, 40)}`;
+  }
+  function truck() {
+    return `
+      <rect x="30" y="40" width="392" height="168" rx="6" fill="#e9eef7"/>
+      <rect x="30" y="40" width="392" height="168" rx="6" fill="none" stroke="var(--chrome)" stroke-width="4"/>
+      <text x="226" y="148" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="64" fill="var(--blue)">OES</text>
+      <path d="M432 214 L432 86 Q434 68 452 68 L540 68 Q566 70 582 118 L604 150 L604 214 Z" fill="var(--paint)"/>
+      <path d="M456 84 L536 84 Q552 87 566 130 L456 130 Z" fill="var(--glass)"/>
+      <path d="M590 168 L604 172 L604 188 L588 186 Z" fill="#ffe9a8"/>
+      <rect x="24" y="204" width="584" height="22" rx="4" fill="#2a3242"/>
+      <circle cx="120" cy="230" r="46" fill="#2a3242"/><circle cx="214" cy="230" r="46" fill="#2a3242"/><circle cx="526" cy="230" r="46" fill="#2a3242"/>
+      ${L(484, 44)}
+      ${wheel(120, 230, 40)}${wheel(214, 230, 40)}${wheel(526, 230, 40)}`;
+  }
+  function motorbike() {
+    return `
+      <line x1="300" y1="208" x2="170" y2="230" stroke="var(--chrome)" stroke-width="12" stroke-linecap="round"/>
+      <line x1="430" y1="100" x2="470" y2="230" stroke="var(--chrome)" stroke-width="11" stroke-linecap="round"/>
+      <path d="M236 216 L112 198 L114 212 L236 228 Z" fill="var(--chrome)"/>
+      <rect x="268" y="166" width="114" height="54" rx="10" fill="#2a3242"/>
+      <path d="M134 142 L206 138 L196 162 L146 160 Z" fill="var(--paint)"/>
+      <path d="M180 152 L262 140 L306 150 L274 162 L188 164 Z" fill="#111827"/>
+      <path d="M252 150 Q300 108 382 116 L424 134 L402 176 L302 180 Z" fill="var(--paint)"/>
+      <path d="M418 94 L458 100 L452 142 L424 136 Z" fill="var(--paint-2)"/>
+      <circle cx="456" cy="122" r="10" fill="#ffe9a8"/>
+      <line x1="404" y1="98" x2="446" y2="88" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
+      ${L(132, 164, 30, 24)}
+      ${wheel(170, 230, 40)}${wheel(470, 230, 40)}`;
+  }
+
+  // ---------- 2. Ekran wyboru ----------
+  const picker = document.getElementById('picker');
+  const slots = GROUPS.map((g, i) => {
+    const b = document.createElement('button');
+    b.className = 'slot';
+    b.setAttribute('aria-label', g.name);
+    b.innerHTML = `<svg viewBox="0 0 640 300"><ellipse cx="320" cy="272" rx="280" ry="9" fill="#000" opacity=".35"/>${g.draw()}</svg>`;
+    b.addEventListener('click', () => { if (!dragMoved) selectGroup(i); });
+    picker.insertBefore(b, document.getElementById('prev'));
+    return b;
+  });
+  let gi = 1;
+  const catIndex = GROUPS.map(g => g.start || 0);
+  const fmt = n => n.toLocaleString('pl-PL') + ' zł';
+
+  function selectGroup(i) {
+    gi = (i + GROUPS.length) % GROUPS.length;
+    slots.forEach((s, k) => {
+      const rel = (k - gi + GROUPS.length) % GROUPS.length;
+      s.className = 'slot ' + (rel === 0 ? 'center' : rel === 1 ? 'right' : 'left');
+      s.tabIndex = rel === 0 ? -1 : 0;
+    });
+    const g = GROUPS[gi];
+    document.getElementById('vName').textContent = g.name;
+    document.getElementById('vModel').textContent = g.model;
+    const chips = document.getElementById('chips');
+    chips.innerHTML = '';
+    g.cats.forEach((c, k) => {
+      const b = document.createElement('button');
+      b.className = 'chip'; b.textContent = c.id;
+      b.addEventListener('click', () => selectCat(k));
+      chips.appendChild(b);
+    });
+    selectCat(catIndex[gi]);
+  }
+  function selectCat(k) {
+    catIndex[gi] = k;
+    const c = GROUPS[gi].cats[k];
+    [...document.getElementById('chips').children].forEach((b, j) => b.setAttribute('aria-pressed', j === k));
+    document.getElementById('catDesc').textContent = c.desc;
+    document.getElementById('sAge').textContent = 'od ' + c.age + (c.age === 24 ? ' lat*' : ' lat');
+    document.getElementById('sHours').textContent = c.hours ? c.hours + ' h' : 'zapytaj';
+    document.getElementById('sPrice').textContent = c.price ? fmt(c.price) : 'zapytaj';
+    document.getElementById('barAge').style.width = (c.age / 24 * 100) + '%';
+    document.getElementById('barHours').style.width = (c.hours ? c.hours / 30 * 100 : 0) + '%';
+    document.getElementById('barPrice').style.width = (c.price ? c.price / 7000 * 100 : 0) + '%';
+    document.getElementById('pickBtn').textContent = 'Wybieram kategorię ' + c.id;
+    const sel = document.getElementById('f-cat');
+    if (sel) sel.value = c.id;
+  }
+  document.getElementById('prev').addEventListener('click', () => selectGroup(gi - 1));
+  document.getElementById('next').addEventListener('click', () => selectGroup(gi + 1));
+  addEventListener('keydown', e => {
+    if (e.target.closest('input, select, textarea')) return;
+    const r = picker.getBoundingClientRect();
+    if (r.bottom < 0 || r.top > innerHeight) return;
+    if (e.key === 'ArrowLeft') selectGroup(gi - 1);
+    if (e.key === 'ArrowRight') selectGroup(gi + 1);
+  });
+  let sx = 0, dragMoved = false, down = false;
+  picker.addEventListener('pointerdown', e => { down = true; sx = e.clientX; dragMoved = false; });
+  picker.addEventListener('pointermove', e => { if (down && Math.abs(e.clientX - sx) > 10) dragMoved = true; });
+  picker.addEventListener('pointerup', e => {
+    if (!down) return; down = false;
+    const dx = e.clientX - sx;
+    if (Math.abs(dx) > 50) selectGroup(gi + (dx < 0 ? 1 : -1));
+    setTimeout(() => { dragMoved = false; }, 0);
+  });
+  picker.addEventListener('pointercancel', () => { down = false; });
+
+  // ---------- 3. Pod maską ----------
+  const hoodSvg = document.getElementById('hoodSvg');
+  const engine = `<g class="engine-part">
+      <path d="M454 134 L540 144 L540 160 L454 150 Z" fill="#2a3242"/>
+      <rect x="452" y="128" width="14" height="14" rx="3" fill="#ffd34d"/>
+      <rect x="492" y="132" width="18" height="12" rx="3" fill="#ff7aa8"/>
+      <rect x="470" y="130" width="10" height="12" rx="2" fill="#f2c94c"/>
+      <rect x="520" y="138" width="16" height="10" rx="3" fill="#4c9bff"/>
+    </g>`;
+  const lid = `<path id="hoodLid" d="M456 131 L534 144 Q566 151 570 160 L570 164 L456 141 Z" fill="var(--paint)" stroke="var(--paint-2)" stroke-width="2"/>`;
+  const beam = `<path class="beam" d="M570 166 L640 140 L640 210 Z" fill="#fff3c4" opacity=".7"/>`;
+  hoodSvg.innerHTML = `<ellipse cx="306" cy="272" rx="280" ry="8" fill="#000" opacity=".15"/>${car({ engine, lid, noL: true, blinkCls: 'blink' })}${beam}`;
+  const stage = document.getElementById('hoodStage');
+  const qlist = document.getElementById('qlist');
+  const spots = QUESTIONS.map((q, i) => {
+    const h = document.createElement('button');
+    h.className = 'hotspot'; h.textContent = i + 1;
+    h.style.left = (q.x / 640 * 100) + '%'; h.style.top = (q.y / 300 * 100) + '%';
+    h.setAttribute('aria-label', q.t);
+    h.hidden = !!q.hood;
+    h.addEventListener('click', () => focusQ(i));
+    document.getElementById('hoodCanvas').appendChild(h);
+    const li = document.createElement('li');
+    li.innerHTML = `<button><b>${i + 1}</b><div><strong>${q.t}</strong><span>${q.s}</span></div></button>`;
+    li.firstChild.addEventListener('click', () => focusQ(i));
+    li.firstChild.addEventListener('mouseenter', () => focusQ(i));
+    qlist.appendChild(li);
+    return h;
+  });
+  const tHood = document.getElementById('tHood'), tLights = document.getElementById('tLights');
+  function setHood(open) {
+    stage.classList.toggle('open', open);
+    tHood.setAttribute('aria-pressed', open); tHood.textContent = open ? 'Zamknij maskę' : 'Otwórz maskę';
+    QUESTIONS.forEach((q, i) => { if (q.hood) spots[i].hidden = !open; });
+  }
+  function setLights(on) {
+    stage.classList.toggle('lights', on);
+    tLights.setAttribute('aria-pressed', on); tLights.textContent = on ? 'Wyłącz światła' : 'Włącz światła';
+  }
+  function focusQ(i) {
+    const q = QUESTIONS[i];
+    if (q.hood) setHood(true); else setLights(true);
+    spots.forEach((s, k) => s.classList.toggle('active', k === i));
+    [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
+  }
+  tHood.addEventListener('click', () => setHood(!stage.classList.contains('open')));
+  tLights.addEventListener('click', () => setLights(!stage.classList.contains('lights')));
+  stage.addEventListener('mouseenter', () => setHood(true));
+
+  // ---------- 7. Biura ----------
+  document.getElementById('offices').innerHTML = OFFICES.map(([n, a, t]) => `
+    <div class="office"><h3>${n}</h3><span class="addr">${a}</span><span class="tel">${t}</span>
+    <a class="map" href="https://www.google.com/maps/search/${encodeURIComponent('OES ' + a + ' ' + (n.startsWith('Kraków') ? 'Kraków' : n))}">Pokaż na mapie →</a></div>`).join('');
+
+  // ---------- 8. Formularz ----------
+  const fc = document.getElementById('f-cat');
+  GROUPS.forEach(g => { const og = document.createElement('optgroup'); og.label = g.name; g.cats.forEach(c => og.appendChild(new Option(c.id, c.id))); fc.appendChild(og); });
+  const fo = document.getElementById('f-office');
+  OFFICES.forEach(([n]) => fo.appendChild(new Option(n, n)));
+  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); document.getElementById('formMsg').hidden = false; });
+
+  selectGroup(1);
+})();
+</script>
