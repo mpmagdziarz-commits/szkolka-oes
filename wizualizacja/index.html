@@ -281,6 +281,11 @@ form label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
 form input, form select { font: 500 16px var(--font-body); padding: 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); width: 100%; }
 form .full { grid-column: 1 / -1; }
 .form-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--blue); font-weight: 600; }
+.signup-cta { background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.22); border-radius: 16px; padding: 26px; display: grid; gap: 18px; justify-items: start; }
+.signup-cta ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.signup-cta li { display: flex; gap: 10px; align-items: center; font-weight: 600; }
+.signup-cta li::before { content: "✓"; flex: none; width: 24px; height: 24px; border-radius: 50%; background: var(--white); color: var(--blue); display: grid; place-items: center; font-size: 13px; font-weight: 800; }
+.signup-cta .btn { padding: 15px 22px; font-size: 16px; }
 
 /* ---------- 9. Stopka ---------- */
 footer { background: var(--navy); color: var(--on-dark-muted); padding-block: 40px; font-size: 14px; }
@@ -325,7 +330,7 @@ footer a { color: var(--white); }
       <a href="onas.html">O nas</a>
     </nav>
     <a class="phone" href="tel:+48501294854">501 294 854</a>
-    <a class="btn btn-primary" href="#zapis">Zapisz się</a>
+    <a class="btn btn-primary" href="zapis.html">Zapisz się</a>
   </div>
 </header>
 
@@ -355,7 +360,7 @@ footer a { color: var(--white); }
           <div class="stat"><dt>Wiek</dt><div class="bar"><i id="barAge"></i></div><dd id="sAge"></dd></div>
           <div class="stat"><dt>Jazdy</dt><div class="bar"><i id="barHours"></i></div><dd id="sHours"></dd></div>
           <div class="stat"><dt>Cena od</dt><div class="bar"><i id="barPrice"></i></div><dd id="sPrice"></dd></div>
-          <a class="btn btn-primary" href="#zapis" id="pickBtn">Wybieram ten kurs</a>
+          <a class="btn btn-primary" href="zapis.html?kat=B" id="pickBtn">Wybieram ten kurs</a>
         </dl>
       </div>
     </div>
@@ -480,7 +485,7 @@ footer a { color: var(--white); }
           <li class="road-step"><details><summary><span class="ico">🎓</span><span><h3>Egzamin w WORD</h3><span class="time">termin zwykle w kilka tygodni</span></span></summary>
             <p>Zapisujesz się na egzamin w WORD w Krakowie. Najpierw teoria, potem praktyka na placu i w ruchu miejskim.</p>
             <ul><li>teoria: 32 pytania na komputerze</li><li>praktyka: plac manewrowy i miasto</li><li>zabierz dowód osobisty</li></ul><a class="more" href="droga.html">Zobacz więcej →</a></details></li>
-          <li class="road-step finish"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji i możesz jechać sam.</p><a class="btn btn-primary" href="#zapis">Zacznij swoją drogę</a></div></li>
+          <li class="road-step finish"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji i możesz jechać sam.</p><a class="btn btn-primary" href="zapis.html">Zacznij swoją drogę</a></div></li>
         </ol>
       </div>
       <p class="road-more"><a class="btn btn-light" href="droga.html">Zobacz całą drogę do prawa jazdy</a></p>
@@ -505,16 +510,12 @@ footer a { color: var(--white); }
       <div>
         <span class="kicker">Szybki zapis</span>
         <h2 style="margin-top:10px">Zacznij kurs jeszcze w tym miesiącu</h2>
-        <p>Zostaw numer, a biuro oddzwoni i ustali z tobą termin.</p>
+        <p>Zapis online zajmie około minuty. Biuro oddzwoni i ustali z tobą termin.</p>
       </div>
-      <form id="form">
-        <label>Imię<input id="f-name" name="name" autocomplete="given-name" placeholder="np. Kasia"></label>
-        <label>Telefon<input id="f-phone" name="phone" type="tel" autocomplete="tel" placeholder="np. 600 100 200"></label>
-        <label>Kategoria<select id="f-cat" name="cat"></select></label>
-        <label>Biuro<select id="f-office" name="office"></select></label>
-        <button class="btn btn-primary full" type="submit">Wyślij zgłoszenie</button>
-        <p class="form-msg" id="formMsg" hidden>To wizualizacja, formularz jeszcze nie wysyła zgłoszeń.</p>
-      </form>
+      <div class="signup-cta">
+        <ul><li>wybierasz kategorię i biuro</li><li>zaznaczasz, kiedy możesz jeździć</li><li>biuro oddzwania w ciągu dnia roboczego</li></ul>
+        <a class="btn btn-light" href="zapis.html">Przejdź do zapisu →</a>
+      </div>
     </div>
   </section>
 </main>
@@ -613,9 +614,9 @@ footer a { color: var(--white); }
     document.getElementById('barAge').style.width = (c.age / 24 * 100) + '%';
     document.getElementById('barHours').style.width = (c.hours ? c.hours / 30 * 100 : 0) + '%';
     document.getElementById('barPrice').style.width = (c.price ? c.price / 7000 * 100 : 0) + '%';
-    document.getElementById('pickBtn').textContent = 'Wybieram kategorię ' + c.id;
-    const sel = document.getElementById('f-cat');
-    if (sel) sel.value = c.id;
+    const pb = document.getElementById('pickBtn');
+    pb.textContent = 'Wybieram kategorię ' + c.id;
+    pb.href = 'zapis.html?kat=' + encodeURIComponent(c.id);
   }
   document.getElementById('prev').addEventListener('click', () => selectGroup(gi - 1));
   document.getElementById('next').addEventListener('click', () => selectGroup(gi + 1));
@@ -863,11 +864,6 @@ footer a { color: var(--white); }
     <div class="office"><h3>${n}</h3><span class="addr">${a}</span><span class="tel">${t}</span>
     <a class="map" href="https://www.google.com/maps/search/${encodeURIComponent('OES ' + a + ' ' + (n.startsWith('Kraków') ? 'Kraków' : n))}">Pokaż na mapie →</a></div>`).join('');
 
-  // ---------- 8. Formularz ----------
-  const fc = document.getElementById('f-cat');
-  GROUPS.forEach(g => { const og = document.createElement('optgroup'); og.label = g.name; g.cats.forEach(c => og.appendChild(new Option(c.id, c.id))); fc.appendChild(og); });
-  const fo = document.getElementById('f-office');
-  OFFICES.forEach(([n]) => fo.appendChild(new Option(n, n)));
   // ---------- Krok „Zapis w OES”: wybór biura ----------
   document.querySelectorAll('.loc').forEach(box => {
     const tog = box.querySelector('.loc-toggle'), list = box.querySelector('.loc-list'), pick = box.querySelector('.loc-pick');
@@ -877,15 +873,10 @@ footer a { color: var(--white); }
       const b = e.target.closest('button'); if (!b) return;
       const k = +b.dataset.k, [n, a, t] = OFFICES[k];
       list.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-      pick.innerHTML = `<b>${n}</b><span>${a}</span><a href="tel:+48${t.replace(/ /g, '')}">Tel. ${t}</a><a href="#zapis" data-k="${k}">Zapisz się w tym biurze →</a>`;
+      pick.innerHTML = `<b>${n}</b><span>${a}</span><a href="tel:+48${t.replace(/ /g, '')}">Tel. ${t}</a><a href="zapis.html?biuro=${k}" data-k="${k}">Zapisz się w tym biurze →</a>`;
       pick.hidden = false;
     });
   });
-  // wybrane biuro trafia do formularza (także z podstrony: ?biuro=numer)
-  document.addEventListener('click', e => { const l = e.target.closest('.loc-pick a[data-k]'); if (l) fo.selectedIndex = +l.dataset.k; });
-  const qb = new URLSearchParams(location.search).get('biuro');
-  if (qb !== null && OFFICES[qb]) fo.selectedIndex = +qb;
-  document.getElementById('form').addEventListener('submit', e => { e.preventDefault(); document.getElementById('formMsg').hidden = false; });
 
   // ---------- Pojawianie się sekcji ----------
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
@@ -908,7 +899,7 @@ footer a { color: var(--white); }
 
 // przed przejściem na podstronę przewiń na górę, żeby nowa strona nie otwierała się w połowie
 document.addEventListener('click', e => {
-  const a = e.target.closest('a[href^="droga.html"], a[href^="onas.html"]');
+  const a = e.target.closest('a[href^="droga.html"], a[href^="onas.html"], a[href^="zapis.html"]');
   if (a && !e.defaultPrevented) { window.scrollTo({ top: 0, behavior: 'instant' }); document.documentElement.scrollIntoView({ block: 'start', behavior: 'instant' }); }
 });
 </script>

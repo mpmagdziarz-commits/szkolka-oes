@@ -359,7 +359,7 @@ footer a { color: var(--white); }
       <a href="onas.html">O nas</a>
     </nav>
     <a class="phone" href="tel:+48501294854">501 294 854</a>
-    <a class="btn btn-primary" href="index.html#zapis">Zapisz się</a>
+    <a class="btn btn-primary" href="zapis.html">Zapisz się</a>
   </div>
 </header>
 
@@ -424,7 +424,7 @@ footer a { color: var(--white); }
             <h4>Nie wyszło?</h4>
             <p>Spokojnie, to się zdarza. Zapisujesz się na kolejny termin i płacisz za tę część jeszcze raz: 50 zł za teorię albo 200 zł za praktykę. Przed poprawką możesz dokupić w OES jazdy doszkalające.</p>
           </details></li>
-          <li class="road-step finish" id="krok-5"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji. Opłata za wydanie prawa jazdy to 100,50 zł.</p><a class="btn btn-primary" href="index.html#zapis">Zacznij swoją drogę</a></div></li>
+          <li class="road-step finish" id="krok-5"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji. Opłata za wydanie prawa jazdy to 100,50 zł.</p><a class="btn btn-primary" href="zapis.html">Zacznij swoją drogę</a></div></li>
         </ol>
       </div>
     </div>
@@ -536,7 +536,7 @@ footer a { color: var(--white); }
       const b = e.target.closest('button'); if (!b) return;
       const k = +b.dataset.k, [n, a, t] = OFFICES[k];
       list.querySelectorAll('button').forEach(x => x.classList.toggle('on', x === b));
-      pick.innerHTML = `<b>${n}</b><span>${a}</span><a href="tel:+48${t.replace(/ /g, '')}">Tel. ${t}</a><a href="index.html?biuro=${k}#zapis" data-k="${k}">Zapisz się w tym biurze →</a>`;
+      pick.innerHTML = `<b>${n}</b><span>${a}</span><a href="tel:+48${t.replace(/ /g, '')}">Tel. ${t}</a><a href="zapis.html?biuro=${k}" data-k="${k}">Zapisz się w tym biurze →</a>`;
       pick.hidden = false;
     });
   });
