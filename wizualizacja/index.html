@@ -659,6 +659,8 @@ footer a { color: var(--white); }
   function setMode(m) {
     mode = m;
     const M = MODES[m];
+    // pierwsze klatki filmików ze światłami ładują się od razu, żeby po kliknięciu nie było czarnego ekranu
+    if (m === 'lights' && !setMode.posters) { setMode.posters = M.items.filter(it => it.clip).flatMap(it => ['a', 'b'].map(s => Object.assign(new Image(), { src: `img/swiatla/${it.k}-${s}.jpg` }))); }
     TABS.forEach((id, k) => document.getElementById(id).setAttribute('aria-selected', k === m));
     hornStop();
     bay.className = 'bay';
@@ -702,8 +704,8 @@ footer a { color: var(--white); }
   // Światła: najpierw filmik z przełącznikiem, potem w rogu okienko z autem z zewnątrz
   function showPlayer(it) {
     bay.className = 'bay player';
-    bay.innerHTML = `<video class="main" src="img/swiatla/${it.k}-a.mp4" muted playsinline preload="auto" aria-label="${it.t}: jak włączyć"></video>
-      <figure class="pip"><video src="img/swiatla/${it.k}-b.mp4" muted playsinline loop preload="auto" aria-label="${it.t}: gdzie świeci"></video><figcaption>Gdzie świeci</figcaption></figure>
+    bay.innerHTML = `<video class="main" src="img/swiatla/${it.k}-a.mp4" poster="img/swiatla/${it.k}-a.jpg" muted playsinline preload="auto" aria-label="${it.t}: jak włączyć"></video>
+      <figure class="pip"><video src="img/swiatla/${it.k}-b.mp4" poster="img/swiatla/${it.k}-b.jpg" muted playsinline loop preload="auto" aria-label="${it.t}: gdzie świeci"></video><figcaption>Gdzie świeci</figcaption></figure>
       <button class="bay-back">← Cały kokpit</button><button class="bay-back replay" hidden>↻ Jeszcze raz</button>`;
     const v = bay.querySelector('.main'), pip = bay.querySelector('.pip'), pv = pip.querySelector('video'), again = bay.querySelector('.replay');
     v.addEventListener('ended', () => { pip.classList.add('on'); pv.currentTime = 0; pv.play().catch(() => {}); again.hidden = false; });
