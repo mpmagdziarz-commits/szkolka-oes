@@ -108,6 +108,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .hood-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--paper); border-radius: 10px; margin-bottom: 18px; }
 .hood-tab { border: 0; background: transparent; padding: 10px 18px; border-radius: 7px; font: 700 15px var(--font-body); color: var(--muted); cursor: pointer; }
 .hood-tab[aria-selected="true"] { background: var(--white); color: var(--blue); box-shadow: 0 1px 4px rgba(11,22,51,.12); }
+@media (max-width: 560px) { .hood-tab { padding: 10px 11px; font-size: 14px; white-space: nowrap; } }
 .hood-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; }
 .hood-grid > * { min-width: 0; }
 .bay { position: relative; border-radius: 16px; overflow: hidden; background: #0f1520; box-shadow: 0 20px 40px -20px rgba(7,18,51,.5); }
@@ -125,6 +126,13 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
 .hs.active::after { animation: none; opacity: 0; }
 .hs.wide { width: auto; padding: 0 10px; margin-left: 0; border-radius: 17px; translate: -50% 0; }
+.honk-pad { position: absolute; width: 21%; aspect-ratio: 1.25; transform: translate(-50%, -50%); border: 0; border-radius: 50%; background: transparent; cursor: pointer; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; z-index: 2; }
+.honk-pad::before, .honk-pad::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--blue-bright); opacity: 0; }
+.bay.honking .honk-pad::before { animation: honkWave .7s ease-out infinite; }
+.bay.honking .honk-pad::after { animation: honkWave .7s .35s ease-out infinite; }
+@keyframes honkWave { from { transform: scale(.8); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.bay.honking { animation: honkShake .1s linear infinite; }
+@keyframes honkShake { 25% { translate: -1.5px 1px; } 75% { translate: 1.5px -1px; } }
 .bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
 .qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
 .qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
@@ -272,11 +280,12 @@ footer a { color: var(--white); }
       <div class="sec-head">
         <span class="kicker">Przygotuj się do egzaminu</span>
         <h2>Zajrzyj pod maskę</h2>
-        <p>Przed jazdą egzaminator poprosi cię o sprawdzenie płynów i świateł. Kliknij punkt i zobacz, co pokazać.</p>
+        <p>Przed jazdą egzaminator poprosi cię o sprawdzenie płynów, świateł i klaksonu. Kliknij punkt i zobacz, co pokazać.</p>
       </div>
       <div class="hood-tabs" role="tablist" aria-label="Tryb">
         <button class="hood-tab" role="tab" id="tabFluids" aria-selected="true">Płyny pod maską</button>
         <button class="hood-tab" role="tab" id="tabLights" aria-selected="false">Światła</button>
+        <button class="hood-tab" role="tab" id="tabHorn" aria-selected="false">Klakson</button>
       </div>
       <div class="hood-grid">
         <div class="bay" id="bay">
@@ -502,6 +511,9 @@ footer a { color: var(--white); }
       { k: 'brake', say: 'Poziom płynu hamulcowego sprawdzamy w zbiorniczku płynu hamulcowego. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
       { k: 'washer', say: 'Płyn do spryskiwaczy znajduje się w zbiorniku pod maską, oznaczonym symbolem szyby z rozpylanym płynem. Jego obecność możemy sprawdzić przez uruchomienie spryskiwaczy, a w razie potrzeby uzupełniamy płyn.', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
     ]},
+    horn: { photo: 'img/kokpit.webp', alt: 'Kokpit Hyundaia i20, środek kierownicy z klaksonem', back: 'Cały kokpit', w: 1280, h: 960, pickTitle: 'Zatrąb', label: 'Polecenie egzaminatora', items: [
+      { k: 'horn', horn: true, x: 622, y: 497, z: 2, t: 'Sygnał dźwiękowy (klakson)', ask: '„Proszę użyć sygnału dźwiękowego.”', how: 'Naciśnij mocno środek kierownicy, tam gdzie jest logo. Klakson gra tak długo, jak trzymasz. Na zdjęciu też możesz go przytrzymać.' },
+    ]},
     lights: { photo: 'img/kokpit.webp', alt: 'Kokpit Hyundaia i20 z przełącznikami świateł', back: 'Cały kokpit', w: 1280, h: 960, pickTitle: 'Wybierz światło', label: 'Polecenie egzaminatora', items: [
       { k: 'pos', hs: '1–5', x: 360, y: 372, fx: 337, fy: 360, z: 3, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
       { k: 'low', hs: null, fx: 337, fy: 360, z: 3, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
@@ -519,8 +531,8 @@ footer a { color: var(--white); }
   function setMode(m) {
     mode = m;
     const M = MODES[m];
-    document.getElementById('tabFluids').setAttribute('aria-selected', m === 'fluids');
-    document.getElementById('tabLights').setAttribute('aria-selected', m === 'lights');
+    TABS.forEach((id, k) => document.getElementById(id).setAttribute('aria-selected', k === m));
+    hornStop();
     bay.className = 'bay';
     bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}"><img src="${M.photo}" alt="${M.alt}"><div class="dim"></div><div class="ring"></div></div>
       <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na zdjęciu</span>`;
@@ -549,6 +561,9 @@ footer a { color: var(--white); }
     document.getElementById('qSay').hidden = true;
   }
   function zoomOut() {
+    hornStop();
+    bay.querySelector('.honk-pad')?.remove();
+    bay.querySelector('.bay-hint').textContent = 'Kliknij numer na zdjęciu';
     bay.className = 'bay';
     ['--z', '--tx', '--ty'].forEach(v => wrap.style.removeProperty(v));
     bay.querySelector('.bay-back').hidden = true;
@@ -570,6 +585,7 @@ footer a { color: var(--white); }
     const ring = wrap.querySelector('.ring'); ring.style.left = fx + '%'; ring.style.top = fy + '%';
     bay.className = 'bay zoom';
     bay.querySelector('.bay-back').hidden = false;
+    if (it.horn) addHonkPad(it, M);
     wrap.querySelectorAll('.hs').forEach(h => h.classList.toggle('active', h === hsOf[i]));
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
     document.getElementById('qTitle').textContent = it.t;
@@ -579,8 +595,46 @@ footer a { color: var(--white); }
     document.getElementById('qSay').hidden = !it.say;
     document.getElementById('qSayText').textContent = it.say ? '„' + it.say + '”' : '';
   }
-  document.getElementById('tabFluids').addEventListener('click', () => setMode('fluids'));
-  document.getElementById('tabLights').addEventListener('click', () => setMode('lights'));
+  const TABS = new Map([['fluids', 'tabFluids'], ['lights', 'tabLights'], ['horn', 'tabHorn']]);
+  TABS.forEach((id, m) => document.getElementById(id).addEventListener('click', () => setMode(m)));
+
+  // Klakson: dźwięk z dwóch tonów generowany w przeglądarce, gra tak długo, jak trzymasz
+  let actx = null, horn = null;
+  function hornStart() {
+    if (horn) return;
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    actx.resume();
+    const t = actx.currentTime, out = actx.createGain(), lp = actx.createBiquadFilter();
+    lp.type = 'lowpass'; lp.frequency.value = 2200;
+    out.gain.setValueAtTime(0, t); out.gain.linearRampToValueAtTime(.22, t + .02);
+    lp.connect(out); out.connect(actx.destination);
+    const oscs = [415, 520].map(f => { const o = actx.createOscillator(); o.type = 'sawtooth'; o.frequency.value = f; o.connect(lp); o.start(t); return o; });
+    horn = { out, oscs };
+    bay.classList.add('honking');
+  }
+  function hornStop() {
+    bay.classList.remove('honking');
+    if (!horn) return;
+    const t = actx.currentTime, { out, oscs } = horn;
+    out.gain.cancelScheduledValues(t); out.gain.setValueAtTime(out.gain.value, t); out.gain.linearRampToValueAtTime(0, t + .06);
+    oscs.forEach(o => o.stop(t + .08));
+    horn = null;
+  }
+  function addHonkPad(it, M) {
+    if (bay.querySelector('.honk-pad')) return;
+    const pad = document.createElement('button');
+    pad.className = 'honk-pad'; pad.setAttribute('aria-label', 'Przytrzymaj, żeby zatrąbić');
+    pad.style.left = (it.x / M.w * 100) + '%'; pad.style.top = (it.y / M.h * 100) + '%';
+    pad.addEventListener('pointerdown', e => { e.preventDefault(); pad.setPointerCapture(e.pointerId); hornStart(); });
+    ['pointerup', 'pointercancel', 'lostpointercapture'].forEach(ev => pad.addEventListener(ev, hornStop));
+    pad.addEventListener('keydown', e => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) { e.preventDefault(); hornStart(); } });
+    pad.addEventListener('keyup', hornStop);
+    pad.addEventListener('contextmenu', e => e.preventDefault());
+    wrap.appendChild(pad);
+    const hint = bay.querySelector('.bay-hint'); hint.textContent = 'Przytrzymaj środek kierownicy'; hint.hidden = false;
+    // krótkie trąbnięcie na powitanie
+    hornStart(); setTimeout(hornStop, 350);
+  }
   setMode('fluids');
 
   // ---------- 7. Biura ----------
