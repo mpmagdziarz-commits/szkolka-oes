@@ -247,7 +247,10 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .tt { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,0,.7); cursor: pointer; transition: transform .3s; }
 .tt:hover { transform: translateY(-4px); }
 .tt video { display: block; width: 100%; height: 100%; object-fit: cover; }
-.tt-sound { position: absolute; right: 10px; bottom: 10px; border: 0; border-radius: 999px; padding: 7px 11px; background: rgba(7,18,51,.8); color: #fff; font: 700 13px var(--font-body); cursor: pointer; }
+.tt-play { position: absolute; left: 50%; top: 50%; width: 64px; height: 64px; margin: -32px 0 0 -32px; border-radius: 50%; background: rgba(7,18,51,.55); box-shadow: inset 0 0 0 2px rgba(255,255,255,.7); backdrop-filter: blur(4px); pointer-events: none; transition: opacity .2s, transform .2s; }
+.tt-play::after { content: ""; position: absolute; left: 26px; top: 20px; border-left: 18px solid #fff; border-top: 12px solid transparent; border-bottom: 12px solid transparent; }
+.tt:hover .tt-play { transform: scale(1.08); }
+.tt.playing .tt-play { opacity: 0; }
 .socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
 .socials a { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--white); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); }
 .socials a.main { background: var(--blue); border-color: var(--blue); }
@@ -430,10 +433,10 @@ footer a { color: var(--white); }
         <p>Kursanci, instruktorzy i trochę śmiechu przed egzaminem.</p>
       </div>
       <div class="tt-row">
-        <figure class="tt"><video src="img/tiktok/tt1.mp4" poster="img/tiktok/tt1.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: jak wyglądam o 7 rano przychodząc na jazdy vs mój instruktor"></video><button class="tt-sound">Włącz dźwięk</button></figure>
-        <figure class="tt"><video src="img/tiktok/tt2.mp4" poster="img/tiktok/tt2.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: najważniejsze to dobry vibe z instruktorem"></video><button class="tt-sound">Włącz dźwięk</button></figure>
-        <figure class="tt"><video src="img/tiktok/tt3.mp4" poster="img/tiktok/tt3.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: trafiłeś na kota szczęścia"></video><button class="tt-sound">Włącz dźwięk</button></figure>
-        <figure class="tt"><video src="img/tiktok/tt4.mp4" data-full="img/tiktok/tt4-full.mp4" poster="img/tiktok/tt4.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: przypomnienie przed egzaminem na kategorię T"></video><button class="tt-sound">Włącz dźwięk</button></figure>
+        <figure class="tt" tabindex="0" role="button"><video src="img/tiktok/tt1.mp4" poster="img/tiktok/tt1.jpg" playsinline preload="none" aria-label="TikTok OES: jak wyglądam o 7 rano przychodząc na jazdy vs mój instruktor"></video><span class="tt-play"></span></figure>
+        <figure class="tt" tabindex="0" role="button"><video src="img/tiktok/tt2.mp4" poster="img/tiktok/tt2.jpg" playsinline preload="none" aria-label="TikTok OES: najważniejsze to dobry vibe z instruktorem"></video><span class="tt-play"></span></figure>
+        <figure class="tt" tabindex="0" role="button"><video src="img/tiktok/tt3.mp4" poster="img/tiktok/tt3.jpg" playsinline preload="none" aria-label="TikTok OES: trafiłeś na kota szczęścia"></video><span class="tt-play"></span></figure>
+        <figure class="tt" tabindex="0" role="button"><video src="img/tiktok/tt4-full.mp4" poster="img/tiktok/tt4.jpg" playsinline preload="none" aria-label="TikTok OES: przypomnienie przed egzaminem na kategorię T"></video><span class="tt-play"></span></figure>
       </div>
       <div class="socials">
         <a class="main" href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">Obserwuj na TikToku</a>
@@ -791,25 +794,22 @@ footer a { color: var(--white); }
   }
   setMode('fluids');
 
-  // ---------- 6b. TikTok: grają po cichu, gdy są na ekranie ----------
+  // ---------- 6b. TikTok: zdjęcie z pierwszego kadru, film z dźwiękiem rusza dopiero po kliknięciu ----------
   const tts = [...document.querySelectorAll('.tt')];
-  const ttIO = new IntersectionObserver(es => es.forEach(e => {
-    const v = e.target.querySelector('video');
-    if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
-  }), { threshold: .6 });
   tts.forEach(t => {
-    const v = t.querySelector('video'), b = t.querySelector('.tt-sound');
-    ttIO.observe(t);
+    const v = t.querySelector('video');
     const toggle = () => {
-      const on = v.muted;
-      // dźwięk tylko w jednym filmiku naraz
-      tts.forEach(o => { o.querySelector('video').muted = true; o.querySelector('.tt-sound').textContent = 'Włącz dźwięk'; });
-      v.muted = !on; b.textContent = on ? 'Wycisz' : 'Włącz dźwięk';
-      // długi filmik: na ekranie krótka zapowiedź, z dźwiękiem cały
-      if (on && v.dataset.full) { v.src = v.dataset.full; delete v.dataset.full; v.loop = false; }
-      if (on) { v.currentTime = 0; v.play().catch(() => {}); }
+      if (!v.paused) return v.pause();
+      // gra tylko jeden filmik naraz
+      tts.forEach(o => { if (o !== t) o.querySelector('video').pause(); });
+      v.play().catch(() => {});
     };
     t.addEventListener('click', toggle);
+    t.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); toggle(); } });
+    v.addEventListener('play', () => t.classList.add('playing'));
+    v.addEventListener('pause', () => t.classList.remove('playing'));
+    // po końcu filmu wraca zdjęcie z pierwszego kadru
+    v.addEventListener('ended', () => v.load());
   });
 
   // ---------- 6. Krok po kroku: auto jedzie po drodze razem z przewijaniem ----------
