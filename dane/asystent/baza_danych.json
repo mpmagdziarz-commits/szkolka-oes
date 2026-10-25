@@ -1,0 +1,1080 @@
+{
+  "stan_na": "2026-10-25",
+  "zrodla": {
+    "glowna": "https://oes.com.pl/",
+    "onas": "https://oes.com.pl/o-nas/",
+    "kontakt": "https://oes.com.pl/kontakt/",
+    "cennik": "https://oes.com.pl/cennik/",
+    "kalendarz": "https://oes.com.pl/kalendarz/",
+    "formularze": "https://oes.com.pl/dokumenty/",
+    "promocje": "https://oes.com.pl/promocje/",
+    "dotacje": "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/",
+    "rodo": "https://oes.com.pl/polityka-prywatnosci/",
+    "AM": "https://oes.com.pl/prawo-jazdy/kategoria-am/",
+    "A1": "https://oes.com.pl/prawo-jazdy/kategoria-a1/",
+    "A2": "https://oes.com.pl/prawo-jazdy/kategoria-a2/",
+    "A": "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+    "B1": "https://oes.com.pl/prawo-jazdy/kategoria-b1/",
+    "B": "https://oes.com.pl/prawo-jazdy/kategoria-b/",
+    "BE": "https://oes.com.pl/prawo-jazdy/kategoria-be/",
+    "C": "https://oes.com.pl/prawo-jazdy/kategoria-c/",
+    "CE": "https://oes.com.pl/prawo-jazdy/kategoria-ce/",
+    "C+CE": "https://oes.com.pl/prawo-jazdy/kategoria-c-i-ce/",
+    "KW": "https://oes.com.pl/kurs-kwalifikacji-wstepnej/",
+    "KWP": "https://oes.com.pl/kurs-kwalifikacji-wstepnej-przyspieszonej/",
+    "KWU": "https://oes.com.pl/kurs-kwalifikacji-wstepnej-uzupelniajacej/",
+    "KWUP": "https://oes.com.pl/kwalifikacja-wstepna-uzupelniajaca-przyspieszona/",
+    "SO": "https://oes.com.pl/szkolenie-okresowe/",
+    "instruktor": "https://oes.com.pl/kurs-instruktora-nauki-jazdy/",
+    "ADR": "https://oes.com.pl/kurs-adr/",
+    "HDS": "https://oes.com.pl/kurs-hds/",
+    "diagnosta": "https://oes.com.pl/kurs-diagnosty-samochodowego/",
+    "CKZ": "https://oes.com.pl/certyfikat-kompetencji-zawodowych-w-przewozie-drogowym-osob-i-rzeczy/",
+    "pedagogika": "https://oes.com.pl/kurs-pedagogiczny-dla-instruktorow-praktycznej-nauki-zawodu/",
+    "gov_kategorie": "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy",
+    "gov_pkk": "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy",
+    "gov_17": "https://www.gov.pl/web/infrastruktura/uwaga-kierowcy--od-3-marca-obowiazuja-nowe-przepisy---sprawdz-co-sie-zmienilo"
+  },
+  "oddzialy": [
+    {
+      "id": "wroclawska",
+      "miasto": "Kraków",
+      "adres": "ul. Wrocławska 48",
+      "telefon": "501 294 854",
+      "telefon_dodatkowy": "12 633 49 77",
+      "email": "biurowroclawska@oes.com.pl"
+    },
+    {
+      "id": "czarnowiejska",
+      "miasto": "Kraków",
+      "adres": "ul. Czarnowiejska 13/9",
+      "telefon": "512 324 369",
+      "telefon_dodatkowy": "12 632 06 06 (podany na podstronie ADR)",
+      "email": "biuroczarnowiejska@oes.com.pl"
+    },
+    {
+      "id": "kalwaryjska",
+      "miasto": "Kraków",
+      "adres": "ul. Kalwaryjska 51/4",
+      "telefon": "511 337 717",
+      "email": "biurokalwaryjska@oes.com.pl"
+    },
+    {
+      "id": "jerzmanowskiego",
+      "miasto": "Kraków",
+      "adres": "ul. Jerzmanowskiego 37/106",
+      "telefon": "515 705 002",
+      "email": "biurojerzmanowskiego@oes.com.pl"
+    },
+    {
+      "id": "zabierzow",
+      "miasto": "Zabierzów",
+      "adres": "ul. Krakowska 26 (nad sklepem Spar)",
+      "telefon": "508 246 946",
+      "email": "biurozabierzow@oes.com.pl"
+    },
+    {
+      "id": "wieliczka",
+      "miasto": "Wieliczka",
+      "adres": "ul. Reymonta 1/3",
+      "telefon": "502 846 600",
+      "email": "biurowieliczka@oes.com.pl"
+    }
+  ],
+  "cennik": [
+    {
+      "kategoria": "AM",
+      "kurs": "motorower Romet ZK 50",
+      "cena_pln": 1700,
+      "cena_regularna_pln": 1900,
+      "teoria_h": 30,
+      "praktyka_h": 10,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "AM",
+      "kurs": "czterokołowiec LIGIER IXO",
+      "cena_pln": 2000,
+      "cena_regularna_pln": 2200,
+      "teoria_h": 30,
+      "praktyka_h": 10,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "AM",
+      "kurs": "rozszerzony 16 h, motorower Romet ZK 50",
+      "cena_pln": 2600,
+      "cena_regularna_pln": 2800,
+      "teoria_h": 30,
+      "praktyka_h": 16,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "AM",
+      "kurs": "rozszerzony 16 h, LIGIER IXO",
+      "cena_pln": 3100,
+      "cena_regularna_pln": 3300,
+      "teoria_h": 30,
+      "praktyka_h": 16,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "A1",
+      "kurs": "motocykl do 125 cm³",
+      "cena_pln": 2900,
+      "cena_regularna_pln": 3100,
+      "teoria_h": 30,
+      "praktyka_h": 20,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "A2",
+      "kurs": "motocykl do 35 kW",
+      "cena_pln": 3500,
+      "cena_regularna_pln": 3700,
+      "teoria_h": 30,
+      "praktyka_h": 20,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "A",
+      "kurs": "motocykl bez limitu mocy",
+      "cena_pln": 3500,
+      "cena_regularna_pln": 3700,
+      "teoria_h": 30,
+      "praktyka_h": 20,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B1",
+      "kurs": "czterokołowiec",
+      "cena_pln": 4650,
+      "cena_regularna_pln": 4950,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": "Strona B1 wspomina dodatkowe 250 zł za podstawienie auta na egzamin; potwierdzić aktualność."
+    },
+    {
+      "kategoria": "B",
+      "kurs": "klasyczny / manual",
+      "cena_pln": 4500,
+      "cena_regularna_pln": 4700,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B",
+      "kurs": "w języku angielskim",
+      "cena_pln": 4700,
+      "cena_regularna_pln": 5000,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B",
+      "kurs": "automatyczna skrzynia biegów",
+      "cena_pln": 4500,
+      "cena_regularna_pln": 4700,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B",
+      "kurs": "rozszerzony 40 h praktyki",
+      "cena_pln": 5500,
+      "cena_regularna_pln": 5700,
+      "teoria_h": 30,
+      "praktyka_h": 40,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B",
+      "kurs": "rozszerzony 50 h praktyki",
+      "cena_pln": 6400,
+      "cena_regularna_pln": 6600,
+      "teoria_h": 30,
+      "praktyka_h": 50,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "B",
+      "kurs": "przyspieszony",
+      "cena_pln": 5300,
+      "cena_regularna_pln": 5500,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": "Opis kategorii B: do 6 tygodni, zapis minimum 2 tygodnie wcześniej; do potwierdzenia."
+    },
+    {
+      "kategoria": "B",
+      "kurs": "indywidualny / e-learning",
+      "cena_pln": 5000,
+      "cena_regularna_pln": 5200,
+      "teoria_h": 30,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": "UWAGA: opis kursu kat. B podaje 34 h praktyki + 2 h konsultacji, a cennik 30 h. Do weryfikacji."
+    },
+    {
+      "kategoria": "B+E",
+      "kurs": "kurs praktyczny z przyczepą",
+      "cena_pln": 2800,
+      "cena_regularna_pln": 3000,
+      "teoria_h": 0,
+      "praktyka_h": 15,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "C",
+      "kurs": "dla osób z kategorią B",
+      "cena_pln": 5900,
+      "cena_regularna_pln": 6200,
+      "teoria_h": 20,
+      "praktyka_h": 30,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "C",
+      "kurs": "dla osób z kategorią D",
+      "cena_pln": 4800,
+      "cena_regularna_pln": 5100,
+      "teoria_h": 20,
+      "praktyka_h": 20,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "C + C+E",
+      "kurs": "kurs łączony",
+      "cena_pln": 10900,
+      "cena_regularna_pln": 11300,
+      "teoria_h": 20,
+      "praktyka_h": 45,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "C+E",
+      "kurs": "ciągnik siodłowy",
+      "cena_pln": 6900,
+      "cena_regularna_pln": 7200,
+      "teoria_h": 0,
+      "praktyka_h": 25,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "D",
+      "kurs": "dla posiadaczy kategorii B",
+      "cena_pln": 9500,
+      "cena_regularna_pln": 9900,
+      "teoria_h": 20,
+      "praktyka_h": 60,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "D",
+      "kurs": "dla posiadaczy kategorii C",
+      "cena_pln": 7300,
+      "cena_regularna_pln": 7600,
+      "teoria_h": 20,
+      "praktyka_h": 40,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "T",
+      "kurs": "ciągnik rolniczy",
+      "cena_pln": 3500,
+      "cena_regularna_pln": 3700,
+      "teoria_h": 30,
+      "praktyka_h": 20,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "zawodowe",
+      "kurs": "kwalifikacja wstępna (280 h)",
+      "cena_pln": 4500,
+      "cena_regularna_pln": 4700,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "zawodowe",
+      "kurs": "kwalifikacja wstępna przyspieszona (140 h)",
+      "cena_pln": 3500,
+      "cena_regularna_pln": 3700,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "zawodowe",
+      "kurs": "kwalifikacja wstępna uzupełniająca (70 h)",
+      "cena_pln": 1600,
+      "cena_regularna_pln": 1800,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "zawodowe",
+      "kurs": "kwalifikacja wstępna uzupełniająca przyspieszona (35 h)",
+      "cena_pln": 1200,
+      "cena_regularna_pln": 1400,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "zawodowe",
+      "kurs": "szkolenie okresowe (35 h)",
+      "cena_pln": 900,
+      "cena_regularna_pln": 900,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "instruktor",
+      "kurs": "kurs instruktora nauki jazdy – podstawowy",
+      "cena_pln": 4500,
+      "cena_regularna_pln": 4800,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "instruktor",
+      "kurs": "kurs instruktora nauki jazdy – uzupełniający",
+      "cena_pln": 2000,
+      "cena_regularna_pln": 2500,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "instruktor",
+      "kurs": "warsztaty instruktorskie",
+      "cena_pln": 250,
+      "cena_regularna_pln": 350,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "inne",
+      "kurs": "diagnosta samochodowy – podstawowy",
+      "cena_pln": 3000,
+      "cena_regularna_pln": 3300,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "inne",
+      "kurs": "wózki widłowe (egzamin UDT wg cennika w cenie)",
+      "cena_pln": 900,
+      "cena_regularna_pln": 900,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "inne",
+      "kurs": "certyfikat kompetencji zawodowych – szkolenie przygotowawcze",
+      "cena_pln": 999,
+      "cena_regularna_pln": 1200,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "inne",
+      "kurs": "ADR – kurs początkowy",
+      "cena_pln": 700,
+      "cena_regularna_pln": 700,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    },
+    {
+      "kategoria": "inne",
+      "kurs": "ADR – cysterny",
+      "cena_pln": 650,
+      "cena_regularna_pln": 650,
+      "teoria_h": null,
+      "praktyka_h": null,
+      "zrodlo": "https://oes.com.pl/cennik/",
+      "uwagi": ""
+    }
+  ],
+  "terminy": [
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wroclawska",
+      "data": "30.10.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wroclawska",
+      "data": "13.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wroclawska",
+      "data": "27.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wroclawska",
+      "data": "11.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wroclawska",
+      "data": "25.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "30.10.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "13.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "27.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "11.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "25.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "kalwaryjska",
+      "data": "30.10.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "kalwaryjska",
+      "data": "13.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "kalwaryjska",
+      "data": "27.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "kalwaryjska",
+      "data": "11.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "kalwaryjska",
+      "data": "25.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "zabierzow",
+      "data": "30.10.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "zabierzow",
+      "data": "13.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "zabierzow",
+      "data": "27.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "zabierzow",
+      "data": "11.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "zabierzow",
+      "data": "25.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "czarnowiejska",
+      "data": "06.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "czarnowiejska",
+      "data": "20.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "czarnowiejska",
+      "data": "04.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "czarnowiejska",
+      "data": "18.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wieliczka",
+      "data": "06.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wieliczka",
+      "data": "20.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wieliczka",
+      "data": "04.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu weekendowego",
+      "oddzial": "wieliczka",
+      "data": "18.12.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wroclawska",
+      "data": "02.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wroclawska",
+      "data": "16.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wroclawska",
+      "data": "30.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wroclawska",
+      "data": "14.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wroclawska",
+      "data": "28.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "02.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "16.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "30.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "14.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "jerzmanowskiego",
+      "data": "28.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "kalwaryjska",
+      "data": "02.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "kalwaryjska",
+      "data": "16.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "kalwaryjska",
+      "data": "30.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "kalwaryjska",
+      "data": "14.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "zabierzow",
+      "data": "02.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "zabierzow",
+      "data": "16.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "zabierzow",
+      "data": "30.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "zabierzow",
+      "data": "14.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "czarnowiejska",
+      "data": "26.10.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "czarnowiejska",
+      "data": "09.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "czarnowiejska",
+      "data": "23.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "czarnowiejska",
+      "data": "07.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "czarnowiejska",
+      "data": "21.12.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wieliczka",
+      "data": "26.10.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wieliczka",
+      "data": "09.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Prawo jazdy – start kursu dwutygodniowego",
+      "oddzial": "wieliczka",
+      "data": "23.11.2026",
+      "godzina": "18:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "26.10.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "09.11.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "30.11.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "14.12.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna uzupełniająca przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "02.11.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Kwalifikacja wstępna uzupełniająca przyspieszona",
+      "oddzial": "wroclawska",
+      "data": "07.12.2026",
+      "godzina": "10:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Szkolenie okresowe",
+      "oddzial": "wroclawska",
+      "data": "06.11.2026",
+      "godzina": "15:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Diagnosta samochodowy",
+      "oddzial": "kalwaryjska",
+      "data": "20.11.2026",
+      "godzina": "08:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Diagnosta samochodowy",
+      "oddzial": "kalwaryjska",
+      "data": "22.01.2027",
+      "godzina": "08:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Instruktor nauki jazdy",
+      "oddzial": "czarnowiejska",
+      "data": "30.10.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Instruktor nauki jazdy",
+      "oddzial": "czarnowiejska",
+      "data": "13.11.2026",
+      "godzina": "17:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Warsztaty instruktorskie",
+      "oddzial": "czarnowiejska",
+      "data": "07.11.2026",
+      "godzina": "09:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Warsztaty instruktorskie",
+      "oddzial": "czarnowiejska",
+      "data": "21.11.2026",
+      "godzina": "09:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Operator wózka widłowego",
+      "oddzial": "czarnowiejska",
+      "data": "07.11.2026",
+      "godzina": "08:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "kurs": "Operator wózka widłowego",
+      "oddzial": "czarnowiejska",
+      "data": "21.11.2026",
+      "godzina": "08:00",
+      "status": "wymaga potwierdzenia wolnych miejsc",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    }
+  ],
+  "zapisy_trwaja_bez_konkretnej_daty": [
+    "Kwalifikacja wstępna",
+    "Kwalifikacja wstępna uzupełniająca",
+    "Certyfikat kompetencji zawodowej – ul. Wrocławska 48",
+    "ADR podstawowy – ul. Czarnowiejska 13/9",
+    "ADR cysterny – ul. Czarnowiejska 13/9",
+    "HDS"
+  ],
+  "problemy": [
+    {
+      "temat": "Wiek kat. B",
+      "opis": "Strona kategorii B mówi o 18 latach, ale od 03.03.2026 prawo dopuszcza kat. B od 17 lat, z ograniczeniami; konieczna aktualizacja treści i procesu zgody rodzica.",
+      "zrodlo": "https://oes.com.pl/prawo-jazdy/kategoria-b/ | https://www.gov.pl/web/infrastruktura/uwaga-kierowcy--od-3-marca-obowiazuja-nowe-przepisy---sprawdz-co-sie-zmienilo"
+    },
+    {
+      "temat": "Kurs indywidualny B",
+      "opis": "Cennik podaje 30 h praktyki, opis kategorii B podaje 34 h + 2 h konsultacji e-learning; nie twierdzić bez potwierdzenia, ile dokładnie obejmuje pakiet.",
+      "zrodlo": "https://oes.com.pl/prawo-jazdy/kategoria-b/ | https://oes.com.pl/cennik/"
+    },
+    {
+      "temat": "Cena w wynikach Google",
+      "opis": "Wyszukiwarka zwraca przestarzałe ceny (np. B 4100 zł). W otwartej na żywo podstronie cennika B 4500 zł. Bot powinien pobierać ceny z aktualnej strony.",
+      "zrodlo": "https://oes.com.pl/cennik/"
+    },
+    {
+      "temat": "Daty 25.12.2026",
+      "opis": "Kalendarz pokazuje uruchomienie kursu w Boże Narodzenie; wymaga telefonicznego potwierdzenia, nie gwarantować odbycia zajęć.",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    },
+    {
+      "temat": "Godziny otwarcia",
+      "opis": "Strona kontaktowa ma historyczne wyjątki na 03–04.04.2026; nie traktować ich jako obowiązujących w październiku.",
+      "zrodlo": "https://oes.com.pl/kontakt/"
+    },
+    {
+      "temat": "Cena HDS i instruktora-wykładowcy",
+      "opis": "Podstrony opisują kursy, lecz w obecnie otwartym cenniku nie widać cen tych pozycji; historyczna kopia wyszukiwarki jest niewiarygodna.",
+      "zrodlo": "https://oes.com.pl/cennik/"
+    },
+    {
+      "temat": "Statystyki",
+      "opis": "W sekcji „O nas” część liczników wyświetla 0, a widnieje 15000+ zadowolonych kursantów; nie podawać zdawalności ani liczby instruktorów jako potwierdzonej.",
+      "zrodlo": "https://oes.com.pl/o-nas/"
+    },
+    {
+      "temat": "Kategoria A",
+      "opis": "Opis podaje po 2 latach A2 prawo do A od 20 lat, ale przykład wieku zapisu „21 lat i 9 miesięcy” jest niespójny; potwierdzać w przepisach.",
+      "zrodlo": "https://oes.com.pl/prawo-jazdy/kategoria-a/"
+    },
+    {
+      "temat": "Dane rejestrowe",
+      "opis": "W polityce prywatności NIP i REGON podano identycznym 10-cyfrowym ciągiem; przed publikacją REGON należy sprawdzić.",
+      "zrodlo": "https://oes.com.pl/polityka-prywatnosci/"
+    },
+    {
+      "temat": "Dodatkowe jazdy",
+      "opis": "Na stronie głównej wspomina się o kursach doszkalających, ale aktualny cennik nie podaje stawek godzinowych; obsługa powinna je uzupełnić.",
+      "zrodlo": "https://oes.com.pl/"
+    },
+    {
+      "temat": "Regulamin i formularze",
+      "opis": "Podstrona dokumentów podaje linki do pobrania, ale treści załączników nie udało się bezpośrednio odczytać przez przeglądanie; nie streszczać zasad płatności/zwrotów z domysłu.",
+      "zrodlo": "https://oes.com.pl/dokumenty/"
+    },
+    {
+      "temat": "Niestandardowe ceny i pakiety",
+      "opis": "Strona promocji wspomina kurs łączony z kwalifikacją, ale w tabeli brak liczb (myślniki); bot nie może wymyślić rabatu.",
+      "zrodlo": "https://oes.com.pl/promocje/"
+    },
+    {
+      "temat": "Aktualizacja prawa",
+      "opis": "Warunki wieku i kwalifikacji zawodowych mogą się zmieniać. Dane prawne sprawdzać na gov.pl, nie traktować opisów marketingowych jako obowiązującej wykładni.",
+      "zrodlo": "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+    },
+    {
+      "temat": "Wolne miejsca",
+      "opis": "Kalendarz publikuje terminy, nie potwierdza dostępności miejsc. Bot może podać datę z kalendarza, ale bez statusu „dostępny”.",
+      "zrodlo": "https://oes.com.pl/kalendarz/"
+    }
+  ]
+}

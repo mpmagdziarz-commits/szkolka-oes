@@ -1,0 +1,2089 @@
+{
+  "stan_na": "2026-10-25",
+  "wskazowka": "Wyszukuj po pytaniu, ale odpowiadaj tylko ze statusu potwierdzone; przy do_potwierdzenia przekaż kontakt i nie zgaduj.",
+  "liczba_pytan": 204,
+  "faq": [
+    {
+      "id": "FAQ-001",
+      "dzial": "O szkole",
+      "pytanie": "Czym jest OES?",
+      "odpowiedz": "OES to ośrodek szkolenia kierowców w Krakowie i Małopolsce. Prowadzi kursy prawa jazdy oraz szkolenia zawodowe i instruktorskie.",
+      "zrodla": [
+        "https://oes.com.pl/",
+        "https://oes.com.pl/o-nas/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-002",
+      "dzial": "O szkole",
+      "pytanie": "Od kiedy istnieje OES?",
+      "odpowiedz": "OES informuje, że prowadzi szkolenia nieprzerwanie od 2001 roku.",
+      "zrodla": [
+        "https://oes.com.pl/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-003",
+      "dzial": "O szkole",
+      "pytanie": "Dlaczego warto wybrać OES?",
+      "odpowiedz": "Szkoła podkreśla doświadczenie instruktorów, indywidualne podejście, własne place manewrowe, nowoczesne pojazdy i wiele lokalizacji.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/",
+        "https://oes.com.pl/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-004",
+      "dzial": "O szkole",
+      "pytanie": "Czy OES szkoli tylko w Krakowie?",
+      "odpowiedz": "Nie. Biura OES są także w Wieliczce i Zabierzowie. W Krakowie wskazano cztery lokalizacje.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-005",
+      "dzial": "O szkole",
+      "pytanie": "Ilu kursantów wyszkolił OES?",
+      "odpowiedz": "Na stronie „O nas” wskazano ponad 15 000 zadowolonych kursantów. Jest to deklaracja OES, nie niezależna statystyka.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-006",
+      "dzial": "O szkole",
+      "pytanie": "Jaka jest zdawalność OES?",
+      "odpowiedz": "W dostępnej sekcji „O nas” licznik zdawalności wyświetla 0%, co nie jest wiarygodną statystyką. OES powinien podać aktualny, udokumentowany wskaźnik.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-007",
+      "dzial": "O szkole",
+      "pytanie": "Czy OES ma własny plac manewrowy?",
+      "odpowiedz": "Tak. Szkoła deklaruje własne place manewrowe; lokalizację właściwą dla danego kursu należy ustalić z biurem.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/",
+        "https://oes.com.pl/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-008",
+      "dzial": "O szkole",
+      "pytanie": "Czy jeździ się autami takimi jak na egzaminie?",
+      "odpowiedz": "OES deklaruje flotę pojazdów odpowiadających pojazdom egzaminacyjnym. Dokładny model dla wybranej kategorii i terminu potwierdź w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-009",
+      "dzial": "Kontakt",
+      "pytanie": "Gdzie znajduje się główna placówka?",
+      "odpowiedz": "Kraków, ul. Wrocławska 48. Telefon 501 294 854 lub 12 633 49 77; e-mail: biurowroclawska@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-010",
+      "dzial": "Kontakt",
+      "pytanie": "Gdzie jest biuro przy Czarnowiejskiej?",
+      "odpowiedz": "Kraków, ul. Czarnowiejska 13/9. Telefon 512 324 369; e-mail: biuroczarnowiejska@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-011",
+      "dzial": "Kontakt",
+      "pytanie": "Jak skontaktować się z biurem na Kalwaryjskiej?",
+      "odpowiedz": "Kraków, ul. Kalwaryjska 51/4. Telefon 511 337 717; e-mail: biurokalwaryjska@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-012",
+      "dzial": "Kontakt",
+      "pytanie": "Gdzie znajduje się biuro na Prokocimiu?",
+      "odpowiedz": "Na stronie OES wskazano placówkę Kraków, ul. Jerzmanowskiego 37/106; tel. 515 705 002; e-mail biurojerzmanowskiego@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-013",
+      "dzial": "Kontakt",
+      "pytanie": "Gdzie znajduje się OES w Zabierzowie?",
+      "odpowiedz": "Zabierzów, ul. Krakowska 26, nad sklepem Spar. Telefon 508 246 946; e-mail biurozabierzow@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-014",
+      "dzial": "Kontakt",
+      "pytanie": "Czy OES ma biuro w Wieliczce?",
+      "odpowiedz": "Tak, ul. Reymonta 1/3. Telefon 502 846 600; e-mail biurowieliczka@oes.com.pl.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-015",
+      "dzial": "Kontakt",
+      "pytanie": "W jakich godzinach otwarte jest biuro OES?",
+      "odpowiedz": "Na stronie podano ogólne godziny: poniedziałek–piątek 10:00–18:00 oraz sobota 9:00–13:00. Przed wizytą sprawdź godziny konkretnego oddziału i wyjątki świąteczne.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-016",
+      "dzial": "Kontakt",
+      "pytanie": "Czy biura są otwarte w niedzielę?",
+      "odpowiedz": "W opublikowanych standardowych godzinach nie ma niedzieli. Potwierdź wyjątki bezpośrednio w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-017",
+      "dzial": "Kontakt",
+      "pytanie": "Jaki jest numer do kontaktu w sprawie dofinansowania?",
+      "odpowiedz": "OES kieruje pytania o dofinansowanie pod numer 511 209 519, do Mariusza Szczepanika, ul. Wrocławska 48.",
+      "zrodla": [
+        "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-018",
+      "dzial": "Kontakt",
+      "pytanie": "Jaki jest e-mail w sprawach ochrony danych osobowych?",
+      "odpowiedz": "Na stronie polityki prywatności wskazano mariuszoes@interia.pl.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-019",
+      "dzial": "Kontakt",
+      "pytanie": "Czy mogę napisać przez formularz kontaktowy?",
+      "odpowiedz": "Tak. Na stronie kontaktowej OES jest formularz „Wyślij zapytanie” oraz dane telefoniczne i e-mailowe.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-020",
+      "dzial": "Oferta",
+      "pytanie": "Jakie kategorie prawa jazdy oferuje OES?",
+      "odpowiedz": "W ofercie i cenniku są AM, A1, A2, A, B1, B, B+E, C, C+E, łączony C+C+E, D i T.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-021",
+      "dzial": "Oferta",
+      "pytanie": "Czy można zrobić prawo jazdy na automat?",
+      "odpowiedz": "Tak. OES oferuje kategorię B z automatyczną skrzynią biegów, w cenniku 4500 zł.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-022",
+      "dzial": "Oferta",
+      "pytanie": "Czy macie prawo jazdy po angielsku?",
+      "odpowiedz": "Tak. OES oferuje kurs kat. B w języku angielskim za 4700 zł. Strona kursu podaje, że wszystkie zajęcia w tym wariancie są po angielsku.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-023",
+      "dzial": "Oferta",
+      "pytanie": "Czy jest kurs dla obcokrajowców?",
+      "odpowiedz": "Tak, w ofercie jest kurs kat. B „for foreigners” w języku angielskim. Formalne warunki uzyskania prawa jazdy w Polsce należy zweryfikować indywidualnie.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-024",
+      "dzial": "Oferta",
+      "pytanie": "Czy są kursy weekendowe?",
+      "odpowiedz": "Tak, kalendarz OES zawiera kursy określone jako weekendowe z datami rozpoczęcia według oddziału. Dokładny rozkład zajęć i wolne miejsca potwierdza biuro.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-025",
+      "dzial": "Oferta",
+      "pytanie": "Czy są kursy wieczorowe?",
+      "odpowiedz": "W terminarzu są rozpoczęcia kursów o 17:00 i 18:00. Nie oznacza to, że wszystkie zajęcia odbywają się wieczorami; godzinę zajęć należy sprawdzić w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-026",
+      "dzial": "Oferta",
+      "pytanie": "Czy mogę zrobić kurs przyspieszony?",
+      "odpowiedz": "Tak, OES oferuje przyspieszony kurs kat. B za 5300 zł. Opis strony deklaruje ukończenie szkolenia do 6 tygodni po zapisie z co najmniej dwutygodniowym wyprzedzeniem; potwierdź aktualny harmonogram.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-027",
+      "dzial": "Oferta",
+      "pytanie": "Na czym polega kurs indywidualny?",
+      "odpowiedz": "Opis strony wskazuje teorię w formie e-learningu i 2 h konsultacji z wykładowcą. Uwaga: strona kursu i cennik podają różne liczby jazd (34 i 30 h), dlatego zakres wymaga potwierdzenia.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-028",
+      "dzial": "Oferta",
+      "pytanie": "Czy organizujecie dodatkowe jazdy?",
+      "odpowiedz": "OES wspomina o kursach doszkalających na stronie głównej, lecz w aktualnej podstronie cennika nie widać stawki za pojedynczą jazdę. Skontaktuj się z biurem w sprawie godzin i ceny.",
+      "zrodla": [
+        "https://oes.com.pl/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-029",
+      "dzial": "Oferta",
+      "pytanie": "Czy szkoła prowadzi kurs dla przyszłych kierowców zawodowych?",
+      "odpowiedz": "Tak. OES oferuje kategorię C, C+E, D i kursy kwalifikacji oraz szkolenie okresowe.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej/",
+        "https://oes.com.pl/szkolenie-okresowe/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-030",
+      "dzial": "Oferta",
+      "pytanie": "Czy jest kurs na ciągnik rolniczy?",
+      "odpowiedz": "Tak, kategoria T: cennik 3500 zł, 30 h teorii i 20 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-031",
+      "dzial": "Oferta",
+      "pytanie": "Czy oferujecie kurs B+E z przyczepą?",
+      "odpowiedz": "Tak. Kurs B+E ma 15 h praktyki i nie przewiduje osobnego bloku teorii; cena na stronie 2800 zł.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-be/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-032",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje kurs kat. B?",
+      "odpowiedz": "W otwartym cenniku OES kurs klasyczny kategorii B kosztuje 4500 zł (cena regularna 4700 zł). Potwierdź kwotę przed zapisem.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-033",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje prawo jazdy na automat?",
+      "odpowiedz": "Kurs kat. B na automacie kosztuje według cennika 4500 zł, przy 30 h teorii i 30 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-034",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje kurs B po angielsku?",
+      "odpowiedz": "Według cennika 4700 zł (cena regularna 5000 zł).",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-035",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje przyspieszony kurs B?",
+      "odpowiedz": "5300 zł według cennika (cena regularna 5500 zł).",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-036",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje indywidualny kurs B?",
+      "odpowiedz": "5000 zł według cennika (cena regularna 5200 zł). Liczbę godzin praktyki należy potwierdzić, ponieważ opisy na stronie są rozbieżne.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-037",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje kurs B z 40 godzinami jazd?",
+      "odpowiedz": "Kurs rozszerzony B, 40 h praktyki, kosztuje 5500 zł według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-038",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Ile kosztuje kurs B z 50 godzinami jazd?",
+      "odpowiedz": "Kurs rozszerzony B, 50 h praktyki, kosztuje 6400 zł według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-039",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Czy kurs rozszerzony obejmuje tyle samo teorii?",
+      "odpowiedz": "Tak. Cennik podaje 30 godzin teorii zarówno przy kursie B z 40, jak i 50 godzinami praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-040",
+      "dzial": "Ceny kat. B",
+      "pytanie": "Czy cena z cennika jest promocją?",
+      "odpowiedz": "Podstrona pokazuje cenę kursu oraz wyższą „cenę regularną”. Nie wskazuje w widocznym fragmencie daty zakończenia promocji, dlatego należy potwierdzić cenę w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-041",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Ile kosztuje kat. AM na motorower?",
+      "odpowiedz": "W cenniku kurs AM na motorowerze Romet ZK 50 kosztuje 1700 zł, teoria 30 h, praktyka 10 h.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-042",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Czy na AM mogę uczyć się na czterokołowcu?",
+      "odpowiedz": "Tak. OES oferuje wariant z LIGIER IXO: 2000 zł za 30 h teorii i 10 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-043",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Czy macie rozszerzony kurs AM?",
+      "odpowiedz": "Tak. Z 16 h praktyki: motorower 2600 zł lub czterokołowiec LIGIER IXO 3100 zł.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-044",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Ile kosztuje kat. A1?",
+      "odpowiedz": "2900 zł według cennika; 30 h teorii i 20 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-045",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Ile kosztuje kat. A2?",
+      "odpowiedz": "3500 zł według cennika; 30 h teorii i 20 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-046",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Ile kosztuje kat. A?",
+      "odpowiedz": "3500 zł według cennika; standardowo 30 h teorii i 20 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-047",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Jakim motocyklem jeździ się na A1?",
+      "odpowiedz": "Strona kategorii A1 wskazuje Yamaha YBR 125 Custom. Model i dostępność sprzętu warto potwierdzić przed zapisem.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a1/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-048",
+      "dzial": "Ceny motocyklowe",
+      "pytanie": "Czy na AM jeździcie Rometem?",
+      "odpowiedz": "Podstrona AM wspomina Romet ZXT 50, a cennik Romet ZK 50; to niespójność nazwy modelu, wymagająca potwierdzenia.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-am/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-049",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje B1?",
+      "odpowiedz": "4650 zł według cennika. Podstrona B1 wspomina dodatkowo 250 zł za każde podstawienie pojazdu na egzamin — tę dopłatę trzeba potwierdzić.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b1/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-050",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje B+E?",
+      "odpowiedz": "2800 zł według cennika, za 15 h zajęć praktycznych.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-051",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje kategoria C dla posiadacza B?",
+      "odpowiedz": "5900 zł, za 20 h teorii i 30 h praktyki według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-052",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje kategoria C, jeśli mam już D?",
+      "odpowiedz": "4800 zł, za 20 h teorii i 20 h praktyki według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-053",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje C+E?",
+      "odpowiedz": "6900 zł według cennika; kurs na ciągniku siodłowym obejmuje 25 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-054",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje kurs łączony C oraz C+E?",
+      "odpowiedz": "10 900 zł według cennika, z 20 h teorii i łącznie 45 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-055",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje D po kategorii B?",
+      "odpowiedz": "9500 zł według cennika; 20 h teorii i 60 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-056",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje D po kategorii C?",
+      "odpowiedz": "7300 zł według cennika; 20 h teorii i 40 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-057",
+      "dzial": "Ceny pozostałe",
+      "pytanie": "Ile kosztuje kat. T?",
+      "odpowiedz": "3500 zł według cennika, 30 h teorii i 20 h praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-058",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Co oznacza PKK?",
+      "odpowiedz": "PKK to Profil Kandydata na Kierowcę — numer, który urząd nadaje osobie ubiegającej się o prawo jazdy i który umożliwia rozpoczęcie formalnego szkolenia oraz egzaminowanie.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-059",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Gdzie wyrobić numer PKK?",
+      "odpowiedz": "We właściwym dla miejsca zamieszkania urzędzie miasta albo starostwie powiatowym.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-060",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Jakie dokumenty potrzebuję do PKK?",
+      "odpowiedz": "Zazwyczaj: wniosek o wydanie prawa jazdy, orzeczenie lekarskie, zdjęcie, dowód osobisty lub paszport; w razie potrzeby aktualne prawo jazdy, zgoda opiekuna i orzeczenie psychologiczne. Szczegóły zależą od kategorii i sytuacji.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-061",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy można zapisać się bez PKK?",
+      "odpowiedz": "Aby rozpocząć właściwy kurs prawa jazdy, wymagany jest PKK. Możesz jednak skontaktować się wcześniej, aby zapytać o termin i zorganizować formalności.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-062",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy do PKK muszę mieć zdjęcie?",
+      "odpowiedz": "Tak, strona OES i informacje rządowe wymieniają aktualne zdjęcie do prawa jazdy.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-063",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy do PKK są wymagane badania lekarskie?",
+      "odpowiedz": "Tak, podstawowym dokumentem jest orzeczenie lekarskie. W kategoriach zawodowych może być też wymagane orzeczenie psychologiczne.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-064",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy mogę mieć PKK na dwie kategorie?",
+      "odpowiedz": "Opis kursu łączonego C i C+E wskazuje dwa osobne profile PKK — po jednym na każdą kategorię.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-c-i-ce/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-065",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy osoby niepełnoletnie potrzebują zgody rodzica?",
+      "odpowiedz": "Tak, w odpowiednich przypadkach pisemnej zgody opiekuna. Wiek oraz procedurę podpisania zgody należy zweryfikować w urzędzie.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b1/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-066",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy OES pomoże mi z formalnościami?",
+      "odpowiedz": "OES deklaruje pomoc kursantom w załatwieniu formalności. Zakres pomocy i ewentualne koszty ustalisz z biurem.",
+      "zrodla": [
+        "https://oes.com.pl/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-067",
+      "dzial": "Formalności i PKK",
+      "pytanie": "Czy muszę zostawić PESEL w czacie?",
+      "odpowiedz": "Nie. Nie podawaj PESEL-u, numeru dokumentu tożsamości ani skanów przez zwykły czat. Wymagane dane przekazuje się później przez oficjalny, bezpieczny kanał ustalony przez szkołę.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-068",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od ilu lat można mieć kategorię B?",
+      "odpowiedz": "Od 3 marca 2026 r. prawo jazdy kat. B jest dostępne od 17 lat. Przed 18. urodzinami obowiązują ograniczenia dotyczące m.in. terytorium i jazdy z opiekunem.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/uwaga-kierowcy--od-3-marca-obowiazuja-nowe-przepisy---sprawdz-co-sie-zmienilo",
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-069",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Czy jako 17-latek mogę jeździć sam?",
+      "odpowiedz": "Przez pierwsze 6 miesięcy od uzyskania kat. B, lecz nie dłużej niż do 18. urodzin, wymagany jest uprawniony pasażer-opiekun na przednim siedzeniu (z wyjątkami przewidzianymi prawem).",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/uwaga-kierowcy--od-3-marca-obowiazuja-nowe-przepisy---sprawdz-co-sie-zmienilo"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-070",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Czy 17-latek może jeździć za granicą?",
+      "odpowiedz": "Nie na podstawie nowych polskich uprawnień kat. B: do ukończenia 18 lat uprawnienie ograniczone jest do terytorium Polski.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/uwaga-kierowcy--od-3-marca-obowiazuja-nowe-przepisy---sprawdz-co-sie-zmienilo"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-071",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od kiedy można zacząć kurs przed osiągnięciem minimalnego wieku?",
+      "odpowiedz": "Według informacji Ministerstwa Infrastruktury kurs można rozpocząć nie wcześniej niż 3 miesiące przed wymaganym wiekiem dla kategorii, z uwzględnieniem warunków dla osoby niepełnoletniej.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-072",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od ilu lat jest kategoria AM?",
+      "odpowiedz": "Minimalny wiek uzyskania AM to 14 lat.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-073",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od ilu lat jest A1 i B1?",
+      "odpowiedz": "Obie kategorie są dostępne od 16 lat, z właściwymi zasadami dla osób niepełnoletnich.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b1/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-074",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od ilu lat jest A2?",
+      "odpowiedz": "Kategoria A2 jest dostępna od 18 lat.",
+      "zrodla": [
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-075",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Od ilu lat jest A?",
+      "odpowiedz": "Standardowo od 24 lat, a od 20 lat dla posiadaczy kat. A2 przez co najmniej dwa lata. Przed zapisem sprawdź formalne warunki.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-a/",
+        "https://www.gov.pl/web/infrastruktura/kategorie-prawa-jazdy"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-076",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Czy kat. B pozwala prowadzić motorower?",
+      "odpowiedz": "Tak, OES wymienia uprawnienia kategorii AM w ramach kategorii B.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-077",
+      "dzial": "Wiek i uprawnienia",
+      "pytanie": "Czy do B+E trzeba mieć B?",
+      "odpowiedz": "Tak, OES podaje jako warunek posiadanie prawa jazdy kat. B i ukończenie 18 lat.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-be/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-078",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Ile godzin ma klasyczny kurs B?",
+      "odpowiedz": "30 godzin lekcyjnych teorii oraz 30 godzin zegarowych praktyki.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-079",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Ile trwa godzina teorii, a ile godzina jazdy?",
+      "odpowiedz": "Na stronie OES godzinę teorii opisano jako lekcyjną (45 minut), a godzinę praktyki jako zegarową (60 minut).",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-am/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-080",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czego uczy się na teorii?",
+      "odpowiedz": "Przepisów ruchu drogowego, bezpieczeństwa, zachowania na drodze i pierwszej pomocy; zakres zależy od kategorii.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-081",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Jak wyglądają zajęcia praktyczne?",
+      "odpowiedz": "Praktyka obejmuje jazdę z instruktorem w ruchu drogowym i ćwiczenia na placu manewrowym.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-082",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy w OES są egzaminy wewnętrzne?",
+      "odpowiedz": "Tak, podstrony kursów opisują egzaminy wewnętrzne teoretyczne i/lub praktyczne, zależnie od kategorii.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-c/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-be/",
+        "https://oes.com.pl/prawo-jazdy/kategoria-a1/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-083",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy kurs B przyspieszony można zrobić w miesiąc?",
+      "odpowiedz": "Strona OES deklaruje czas do 6 tygodni, nie gwarantuje ukończenia w miesiąc. Wymaga zapisu z 2-tygodniowym wyprzedzeniem — szczegóły potwierdź w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-084",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy teoria kursu indywidualnego jest online?",
+      "odpowiedz": "Opis kursu indywidualnego B wskazuje e-learning i 2 godziny konsultacji. Liczba godzin praktyki jest niespójna między podstronami.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-085",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy mogę wybrać godziny jazd?",
+      "odpowiedz": "OES deklaruje dopasowanie zajęć praktycznych do dostępności kursanta. Konkretne przedziały ustala się z instruktorem lub biurem.",
+      "zrodla": [
+        "https://oes.com.pl/o-nas/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-086",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy muszę zdać teorię przed jazdami?",
+      "odpowiedz": "Strona nie precyzuje kolejności wszystkich etapów dla każdego wariantu kursu. Organizację zajęć potwierdzi biuro OES.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-b/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-087",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy kurs zaczyna się dokładnie w dniu kalendarza?",
+      "odpowiedz": "Kalendarz pokazuje publikowany termin rozpoczęcia i godzinę, ale nie stanowi potwierdzenia Twojego zapisu ani wolnych miejsc.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-088",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy mogę zrobić teorię w jednym oddziale, a jazdy w innym?",
+      "odpowiedz": "Na stronie nie znaleziono jednoznacznej reguły przenoszenia zajęć między placówkami. Zapytaj pracownika OES.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-089",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy zajęcia praktyczne odbywają się w deszczu?",
+      "odpowiedz": "OES informuje o kursach przez cały rok, ale decyzja o konkretnej jeździe zależy od warunków i zasad bezpieczeństwa.",
+      "zrodla": [
+        "https://oes.com.pl/",
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-090",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy można jeździć motocyklem zimą?",
+      "odpowiedz": "Na podstronie AM szkoła wspomina o opcji szkolenia na innym pojeździe przez cały rok. Jazdy motocyklowe i dostępny sprzęt należy potwierdzić.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-am/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-091",
+      "dzial": "Przebieg kursu",
+      "pytanie": "Czy po kursie otrzymam zaświadczenie?",
+      "odpowiedz": "OES opisuje zakończenie szkoleń egzaminem wewnętrznym, a przy kursie instruktorskim wydanie zaświadczenia. Dokument i procedurę końcową dla wybranej kategorii potwierdzi biuro.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-c/",
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-092",
+      "dzial": "Terminy",
+      "pytanie": "Gdzie sprawdzić najbliższe terminy kursów?",
+      "odpowiedz": "Terminarz znajduje się pod https://oes.com.pl/kalendarz/. Daty aktualizują się; zawsze sprawdź konkretne miejsce i zapytaj o wolne miejsca.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-093",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy najbliższy kurs dwutygodniowy w centrum?",
+      "odpowiedz": "Na dzień 25.10.2026 w filii ul. Czarnowiejska 13/9 kalendarz wskazuje 26.10.2026 o 18:00. Wolne miejsca trzeba potwierdzić.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-094",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kurs startuje na Wrocławskiej?",
+      "odpowiedz": "Według terminarza na 25.10.2026: start kursu weekendowego 30.10.2026 o 17:00, kursu dwutygodniowego 02.11.2026 o 18:00. Sprawdź dostępność.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-095",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kurs weekendowy w Wieliczce?",
+      "odpowiedz": "Według terminarza na 25.10.2026 najbliższa przyszła data to 06.11.2026 o 17:00.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-096",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kurs dwutygodniowy w Wieliczce?",
+      "odpowiedz": "Według terminarza na 25.10.2026 najbliższa przyszła data to 26.10.2026 o 18:00.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-097",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kurs weekendowy w Zabierzowie?",
+      "odpowiedz": "Według terminarza na 25.10.2026 najbliższa przyszła data to 30.10.2026 o 17:00.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-098",
+      "dzial": "Terminy",
+      "pytanie": "Czy są miejsca na kursie 30 października?",
+      "odpowiedz": "Strona potwierdza jedynie opublikowany termin, nie wolne miejsca. Zadzwoń do wybranego oddziału, aby sprawdzić zapis.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-099",
+      "dzial": "Terminy",
+      "pytanie": "Czy kurs rzeczywiście zaczyna się 25 grudnia?",
+      "odpowiedz": "W terminarzu widnieje 25.12.2026 o 17:00 w niektórych oddziałach, ale to Boże Narodzenie. Termin bezwzględnie wymaga potwierdzenia telefonicznego.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-100",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy startuje kurs w języku angielskim?",
+      "odpowiedz": "Na opublikowanym kalendarzu widoczny był termin 20.10.2026 (już minął). Nowy termin trzeba ustalić w biurze ul. Czarnowiejska 13/9.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-101",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kurs motocyklowy?",
+      "odpowiedz": "W kalendarzu widniał termin 23.10.2026 na Kalwaryjskiej (już minął). Najbliższą kolejną datę potwierdzi biuro.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-102",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy kwalifikacja wstępna przyspieszona?",
+      "odpowiedz": "W kalendarzu na 25.10.2026 jest m.in. start 26.10.2026 o 10:00; kolejne: 09.11, 30.11, 14.12.2026. Dostępność wymaga potwierdzenia.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-103",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy są warsztaty instruktorskie?",
+      "odpowiedz": "Na 25.10.2026: 07.11.2026 i 21.11.2026 o 09:00, ul. Czarnowiejska 13/9.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-104",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy jest kurs na wózek widłowy?",
+      "odpowiedz": "Na 25.10.2026: 07.11.2026 i 21.11.2026 o 08:00, ul. Czarnowiejska 13/9.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-105",
+      "dzial": "Terminy",
+      "pytanie": "Kiedy są kursy ADR?",
+      "odpowiedz": "Kalendarz oznacza ADR podstawowy i cysterny jako „zapisy trwają”, bez konkretnej daty. Skontaktuj się z biurem na Czarnowiejskiej.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-106",
+      "dzial": "Promocje",
+      "pytanie": "Czy są promocje na kurs B?",
+      "odpowiedz": "OES publikuje ceny niższe od regularnych i informuje o dodatkowej jednej godzinie jazdy gratis po zapisie na kategorię B przez formularz internetowy na stronie. Warunki promocji potwierdź.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/",
+        "https://oes.com.pl/promocje/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-107",
+      "dzial": "Promocje",
+      "pytanie": "Jak dostać godzinę jazdy gratis?",
+      "odpowiedz": "Strona promocji informuje o jednej dodatkowej godzinie jazdy po zapisaniu się online przez formularz OES na kategorię B. Należy sprawdzić aktualność i zasady naliczenia promocji.",
+      "zrodla": [
+        "https://oes.com.pl/promocje/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-108",
+      "dzial": "Promocje",
+      "pytanie": "Czy kurs C z kwalifikacją jest tańszy w pakiecie?",
+      "odpowiedz": "Strona wymienia pakiety promocyjne C/D z kwalifikacją, ale nie podaje konkretnych cen (widoczne myślniki). Wycena wymaga kontaktu z OES.",
+      "zrodla": [
+        "https://oes.com.pl/promocje/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-109",
+      "dzial": "Dofinansowanie",
+      "pytanie": "Czy można uzyskać dofinansowanie kursu?",
+      "odpowiedz": "OES opisuje udział w projektach Małopolski Pociąg do Kariery, Nowy Start z EURESem, M-Bon i Bony Podhalańskie. Dostępność zależy od rekrutacji i kryteriów projektu.",
+      "zrodla": [
+        "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-110",
+      "dzial": "Dofinansowanie",
+      "pytanie": "Ile wynosi dofinansowanie?",
+      "odpowiedz": "Na stronie opisano maksymalnie 90% w projekcie Małopolski Pociąg do Kariery i 95% w Nowy Start z EURESem — wyłącznie dla kwalifikujących się uczestników.",
+      "zrodla": [
+        "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-111",
+      "dzial": "Dofinansowanie",
+      "pytanie": "Czy każdy kursant dostanie 95% dotacji?",
+      "odpowiedz": "Nie. Wsparcie jest zależne od projektu, statusu uczestnika i spełnienia kryteriów. Nie można obiecać przyznania dofinansowania.",
+      "zrodla": [
+        "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-112",
+      "dzial": "Dofinansowanie",
+      "pytanie": "Kto pomoże mi z bonami?",
+      "odpowiedz": "W sprawach projektów unijnych na stronie OES wskazano Mariusza Szczepanika, tel. 511 209 519.",
+      "zrodla": [
+        "https://oes.com.pl/kursy-dofinansowane-z-funduszy-unijnych/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-113",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Co to jest kwalifikacja wstępna?",
+      "odpowiedz": "Szkolenie dla kierowców zawodowych obejmujące 280 h: 260 h teorii i 20 h praktyki, w tym jazdę drogową i w warunkach specjalnych. Cena OES 4500 zł.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-114",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Czym różni się kwalifikacja przyspieszona?",
+      "odpowiedz": "Kwalifikacja wstępna przyspieszona ma 140 h: 130 h teorii i 10 h praktyki. OES podaje 6–7 tygodni, cena 3500 zł.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej-przyspieszonej/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-115",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Ile trwa kwalifikacja uzupełniająca?",
+      "odpowiedz": "70 h, w tym 65 h teorii i 5 h jazdy. Cena 1600 zł według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej-uzupelniajacej/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-116",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Ile trwa kwalifikacja uzupełniająca przyspieszona?",
+      "odpowiedz": "35 h, w tym 32,5 h teorii i 2,5 h praktyki; cena 1200 zł.",
+      "zrodla": [
+        "https://oes.com.pl/kwalifikacja-wstepna-uzupelniajaca-przyspieszona/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-117",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Co to jest PKZ?",
+      "odpowiedz": "PKZ to profil kierowcy zawodowego wymagany w procedurach kwalifikacji i szkolenia okresowego; OES wskazuje go jako warunek uczestnictwa.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej/",
+        "https://oes.com.pl/szkolenie-okresowe/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-118",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Czy samo prawo jazdy C wystarcza do pracy jako kierowca zawodowy?",
+      "odpowiedz": "Nie zawsze. OES podkreśla konieczność odpowiedniej kwalifikacji zawodowej i wymogów dodatkowych.",
+      "zrodla": [
+        "https://oes.com.pl/prawo-jazdy/kategoria-c/",
+        "https://oes.com.pl/kurs-kwalifikacji-wstepnej/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-119",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Co to jest kod 95?",
+      "odpowiedz": "To wpis do dokumentu prawa jazdy potwierdzający spełnienie wymagań kwalifikacji zawodowych; strona OES opisuje procedurę uzyskania wpisu.",
+      "zrodla": [
+        "https://oes.com.pl/szkolenie-okresowe/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-120",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Ile trwa szkolenie okresowe?",
+      "odpowiedz": "35 godzin zegarowych w ciągu 5 dni po 7 godzin; według opisu OES realizowane w sali. Cena 900 zł.",
+      "zrodla": [
+        "https://oes.com.pl/szkolenie-okresowe/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-121",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Jak często należy odnawiać kwalifikację kierowcy?",
+      "odpowiedz": "Szkolenie okresowe służy przedłużeniu uprawnień zawodowych o kolejne 5 lat; szczegóły ważności dokumentu sprawdzaj indywidualnie.",
+      "zrodla": [
+        "https://oes.com.pl/szkolenie-okresowe/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-122",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Czy szkolenie okresowe kończy się egzaminem państwowym?",
+      "odpowiedz": "Na stronie opisano 35-godzinne szkolenie okresowe; szczegóły dokumentu końcowego należy ustalić z biurem.",
+      "zrodla": [
+        "https://oes.com.pl/szkolenie-okresowe/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-123",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Gdzie odbywa się kurs dla kierowców zawodowych?",
+      "odpowiedz": "Terminarz podaje m.in. kwalifikację przyspieszoną i szkolenie okresowe przy ul. Wrocławskiej 48. Dla pozostałych kursów lokalizację potwierdza biuro.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-124",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Co to jest certyfikat kompetencji zawodowych?",
+      "odpowiedz": "Certyfikat CKZ dotyczy kompetencji do prowadzenia firmy transportowej, a nie prawa jazdy kierowcy. OES prowadzi kurs przygotowujący do egzaminu; cena szkolenia 999 zł.",
+      "zrodla": [
+        "https://oes.com.pl/certyfikat-kompetencji-zawodowych-w-przewozie-drogowym-osob-i-rzeczy/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-125",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Ile kosztuje egzamin CKZ?",
+      "odpowiedz": "Podstrona OES podaje 500 zł za egzamin ITS i 300 zł za wydanie certyfikatu. Są to opłaty zewnętrzne, wymagają sprawdzenia aktualnej taryfy ITS.",
+      "zrodla": [
+        "https://oes.com.pl/certyfikat-kompetencji-zawodowych-w-przewozie-drogowym-osob-i-rzeczy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-126",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Czy kurs CKZ jest obowiązkowy?",
+      "odpowiedz": "Nie. Podstrona OES stwierdza, że szkolenie jest przygotowaniem do egzaminu, ale nie jest formalnie obowiązkowe.",
+      "zrodla": [
+        "https://oes.com.pl/certyfikat-kompetencji-zawodowych-w-przewozie-drogowym-osob-i-rzeczy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-127",
+      "dzial": "Szkolenia zawodowe",
+      "pytanie": "Gdzie odbywa się kurs CKZ?",
+      "odpowiedz": "Opis OES wskazuje Kraków, ul. Wrocławska 48, wykłady przez 4–5 popołudniowych dni.",
+      "zrodla": [
+        "https://oes.com.pl/certyfikat-kompetencji-zawodowych-w-przewozie-drogowym-osob-i-rzeczy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-128",
+      "dzial": "Instruktorzy",
+      "pytanie": "Czy w OES można zostać instruktorem nauki jazdy?",
+      "odpowiedz": "Tak. Kurs podstawowy instruktora w cenniku kosztuje 4500 zł. Zajęcia teoretyczne odbywają się w weekendy na ul. Czarnowiejskiej 13/9.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-129",
+      "dzial": "Instruktorzy",
+      "pytanie": "Czy OES prowadzi kurs uzupełniający instruktora?",
+      "odpowiedz": "Tak. Kurs na kolejne kategorie kosztuje 2000 zł według cennika.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-130",
+      "dzial": "Instruktorzy",
+      "pytanie": "Czy można zostać instruktorem-wykładowcą?",
+      "odpowiedz": "Tak, strona instruktorska opisuje osobny wariant dla osób prowadzących teorię. Ceny nie udało się potwierdzić w aktualnie otwartym cenniku.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-131",
+      "dzial": "Instruktorzy",
+      "pytanie": "Gdzie odbywają się zajęcia instruktorskie?",
+      "odpowiedz": "OES wskazuje filię Kraków, ul. Czarnowiejska 13/9. Teoria w trybie piątek–niedziela, praktyka ustalana indywidualnie.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-132",
+      "dzial": "Instruktorzy",
+      "pytanie": "Ile kosztują warsztaty instruktorskie?",
+      "odpowiedz": "250 zł według obecnego cennika; regularna cena 350 zł.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-133",
+      "dzial": "Instruktorzy",
+      "pytanie": "Czy instruktor musi co roku odbywać warsztaty?",
+      "odpowiedz": "Strona opisuje coroczny obowiązek dokumentowania warsztatów, a termin przedłożenia zaświadczenia wskazuje do 7 stycznia. Aktualny zakres obowiązku prawnego potwierdź w odpowiednim urzędzie.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-instruktora-nauki-jazdy/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-134",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy organizujecie kurs ADR?",
+      "odpowiedz": "Tak. Kurs początkowy ADR kosztuje 700 zł według cennika, a wariant „cysterny” 650 zł.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-adr/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-135",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Ile trwa podstawowe szkolenie ADR?",
+      "odpowiedz": "Podstrona OES podaje 24 godziny lekcyjne dla kursu obejmującego podstawowe klasy towarów niebezpiecznych.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-adr/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-136",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy kurs ADR cysterny wymaga podstawowego ADR?",
+      "odpowiedz": "Tak, strona opisuje 16-godzinne szkolenie specjalistyczne przeznaczone dla osób po kursie podstawowym.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-adr/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-137",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Gdzie odbywają się kursy ADR?",
+      "odpowiedz": "Strona kieruje do placówki Kraków, ul. Czarnowiejska 13/9, telefon 512 324 369.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-adr/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-138",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy OES prowadzi szkolenia ADR klasa 1 i 7?",
+      "odpowiedz": "Tak. Na podstronie wymieniono szkolenia specjalistyczne dla klasy 1 i 7, po 8 godzin lekcyjnych każde. Ceny tych wariantów nie są podane w cenniku.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-adr/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-139",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy w OES można zrobić kurs HDS?",
+      "odpowiedz": "Tak, podstrona opisuje kurs na żurawie przenośne HDS, z teorią, 16 godzinami praktyki i egzaminem UDT. Aktualną cenę trzeba ustalić z biurem.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-hds/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-140",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy do HDS trzeba mieć kat. C?",
+      "odpowiedz": "OES podaje, że osoba z kategorią B może uczestniczyć pod warunkiem oświadczenia dotyczącego nieobsługiwania pojazdów powyżej 3,5 t do czasu uzyskania kat. C.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-hds/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-141",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy OES organizuje kurs wózka widłowego?",
+      "odpowiedz": "Tak. W aktualnym cenniku jest kurs za 900 zł z adnotacją, że egzamin UDT jest w cenie.",
+      "zrodla": [
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-142",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Kiedy jest egzamin UDT?",
+      "odpowiedz": "Na stronie nie ma potwierdzonego indywidualnego terminu egzaminu UDT. Ustala go biuro/organizator.",
+      "zrodla": [
+        "https://oes.com.pl/kalendarz/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-143",
+      "dzial": "ADR HDS UDT",
+      "pytanie": "Czy kurs HDS jest na żuraw wieżowy?",
+      "odpowiedz": "Nie. OES zaznacza, że prowadzi szkolenie dla żurawi przenośnych HDS; żurawie wieżowe wymieniono jedynie jako inny typ urządzenia.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-hds/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-144",
+      "dzial": "Pozostałe",
+      "pytanie": "Czy OES ma kurs diagnosty samochodowego?",
+      "odpowiedz": "Tak. Szkolenie podstawowe kosztuje według cennika 3000 zł. Podstrona opisuje kwalifikacje wstępne i szkolenia specjalistyczne.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-diagnosty-samochodowego/",
+        "https://oes.com.pl/cennik/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-145",
+      "dzial": "Pozostałe",
+      "pytanie": "Ile godzin trwa kurs podstawowy diagnosty?",
+      "odpowiedz": "W opisie OES wskazano 54 godziny rozłożone na 6 dni.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-diagnosty-samochodowego/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-146",
+      "dzial": "Pozostałe",
+      "pytanie": "Czy są szkolenia diagnosty na gaz lub ADR?",
+      "odpowiedz": "Tak, na podstronie opisano moduły m.in. pojazdu ADR (16 h, 400 zł), pojazdu na gaz (14 h, 400 zł), autobusu 100 km/h (9 h, 250 zł) i pojazdu po raz pierwszy rejestrowanego za granicą (24 h, 450 zł). Stawki zweryfikuj.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-diagnosty-samochodowego/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-147",
+      "dzial": "Pozostałe",
+      "pytanie": "Czy jest kurs pedagogiczny?",
+      "odpowiedz": "Tak. OES opisuje kurs pedagogiczny dla instruktorów praktycznej nauki zawodu: 70 h teorii (psychologia 20, pedagogika 20, metodyka 30) oraz 10 h praktyki. Cena nie została potwierdzona.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-pedagogiczny-dla-instruktorow-praktycznej-nauki-zawodu/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-148",
+      "dzial": "Pozostałe",
+      "pytanie": "Czy kurs pedagogiczny jest dla osób bez matury?",
+      "odpowiedz": "Opis OES wskazuje wymaganie ukończenia 18 lat i minimum szkoły podstawowej lub gimnazjum. Warto potwierdzić pełne warunki w biurze.",
+      "zrodla": [
+        "https://oes.com.pl/kurs-pedagogiczny-dla-instruktorow-praktycznej-nauki-zawodu/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-149",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Czy na stronie są formularze do pobrania?",
+      "odpowiedz": "Tak. Podstrona Dokumenty zawiera wnioski m.in. na kurs prawa jazdy, ADR, warsztaty instruktorskie, wózki widłowe, szkolenie okresowe, kwalifikacje i kurs instruktorski.",
+      "zrodla": [
+        "https://oes.com.pl/dokumenty/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-150",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Gdzie znajdę politykę prywatności?",
+      "odpowiedz": "Pełną politykę OES znajdziesz pod https://oes.com.pl/polityka-prywatnosci/.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-151",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Kto jest administratorem danych?",
+      "odpowiedz": "Polityka prywatności wskazuje Mariusza Szczepanika, prowadzącego Ośrodek Szkolenia Kierowców OES, Kraków, ul. Wrocławska 48; e-mail mariuszoes@interia.pl.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-152",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Czy mogę zażądać usunięcia danych?",
+      "odpowiedz": "Polityka prywatności opisuje prawo dostępu, sprostowania, usunięcia oraz inne prawa zależnie od podstawy prawnej przetwarzania. Kontakt: mariuszoes@interia.pl.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-153",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Czy korzystacie z plików cookie?",
+      "odpowiedz": "Tak. Polityka wymienia cookies niezbędne oraz narzędzia analityczne i reklamowe, np. Google Analytics, Google Ads i Facebook Pixel.",
+      "zrodla": [
+        "https://oes.com.pl/polityka-prywatnosci/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-154",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Czy mogę zgłosić się przez chatbota?",
+      "odpowiedz": "Chatbot może zebrać wstępne zainteresowanie, lecz skuteczne zapisanie na kurs wymaga oficjalnego procesu OES oraz potwierdzenia przez pracownika, o ile chatbot nie ma rzeczywistej integracji z systemem zapisów.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-155",
+      "dzial": "Dokumenty i dane",
+      "pytanie": "Czy po podaniu danych w czacie jestem już zapisany?",
+      "odpowiedz": "Nie. Samo wysłanie danych w rozmowie nie oznacza potwierdzonej rezerwacji. Potrzebne jest potwierdzenie przez OES lub system zapisów.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "potwierdzone"
+    },
+    {
+      "id": "FAQ-156",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można płacić w ratach?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-157",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy przyjmujecie BLIK i płatności kartą?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-158",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy trzeba płacić całość przed rozpoczęciem?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-159",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy badania lekarskie są w cenie?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-160",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy egzamin WORD/MORD jest w cenie kursu?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-161",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy kurs można bezpłatnie odwołać?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-162",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Jak działa zwrot pieniędzy po rezygnacji?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-163",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy mogę przepisać kurs na inną osobę?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-164",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Ile kosztuje dodatkowa godzina jazdy kat. B?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-165",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy cena dodatkowych jazd na automacie jest inna?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-166",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy dostanę fakturę VAT?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-167",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można kupić voucher na kurs?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-168",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy macie rabat dla studentów i rodzeństwa?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-169",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można zapłacić przelewem zagranicznym?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-170",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy opłata za podstawienie auta na egzamin kat. B jest dodatkowa?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-171",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy mogę wybrać konkretnego instruktora?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-172",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można zmienić instruktora w trakcie szkolenia?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-173",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy możecie odebrać mnie spod domu na jazdy?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-174",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Jak odwołać lub przełożyć jazdę?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-175",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Ile czasu przed jazdą trzeba ją odwołać?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-176",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy prowadzicie jazdy w niedziele?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-177",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Ile trwa pojedyncza lekcja praktyczna?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-178",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy macie samochód przystosowany dla osoby z niepełnosprawnością?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-179",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy jest możliwość nauki w języku ukraińskim?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-180",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy osoba z zagranicznym prawem jazdy może się przepisać?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-181",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można dokończyć kurs rozpoczęty w innej szkole?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-182",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy po zdanym egzaminie wewnętrznym zapiszecie mnie do MORD?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-183",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Kto rezerwuje termin egzaminu państwowego?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-184",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy udostępniacie samochód egzaminacyjny w MORD?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-185",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy oferujecie jazdy po trasach egzaminacyjnych?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-186",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy są kursy prawa jazdy kategorii D w konkretnym oddziale?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-187",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Jak długo ważny jest kurs po przerwie?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-188",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy kursant może mieć jazdy z różnymi instruktorami?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-189",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy w cenie są materiały do teorii i testy online?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-190",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy da się przyjść na bezpłatne zajęcia próbne?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-191",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można zapisać się całkowicie online i opłacić kurs?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-192",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy szkolenie można rozpocząć w dowolnym momencie?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-193",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy oferujecie indywidualne lekcje dla osób z lękiem przed jazdą?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-194",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy wszystkie biura mają te same godziny otwarcia w święta?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-195",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy kurs HDS obejmuje opłatę UDT?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-196",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Ile kosztują szkolenia ADR klasa 1 i 7?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-197",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy kurs na instruktora-wykładowcę jest teraz dostępny i ile kosztuje?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-198",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy można uzyskać pożyczkę na szkolenie?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-199",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy pracodawca może opłacić mój kurs?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-200",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy dostanę certyfikat uczestnictwa po szkoleniu?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-201",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy zajęcia kat. AM są na Romet ZK 50 czy Romet ZXT 50?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-202",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy kurs indywidualny B zawiera 30 czy 34 godziny praktyki?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-203",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy przy kursie za 4500 zł jest jedna jazda gratis za formularz?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    },
+    {
+      "id": "FAQ-204",
+      "dzial": "Do uzupełnienia przez OES",
+      "pytanie": "Czy promocje z cennika mają datę końcową?",
+      "odpowiedz": "Tego szczegółu nie potwierdza obecnie dostępna treść strony. Skontaktuj się z wybraną placówką OES, aby uzyskać aktualną informację.",
+      "zrodla": [
+        "https://oes.com.pl/kontakt/"
+      ],
+      "status": "do_potwierdzenia"
+    }
+  ]
+}
