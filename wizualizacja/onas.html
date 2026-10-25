@@ -472,5 +472,13 @@ footer a { color: var(--white); }
     <div><a href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">TikTok</a> · <a href="https://www.youtube.com/@OesPL">YouTube</a> · <a href="https://www.facebook.com/OESKRAKOW">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
   </div>
 </footer>
+<script>
+(() => {
+  // podstrona zawsze otwiera się od samej góry, także gdy przewija się okno wokół strony
+  const toTop = () => { window.scrollTo({ top: 0, behavior: 'instant' }); document.documentElement.scrollIntoView({ block: 'start', behavior: 'instant' }); };
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  toTop(); addEventListener('load', toTop); addEventListener('pageshow', toTop);
+})();
+</script>
 </body>
 </html>

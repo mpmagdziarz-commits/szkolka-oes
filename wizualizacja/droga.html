@@ -541,9 +541,10 @@ footer a { color: var(--white); }
     });
   });
   // wejście z linku „Zobacz więcej” na konkretny krok
-  // podstrona zawsze otwiera się od samej góry
+  // podstrona zawsze otwiera się od samej góry, także gdy przewija się okno wokół strony
+  const toTop = () => { window.scrollTo({ top: 0, behavior: 'instant' }); document.documentElement.scrollIntoView({ block: 'start', behavior: 'instant' }); };
   if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  window.scrollTo({ top: 0, behavior: 'instant' });
+  toTop(); addEventListener('load', toTop); addEventListener('pageshow', toTop);
 </script>
 </body>
 </html>

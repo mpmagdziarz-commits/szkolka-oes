@@ -905,4 +905,10 @@ footer a { color: var(--white); }
 
   selectGroup(1);
 })();
+
+// przed przejściem na podstronę przewiń na górę, żeby nowa strona nie otwierała się w połowie
+document.addEventListener('click', e => {
+  const a = e.target.closest('a[href^="droga.html"], a[href^="onas.html"]');
+  if (a && !e.defaultPrevented) { window.scrollTo({ top: 0, behavior: 'instant' }); document.documentElement.scrollIntoView({ block: 'start', behavior: 'instant' }); }
+});
 </script>
