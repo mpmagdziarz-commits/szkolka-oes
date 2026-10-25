@@ -78,6 +78,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
 .slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
 .slot.right { transform: translateX(32%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.back { transform: translateX(-50%) scale(.3); opacity: 0; pointer-events: none; z-index: 1; }
 .slot.left:hover, .slot.right:hover { opacity: .85; }
 .arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(7,18,51,.5); color: var(--white); cursor: pointer; display: grid; place-items: center; }
 .arrow:hover { border-color: var(--blue-bright); }
@@ -557,6 +558,9 @@ footer a { color: var(--white); }
       { id: 'C',  img: 'C', model: 'Mercedes-Benz Atego', age: 21, hours: 30, price: 5900, desc: 'Ciężarówki powyżej 3,5 t.' },
       { id: 'C+E', img: 'CE', model: 'Scania P320 z przyczepą', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
     ], start: 2 },
+    { id: 'tractor', name: 'Ciągnik', cats: [
+      { id: 'T', img: 'T', model: 'Ursus', age: 16, hours: 20, price: 3500, desc: 'Ciągniki rolnicze, także z przyczepą.' },
+    ] },
   ];
   const OFFICES = [
     ['Kraków – Wrocławska', 'ul. Wrocławska 48', '501 294 854'],
@@ -589,7 +593,8 @@ footer a { color: var(--white); }
     gi = (i + GROUPS.length) % GROUPS.length;
     slots.forEach((s, k) => {
       const rel = (k - gi + GROUPS.length) % GROUPS.length;
-      s.className = 'slot ' + (rel === 0 ? 'center' : rel === 1 ? 'right' : 'left');
+      // przy 4 grupach ta naprzeciwko środka chowa się z tyłu
+      s.className = 'slot ' + (rel === 0 ? 'center' : rel === 1 ? 'right' : rel === GROUPS.length - 1 ? 'left' : 'back');
       s.tabIndex = rel === 0 ? -1 : 0;
     });
     const g = GROUPS[gi];
