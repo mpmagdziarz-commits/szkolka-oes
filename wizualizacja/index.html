@@ -165,11 +165,38 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .steps-sec { background: var(--navy); color: var(--white); }
 .steps-sec .kicker { color: var(--blue-bright); }
 .steps-sec .sec-head p { color: var(--on-dark-muted); }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; counter-reset: s; list-style: none; margin: 0; padding: 0; }
-.steps li { position: relative; border-top: 3px solid var(--blue); padding-top: 18px; display: grid; gap: 6px; align-content: start; }
-.steps li::before { counter-increment: s; content: counter(s); font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 44px; line-height: 1; color: var(--blue-bright); }
-.steps h3 { font-size: 20px; font-weight: 800; }
-.steps p { margin: 0; color: var(--on-dark-muted); font-size: 15px; }
+.road { position: relative; }
+.road-svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.road-svg path { fill: none; stroke-linecap: round; }
+.r-base { stroke: #17295a; stroke-width: 32; }
+.r-done { stroke: rgba(76,155,255,.38); stroke-width: 32; }
+.r-line { stroke: rgba(255,255,255,.5); stroke-width: 2.5; stroke-dasharray: 12 14; }
+.road-steps { list-style: none; margin: 0; padding: 40px 0 30px; display: grid; gap: 40px; }
+.road-step { width: calc(50% - 80px); }
+.road-step:nth-child(even) { justify-self: end; }
+.road-step details, .finish-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; opacity: .6; transition: opacity .4s, border-color .4s, background .4s, box-shadow .4s; }
+.road-step.on details, .road-step.on .finish-card { opacity: 1; border-color: var(--blue-bright); background: rgba(76,155,255,.1); box-shadow: 0 0 0 4px rgba(76,155,255,.12); }
+.road-step summary { list-style: none; display: flex; gap: 14px; align-items: center; padding: 18px; cursor: pointer; }
+.road-step summary::-webkit-details-marker { display: none; }
+.road-step summary::after { content: "+"; margin-left: auto; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); font-size: 20px; font-weight: 700; }
+.road-step details[open] summary::after { content: "−"; }
+.road-step h3 { font-size: 20px; font-weight: 800; }
+.ico { flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.08); font-size: 26px; }
+.time { display: inline-block; margin-top: 3px; font-size: 13px; font-weight: 700; color: var(--blue-bright); }
+.road-step details p { margin: 0 18px 8px; color: var(--on-dark-muted); font-size: 15px; }
+.road-step details ul { margin: 0 18px 18px; padding-left: 20px; color: var(--white); font-size: 15px; display: grid; gap: 4px; }
+.finish-card { padding: 20px; display: grid; gap: 8px; justify-items: start; }
+.finish-card h3 { font-size: 24px; font-weight: 900; }
+.finish-card p { margin: 0; color: var(--on-dark-muted); }
+.rnode { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: #17295a; border: 3px solid #34508f; color: var(--on-dark-muted); font: 800 14px/28px var(--font-body); text-align: center; transition: background .4s, border-color .4s, color .4s, box-shadow .4s; }
+.rnode.on { background: var(--blue); border-color: var(--white); color: var(--white); box-shadow: 0 0 0 7px rgba(76,155,255,.25); }
+.road-car { position: absolute; left: 0; top: 0; z-index: 3; width: 26px; height: 46px; margin: -23px 0 0 -13px; will-change: transform; filter: drop-shadow(0 6px 8px rgba(0,0,0,.55)); }
+@media (max-width: 700px) {
+  .road-step, .road-step:nth-child(even) { width: auto; justify-self: stretch; margin-left: 50px; }
+  .road-steps { gap: 24px; }
+  .road-step summary { padding: 14px; gap: 12px; }
+  .ico { width: 44px; height: 44px; font-size: 22px; }
+}
 
 /* ---------- 6. Opinie ---------- */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -248,7 +275,7 @@ footer a { color: var(--white); }
 @media (max-width: 900px) {
   .nav { display: none; }
   .select-panel, .hood-grid, .signup-grid { grid-template-columns: 1fr; }
-  .why-grid, .steps { grid-template-columns: 1fr 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
   .reviews, .offices { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
@@ -258,7 +285,7 @@ footer a { color: var(--white); }
   .slot.left { transform: translateX(-118%) scale(.42); }
   .slot.right { transform: translateX(18%) scale(.42); }
   .arrow { width: 42px; height: 42px; top: 40%; }
-  .why-grid, .steps { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr; }
   form { grid-template-columns: 1fr; }
   .stat { grid-template-columns: 74px 1fr auto; }
 }
@@ -414,14 +441,27 @@ footer a { color: var(--white); }
       <div class="sec-head">
         <span class="kicker">Krok po kroku</span>
         <h2>Jak zdobyć prawo jazdy</h2>
-        <p>Cała droga od zera do odebrania dokumentu.</p>
+        <p>Cała droga od zera do odebrania dokumentu. Kliknij krok, żeby zobaczyć, co trzeba załatwić.</p>
       </div>
-      <ol class="steps">
-        <li><h3>Badania i PKK</h3><p>Robisz badanie u lekarza i zakładasz profil kandydata na kierowcę w urzędzie.</p></li>
-        <li><h3>Zapis w OES</h3><p>Wybierasz kategorię i biuro. Zapiszesz się online albo telefonicznie.</p></li>
-        <li><h3>Teoria i jazdy</h3><p>Zajęcia z teorii, a potem jazdy z instruktorem na placu i w mieście.</p></li>
-        <li><h3>Egzamin w WORD</h3><p>Zdajesz teorię i praktykę, a potem odbierasz prawo jazdy.</p></li>
-      </ol>
+      <div class="road" id="road">
+        <svg class="road-svg" aria-hidden="true"><path class="r-base"/><path class="r-done"/><path class="r-line"/></svg>
+        <svg class="road-car" viewBox="0 0 26 46" aria-hidden="true"><rect x="2" y="2" width="22" height="42" rx="8" fill="#fff"/><rect x="5" y="9" width="16" height="8" rx="3" fill="#0b1633"/><rect x="5" y="31" width="16" height="6" rx="2.5" fill="#0b1633"/><rect x="6" y="18" width="14" height="12" rx="2" fill="#1d5bd8"/><rect x="9.5" y="20.5" width="7" height="7" rx="1" fill="#fff"/><path d="M11.6 21.8v4.6h3.2" stroke="#1d5bd8" stroke-width="1.4" fill="none"/><rect x="4" y="2.5" width="5" height="2.5" rx="1" fill="#ffe9a8"/><rect x="17" y="2.5" width="5" height="2.5" rx="1" fill="#ffe9a8"/></svg>
+        <ol class="road-steps">
+          <li class="road-step"><details><summary><span class="ico">🩺</span><span><h3>Badania i PKK</h3><span class="time">ok. 1–2 tygodnie</span></span></summary>
+            <p>Robisz badanie u lekarza i zakładasz profil kandydata na kierowcę (PKK) w wydziale komunikacji.</p>
+            <ul><li>dowód osobisty</li><li>orzeczenie lekarskie</li><li>zdjęcie 35 × 45 mm</li><li>zgoda rodzica, jeśli nie masz 18 lat</li></ul></details></li>
+          <li class="road-step"><details><summary><span class="ico">📝</span><span><h3>Zapis w OES</h3><span class="time">15 minut</span></span></summary>
+            <p>Wybierasz kategorię i najbliższe biuro. Zapiszesz się na miejscu, telefonicznie albo przez formularz.</p>
+            <ul><li>numer PKK</li><li>dowód osobisty</li><li>pasujące godziny zajęć</li></ul></details></li>
+          <li class="road-step"><details><summary><span class="ico">🚗</span><span><h3>Teoria i jazdy</h3><span class="time">ok. 2–3 miesiące</span></span></summary>
+            <p>Najpierw zajęcia z teorii, potem jazdy z instruktorem na placu i w mieście. Na końcu egzamin wewnętrzny w OES.</p>
+            <ul><li>kat. B: 30 h teorii i 30 h jazd</li><li>jazdy w godzinach, które ci pasują</li><li>próbny egzamin przed WORD</li></ul></details></li>
+          <li class="road-step"><details><summary><span class="ico">🎓</span><span><h3>Egzamin w WORD</h3><span class="time">termin zwykle w kilka tygodni</span></span></summary>
+            <p>Zapisujesz się na egzamin w WORD w Krakowie. Najpierw teoria, potem praktyka na placu i w ruchu miejskim.</p>
+            <ul><li>teoria: 32 pytania na komputerze</li><li>praktyka: plac manewrowy i miasto</li><li>zabierz dowód osobisty</li></ul></details></li>
+          <li class="road-step finish"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji i możesz jechać sam.</p><a class="btn btn-primary" href="#zapis">Zacznij swoją drogę</a></div></li>
+        </ol>
+      </div>
     </div>
   </section>
 
@@ -745,6 +785,53 @@ footer a { color: var(--white); }
     t.addEventListener('click', toggle);
   });
 
+  // ---------- 6. Krok po kroku: auto jedzie po drodze razem z przewijaniem ----------
+  (() => {
+    const road = document.getElementById('road'), svg = road.querySelector('.road-svg'), car = road.querySelector('.road-car');
+    const [base, done, line] = svg.querySelectorAll('path'), steps = [...road.querySelectorAll('.road-step')];
+    const nodes = steps.map((li, i) => {
+      const n = document.createElement('span'); n.className = 'rnode'; n.textContent = li.classList.contains('finish') ? '★' : i + 1;
+      road.appendChild(n); return n;
+    });
+    let L = 1, marks = [], queued = false;
+    function layout() {
+      const W = road.clientWidth, H = road.clientHeight, narrow = W < 700;
+      const cx = narrow ? 22 : W / 2, sway = narrow ? 0 : 70;
+      const pts = [[cx, 0]];
+      steps.forEach((li, i) => {
+        // droga skręca w stronę karty kroku
+        const x = cx + (i % 2 ? sway : -sway), y = li.offsetTop + 44;
+        pts.push([x, y]); nodes[i].style.left = x + 'px'; nodes[i].style.top = y + 'px';
+      });
+      pts.push([cx, H]);
+      let d = `M${pts[0][0]},${pts[0][1]}`;
+      for (let k = 1; k < pts.length; k++) {
+        const [x0, y0] = pts[k - 1], [x1, y1] = pts[k], m = (y1 - y0) / 2;
+        d += ` C${x0},${y0 + m} ${x1},${y1 - m} ${x1},${y1}`;
+      }
+      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      [base, done, line].forEach(pth => pth.setAttribute('d', d));
+      L = base.getTotalLength();
+      done.style.strokeDasharray = L;
+      // długość drogi do każdego punktu (y rośnie wzdłuż drogi)
+      marks = pts.slice(1, -1).map(([, y]) => { let lo = 0, hi = L; for (let t = 0; t < 22; t++) { const mid = (lo + hi) / 2; base.getPointAtLength(mid).y < y ? lo = mid : hi = mid; } return lo; });
+      update();
+    }
+    function update() {
+      queued = false;
+      const r = road.getBoundingClientRect();
+      const prog = Math.max(0, Math.min(1, (innerHeight * .62 - r.top) / r.height));
+      const len = prog * L, a = base.getPointAtLength(len), b = base.getPointAtLength(Math.min(len + 2, L)), c = base.getPointAtLength(Math.max(len - 2, 0));
+      const ang = Math.atan2(b.y - c.y, b.x - c.x) * 180 / Math.PI + 90;
+      car.style.transform = `translate(${a.x}px, ${a.y}px) rotate(${ang}deg)`;
+      done.style.strokeDashoffset = L - len;
+      marks.forEach((m, i) => { const on = len >= m - 4; steps[i].classList.toggle('on', on); nodes[i].classList.toggle('on', on); });
+    }
+    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    new ResizeObserver(layout).observe(road);
+    layout();
+  })();
+
   // ---------- 7. Biura ----------
   document.getElementById('offices').innerHTML = OFFICES.map(([n, a, t]) => `
     <div class="office"><h3>${n}</h3><span class="addr">${a}</span><span class="tel">${t}</span>
@@ -759,7 +846,7 @@ footer a { color: var(--white); }
 
   // ---------- Pojawianie się sekcji ----------
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const groups = ['.sec-head', '.hood-tabs', '.hood-grid > *', '.why', '.steps li', '.review', '.rating', '.tt', '.office', '.hours', '.signup-grid > *'];
+    const groups = ['.sec-head', '.hood-tabs', '.hood-grid > *', '.why', '.road-step', '.review', '.rating', '.tt', '.office', '.hours', '.signup-grid > *'];
     const els = [];
     groups.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('rv');
