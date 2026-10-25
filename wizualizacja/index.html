@@ -160,6 +160,11 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .why { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 6px; align-content: start; }
 .why .big { font-family: var(--font-display); font-weight: 900; font-stretch: 115%; font-size: 38px; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
 .why p { margin: 0; color: var(--muted); font-size: 15px; }
+.h-link { color: inherit; text-decoration: none; }
+.h-link:hover { color: var(--blue); }
+.why-more { margin: 20px 0 0; }
+.why-more a { color: var(--blue); font-weight: 700; text-decoration: none; }
+.why-more a:hover { text-decoration: underline; }
 
 /* ---------- 5. Kroki ---------- */
 .steps-sec { background: var(--navy); color: var(--white); }
@@ -438,7 +443,7 @@ footer a { color: var(--white); }
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">Dlaczego OES</span>
-        <h2>Uczymy jeździć od 2001 roku</h2>
+        <h2><a class="h-link" href="onas.html">Uczymy jeździć od 2001 roku</a></h2>
       </div>
       <div class="why-grid">
         <div class="why"><span class="big">25 lat</span><p>doświadczenia w szkoleniu kierowców w Krakowie</p></div>
@@ -446,6 +451,7 @@ footer a { color: var(--white); }
         <div class="why"><span class="big">6 biur</span><p>w Krakowie, Wieliczce i Zabierzowie, zapisz się tam, gdzie ci wygodnie</p></div>
         <div class="why"><span class="big">Własne place</span><p>i auta takie jak na egzaminie w WORD</p></div>
       </div>
+      <p class="why-more"><a href="onas.html">Zobacz więcej →</a></p>
     </div>
   </section>
 
