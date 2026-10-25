@@ -133,6 +133,13 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 @keyframes honkWave { from { transform: scale(.8); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
 .bay.honking { animation: honkShake .1s linear infinite; }
 @keyframes honkShake { 25% { translate: -1.5px 1px; } 75% { translate: 1.5px -1px; } }
+.bay.player { aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 40%, #13213f, #05080f 70%); }
+.bay.player .main { position: absolute; inset: 0; margin: auto; display: block; height: 100%; max-width: 100%; aspect-ratio: 9 / 16; background: #000; }
+.pip { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 62%; margin: 0; border-radius: 12px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 14px 34px rgba(0,0,0,.65); opacity: 0; transform: scale(.5); transform-origin: 100% 100%; transition: opacity .35s, transform .55s cubic-bezier(.2,.9,.3,1.25); pointer-events: none; }
+.pip.on { opacity: 1; transform: none; }
+.pip video { display: block; height: 100%; width: auto; }
+.pip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 7px; font: 700 12px/1.2 var(--font-body); color: #fff; background: linear-gradient(transparent, rgba(4,9,22,.9)); }
+.bay-back.replay { top: auto; right: auto; left: 12px; bottom: 12px; }
 .bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
 .qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
 .qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
@@ -515,14 +522,14 @@ footer a { color: var(--white); }
       { k: 'horn', horn: true, x: 622, y: 497, z: 2, t: 'Sygnał dźwiękowy (klakson)', ask: '„Proszę użyć sygnału dźwiękowego.”', how: 'Naciśnij mocno środek kierownicy, tam gdzie jest logo. Klakson gra tak długo, jak trzymasz. Na zdjęciu też możesz go przytrzymać.' },
     ]},
     lights: { photo: 'img/kokpit.webp', alt: 'Kokpit Hyundaia i20 z przełącznikami świateł', back: 'Cały kokpit', w: 1280, h: 960, pickTitle: 'Wybierz światło', label: 'Polecenie egzaminatora', items: [
-      { k: 'pos', hs: '1–5', x: 360, y: 372, fx: 337, fy: 360, z: 3, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
-      { k: 'low', hs: null, fx: 337, fy: 360, z: 3, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
-      { k: 'high', hs: null, fx: 402, fy: 366, z: 3, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka.' },
-      { k: 'fog', hs: null, fx: 372, fy: 388, z: 3, t: 'Tylne światło przeciwmgielne', ask: '„Proszę włączyć tylne światło przeciwmgielne.”', how: 'Drugi przełącznik na lewej dźwigni przekręć na ostatnią pozycję. Zapali się pomarańczowa kontrolka.' },
-      { k: 'ind', hs: null, fx: 402, fy: 376, z: 3, t: 'Kierunkowskazy', ask: '„Proszę włączyć prawy kierunkowskaz.”', how: 'Lewa dźwignia w górę to prawy kierunkowskaz, w dół lewy. Świeci z przodu, z boku i z tyłu.' },
-      { k: 'hazard', hs: 6, x: 1162, y: 432, fx: 1162, fy: 432, z: 2.5, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski. Migają wszystkie kierunkowskazy naraz.' },
-      { k: 'reverse', hs: 7, x: 1190, y: 915, fx: 1190, fy: 915, z: 1.6, t: 'Światło cofania', ask: '„Proszę pokazać światło cofania.”', how: 'Wciśnij sprzęgło i wrzuć bieg wsteczny. Z tyłu zapali się białe światło.' },
-      { k: 'stop', hs: 8, x: 590, y: 770, fx: 590, fy: 770, z: 1.6, t: 'Światła hamowania (STOP)', ask: '„Proszę sprawdzić światła hamowania.”', how: 'Poproś egzaminatora o pomoc albo wciśnij hamulec i sprawdź w odbiciu. Z tyłu świecą 3 światła STOP.' },
+      { k: 'pos', clip: true, hs: '1–5', x: 360, y: 372, fx: 337, fy: 360, z: 3, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
+      { k: 'low', clip: true, hs: null, fx: 337, fy: 360, z: 3, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
+      { k: 'high', clip: true, hs: null, fx: 402, fy: 366, z: 3, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka.' },
+      { k: 'fog', clip: true, hs: null, fx: 372, fy: 388, z: 3, t: 'Tylne światło przeciwmgielne', ask: '„Proszę włączyć tylne światło przeciwmgielne.”', how: 'Drugi przełącznik na lewej dźwigni przekręć na ostatnią pozycję. Zapali się pomarańczowa kontrolka.' },
+      { k: 'ind', clip: true, hs: null, fx: 402, fy: 376, z: 3, t: 'Kierunkowskazy', ask: '„Proszę włączyć prawy kierunkowskaz.”', how: 'Lewa dźwignia w górę to prawy kierunkowskaz, w dół lewy. Świeci z przodu, z boku i z tyłu.' },
+      { k: 'hazard', clip: true, hs: 6, x: 1162, y: 432, fx: 1162, fy: 432, z: 2.5, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski. Migają wszystkie kierunkowskazy naraz.' },
+      { k: 'reverse', clip: true, hs: 7, x: 1190, y: 915, fx: 1190, fy: 915, z: 1.6, t: 'Światło cofania', ask: '„Proszę pokazać światło cofania.”', how: 'Wciśnij sprzęgło i wrzuć bieg wsteczny. Z tyłu zapali się białe światło.' },
+      { k: 'stop', clip: true, hs: 8, x: 590, y: 770, fx: 590, fy: 770, z: 1.6, t: 'Światła hamowania (STOP)', ask: '„Proszę sprawdzić światła hamowania.”', how: 'Poproś egzaminatora o pomoc albo wciśnij hamulec i sprawdź w odbiciu. Z tyłu świecą 3 światła STOP.' },
     ]},
   };
 
@@ -571,8 +578,19 @@ footer a { color: var(--white); }
     wrap.querySelectorAll('.hs').forEach(h => h.classList.remove('active'));
     [...qlist.children].forEach(li => li.firstChild.classList.remove('active'));
   }
-  function pick(i) {
-    const M = MODES[mode], it = M.items[i];
+  // Światła: najpierw filmik z przełącznikiem, potem w rogu okienko z autem z zewnątrz
+  function showPlayer(it) {
+    bay.className = 'bay player';
+    bay.innerHTML = `<video class="main" src="img/swiatla/${it.k}-a.mp4" muted playsinline preload="auto" aria-label="${it.t}: jak włączyć"></video>
+      <figure class="pip"><video src="img/swiatla/${it.k}-b.mp4" muted playsinline loop preload="auto" aria-label="${it.t}: gdzie świeci"></video><figcaption>Gdzie świeci</figcaption></figure>
+      <button class="bay-back">← Cały kokpit</button><button class="bay-back replay" hidden>↻ Jeszcze raz</button>`;
+    const v = bay.querySelector('.main'), pip = bay.querySelector('.pip'), pv = pip.querySelector('video'), again = bay.querySelector('.replay');
+    v.addEventListener('ended', () => { pip.classList.add('on'); pv.currentTime = 0; pv.play().catch(() => {}); again.hidden = false; });
+    again.addEventListener('click', () => { pip.classList.remove('on'); pv.pause(); again.hidden = true; v.currentTime = 0; v.play().catch(() => {}); });
+    bay.querySelector('.bay-back').addEventListener('click', () => setMode('lights'));
+    v.play().catch(() => {});
+  }
+  function zoomTo(i, it, M) {
     bay.querySelector('.bay-hint').hidden = true;
     // przybliż i wyśrodkuj wybraną część, nie wychodząc poza krawędź zdjęcia
     const z = it.z || 2, lim = 50 - 50 / z;
@@ -587,6 +605,11 @@ footer a { color: var(--white); }
     bay.querySelector('.bay-back').hidden = false;
     if (it.horn) addHonkPad(it, M);
     wrap.querySelectorAll('.hs').forEach(h => h.classList.toggle('active', h === hsOf[i]));
+  }
+  function pick(i) {
+    const M = MODES[mode], it = M.items[i];
+    if (it.clip) showPlayer(it);
+    else zoomTo(i, it, M);
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
     document.getElementById('qTitle').textContent = it.t;
     document.getElementById('qAsk').textContent = it.ask;
