@@ -130,6 +130,9 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .qcard h3 { font-size: 24px; font-weight: 900; }
 .qcard .q-ask { margin: 0; font-size: 17px; font-weight: 600; }
 .qcard .q-how { margin: 0; color: var(--on-dark-muted); }
+.q-say { margin-top: 6px; padding: 14px 16px; border-radius: 10px; background: rgba(76,155,255,.12); border-left: 3px solid var(--blue-bright); }
+.q-say span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 4px; }
+.q-say p { margin: 0; color: var(--white); font-size: 16px; line-height: 1.55; }
 .qlist { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
 .qlist button { width: 100%; text-align: left; display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 10px 12px; cursor: pointer; font: 600 15px var(--font-body); color: var(--ink); }
 .qlist button b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
@@ -295,6 +298,7 @@ footer a { color: var(--white); }
             <h3 id="qTitle">Wybierz punkt</h3>
             <p class="q-ask" id="qAsk">Kliknij numer na rysunku albo na liście poniżej.</p>
             <p class="q-how" id="qHow"></p>
+            <div class="q-say" id="qSay" hidden><span>Co powiedzieć egzaminatorowi</span><p id="qSayText"></p></div>
           </div>
           <ul class="qlist" id="qlist"></ul>
         </div>
@@ -536,10 +540,10 @@ footer a { color: var(--white); }
 
   const MODES = {
     fluids: { photo: 'img/silnik.webp', w: 1600, h: 900, label: 'Pytanie egzaminatora', items: [
-      { k: 'oil', x: 522, y: 612, t: 'Olej silnikowy', ask: '„Proszę sprawdzić poziom oleju w silniku.”', how: 'Bagnet ma pomarańczowy uchwyt. Wyciągnij go, wytrzyj, włóż z powrotem i wyciągnij ponownie. Olej ma być między MIN a MAX. Dolewa się go przez czarny korek na pokrywie silnika.' },
-      { k: 'brake', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
-      { k: 'cool', x: 1182, y: 800, t: 'Płyn chłodniczy', ask: '„Proszę sprawdzić poziom płynu w układzie chłodzenia.”', how: 'Pokaż zbiorniczek wyrównawczy i oceń poziom płynu między MIN a MAX. Korka chłodnicy z ostrzeżeniem nigdy nie odkręcaj przy gorącym silniku, bo płyn jest pod ciśnieniem.' },
-      { k: 'washer', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
+      { k: 'oil', say: 'Poziom oleju silnikowego sprawdzamy na wyłączonym silniku, gdy samochód stoi na równym podłożu. Wyciągamy bagnet, wycieramy go, wkładamy ponownie i wyciągamy. Poziom oleju powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 522, y: 612, t: 'Olej silnikowy', ask: '„Proszę sprawdzić poziom oleju w silniku.”', how: 'Bagnet ma pomarańczowy uchwyt. Wyciągnij go, wytrzyj, włóż z powrotem i wyciągnij ponownie. Olej ma być między MIN a MAX. Dolewa się go przez czarny korek na pokrywie silnika.' },
+      { k: 'cool', say: 'Poziom płynu chłodniczego sprawdzamy w zbiorniczku wyrównawczym. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX. Sprawdzamy go na zimnym silniku i nie odkręcamy korka na gorącym silniku.', x: 1182, y: 800, t: 'Płyn chłodniczy', ask: '„Proszę sprawdzić poziom płynu w układzie chłodzenia.”', how: 'Pokaż zbiorniczek wyrównawczy i oceń poziom płynu między MIN a MAX. Korka chłodnicy z ostrzeżeniem nigdy nie odkręcaj przy gorącym silniku, bo płyn jest pod ciśnieniem.' },
+      { k: 'brake', say: 'Poziom płynu hamulcowego sprawdzamy w zbiorniczku płynu hamulcowego. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
+      { k: 'washer', say: 'Płyn do spryskiwaczy znajduje się w zbiorniku pod maską, oznaczonym symbolem szyby z rozpylanym płynem. Jego obecność możemy sprawdzić przez uruchomienie spryskiwaczy, a w razie potrzeby uzupełniamy płyn.', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
     ]},
     lights: { svg: LIGHTS_SVG, w: 800, h: 480, label: 'Polecenie egzaminatora', items: [
       { k: 'pos', x: 150, y: 296, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
@@ -580,6 +584,7 @@ footer a { color: var(--white); }
     document.getElementById('qTitle').textContent = 'Wybierz punkt';
     document.getElementById('qAsk').textContent = 'Kliknij numer na ' + (M.photo ? 'zdjęciu' : 'rysunku') + ' albo na liście poniżej.';
     document.getElementById('qHow').textContent = '';
+    document.getElementById('qSay').hidden = true;
   }
   function zoomOut() {
     bay.classList.remove('zoom');
@@ -611,7 +616,10 @@ footer a { color: var(--white); }
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
     document.getElementById('qTitle').textContent = it.t;
     document.getElementById('qAsk').textContent = it.ask;
-    document.getElementById('qHow').textContent = it.how;
+    document.getElementById('qHow').textContent = it.say ? '' : it.how;
+    document.getElementById('qHow').hidden = !!it.say;
+    document.getElementById('qSay').hidden = !it.say;
+    document.getElementById('qSayText').textContent = it.say ? '„' + it.say + '”' : '';
   }
   document.getElementById('tabFluids').addEventListener('click', () => setMode('fluids'));
   document.getElementById('tabLights').addEventListener('click', () => setMode('lights'));
