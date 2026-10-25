@@ -105,35 +105,56 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 
 /* ---------- 3. Pod maską ---------- */
 .hood { background: var(--white); }
-.hood-grid { display: grid; grid-template-columns: 1.4fr 1fr; gap: 36px; align-items: center; }
+.hood-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--paper); border-radius: 10px; margin-bottom: 18px; }
+.hood-tab { border: 0; background: transparent; padding: 10px 18px; border-radius: 7px; font: 700 15px var(--font-body); color: var(--muted); cursor: pointer; }
+.hood-tab[aria-selected="true"] { background: var(--white); color: var(--blue); box-shadow: 0 1px 4px rgba(11,22,51,.12); }
+.hood-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; }
 .hood-grid > * { min-width: 0; }
-.hood-stage { position: relative; background: var(--paper); border-radius: 16px; padding: 24px 12px 12px; }
-.hood-canvas { position: relative; }
-.hood-stage svg { width: 100%; height: auto; display: block; }
-#hoodLid { transform-box: view-box; transform-origin: 470px 128px; transition: transform .9s cubic-bezier(.3,.9,.3,1); }
-.open #hoodLid { transform: rotate(-38deg); }
-.beam { opacity: 0; transition: opacity .4s; }
-.lights .beam { opacity: 1; }
-.blink { opacity: .25; }
-.lights .blink { animation: blink 1s steps(1) infinite; }
-@keyframes blink { 50% { opacity: 1; } 0% { opacity: .25; } }
-.engine-part { opacity: 0; transition: opacity .4s .4s; }
-.open .engine-part { opacity: 1; }
-.hotspot { position: absolute; z-index: 2; width: 28px; height: 28px; margin: -14px 0 0 -14px; line-height: 28px !important; border-radius: 50%; border: 0; background: var(--blue); color: var(--white); font: 800 14px/30px var(--font-body); cursor: pointer; box-shadow: 0 0 0 6px rgba(29,91,216,.2); transition: transform .2s, background .2s; }
-.hotspot::after { content: ""; position: absolute; inset: -6px; border-radius: 50%; border: 2px solid var(--blue); animation: pulse 1.8s ease-out infinite; }
-@keyframes pulse { from { transform: scale(.8); opacity: .9; } to { transform: scale(1.6); opacity: 0; } }
-.hotspot.active, .hotspot:hover { background: var(--navy); transform: scale(1.15); }
-.hotspot[hidden] { display: none !important; }
-.qlist { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
-.qlist button { width: 100%; text-align: left; display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 12px 14px; cursor: pointer; font: inherit; color: inherit; }
-.qlist button b { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
-.qlist button strong { display: block; }
-.qlist button span { color: var(--muted); font-size: 14px; }
+.bay { position: relative; border-radius: 16px; overflow: hidden; background: #0f1520; box-shadow: 0 20px 40px -20px rgba(7,18,51,.5); }
+.bay svg { display: block; width: 100%; height: auto; }
+.bay .part { transition: filter .3s, opacity .3s; }
+.bay.focus .part { opacity: .45; filter: saturate(.3); }
+.bay.focus .part.on { opacity: 1; filter: drop-shadow(0 0 10px rgba(76,155,255,.9)) drop-shadow(0 0 2px #fff); }
+#dipstick { transition: transform .9s cubic-bezier(.3,.9,.3,1); transform-box: view-box; }
+.p-oil.on #dipstick { transform: translate(-30px, -150px); }
+.dip-scale { opacity: 0; transition: opacity .4s .6s; }
+.p-oil.on .dip-scale { opacity: 1; }
+#washerCap, #coolCap, #brakeCap { transform-box: fill-box; transform-origin: center; transition: transform .7s cubic-bezier(.3,.9,.3,1); }
+.p-washer.on #washerCap, .p-cool.on #coolCap, .p-brake.on #brakeCap { transform: translateY(-14px) rotate(-200deg); }
+.liquid { transform-box: fill-box; transform-origin: 50% 100%; }
+.on .liquid { animation: slosh 1.6s ease-in-out infinite; }
+@keyframes slosh { 0%,100% { transform: skewY(0) scaleY(1); } 30% { transform: skewY(-3deg) scaleY(1.03); } 70% { transform: skewY(3deg) scaleY(.98); } }
+.minmax { opacity: 0; transition: opacity .4s .3s; }
+.on .minmax { opacity: 1; }
+.fan { transform-box: fill-box; transform-origin: center; animation: spin 2.4s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+.hs { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 2px solid #fff; background: var(--blue); color: #fff; font: 800 14px/30px var(--font-body); text-align: center; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.45); transition: transform .2s, background .2s; }
+.hs::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid var(--blue-bright); animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
+.hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
+.hs.active::after { animation: none; opacity: 0; }
+.bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
+.qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
+.qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
+.qcard h3 { font-size: 24px; font-weight: 900; }
+.qcard .q-ask { margin: 0; font-size: 17px; font-weight: 600; }
+.qcard .q-how { margin: 0; color: var(--on-dark-muted); }
+.qlist { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+.qlist button { width: 100%; text-align: left; display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 10px 12px; cursor: pointer; font: 600 15px var(--font-body); color: var(--ink); }
+.qlist button b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
 .qlist button.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,216,.12); }
 .qlist button.active b { background: var(--blue); color: var(--white); }
-.hood-controls { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 12px; }
-.toggle { border: 2px solid var(--line); background: var(--white); border-radius: 8px; padding: 9px 14px; font: 700 14px var(--font-body); cursor: pointer; color: var(--ink); }
-.toggle[aria-pressed="true"] { border-color: var(--blue); color: var(--blue); }
+/* światła */
+.lamp-glow { opacity: 0; transition: opacity .35s; }
+.l-pos .g-pos, .l-low .g-pos, .l-high .g-pos { opacity: 1; }
+.l-low .g-low, .l-high .g-low { opacity: 1; }
+.l-high .g-high { opacity: 1; }
+.l-left .g-ind-l, .l-hazard .g-ind-l, .l-hazard .g-ind-r { animation: indicator .8s steps(1) infinite; }
+@keyframes indicator { 0% { opacity: 1; } 50% { opacity: 0; } }
+.beam-low { opacity: 0; transition: opacity .4s; }
+.l-low .beam-low, .l-high .beam-low { opacity: .55; }
+.beam-high { opacity: 0; transition: opacity .4s; }
+.l-high .beam-high { opacity: .6; }
 
 /* ---------- 4. Dlaczego OES ---------- */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -267,19 +288,26 @@ footer a { color: var(--white); }
       <div class="sec-head">
         <span class="kicker">Przygotuj się do egzaminu</span>
         <h2>Zajrzyj pod maskę</h2>
-        <p>Na egzaminie praktycznym egzaminator pyta o światła i płyny. Kliknij punkt na aucie i sprawdź, co trzeba wiedzieć.</p>
+        <p>Przed jazdą egzaminator poprosi cię o sprawdzenie płynów i świateł. Kliknij punkt i zobacz, co pokazać.</p>
+      </div>
+      <div class="hood-tabs" role="tablist" aria-label="Tryb">
+        <button class="hood-tab" role="tab" id="tabFluids" aria-selected="true">Płyny pod maską</button>
+        <button class="hood-tab" role="tab" id="tabLights" aria-selected="false">Światła</button>
       </div>
       <div class="hood-grid">
-        <div>
-          <div class="hood-stage" id="hoodStage">
-            <div class="hood-canvas" id="hoodCanvas"><svg viewBox="0 0 640 300" aria-hidden="true" id="hoodSvg"></svg></div>
-          </div>
-          <div class="hood-controls">
-            <button class="toggle" id="tHood" aria-pressed="false">Otwórz maskę</button>
-            <button class="toggle" id="tLights" aria-pressed="false">Włącz światła</button>
-          </div>
+        <div class="bay" id="bay">
+          <svg viewBox="0 0 800 480" id="baySvg" aria-hidden="true"></svg>
+          <span class="bay-hint" id="bayHint">Kliknij numer na rysunku</span>
         </div>
-        <ul class="qlist" id="qlist"></ul>
+        <div>
+          <div class="qcard" aria-live="polite">
+            <span class="q-label" id="qLabel">Pytanie egzaminatora</span>
+            <h3 id="qTitle">Wybierz punkt</h3>
+            <p class="q-ask" id="qAsk">Kliknij numer na rysunku albo na liście poniżej.</p>
+            <p class="q-how" id="qHow"></p>
+          </div>
+          <ul class="qlist" id="qlist"></ul>
+        </div>
       </div>
     </div>
   </section>
@@ -404,67 +432,6 @@ footer a { color: var(--white); }
     ['Wieliczka', 'ul. Reymonta 1/3', '502 846 600'],
     ['Zabierzów', 'ul. Krakowska 26 (nad Sparem)', '508 246 946'],
   ];
-  const QUESTIONS = [
-    { x: 574, y: 168, t: 'Światła mijania', s: 'Włącz i pokaż, gdzie świecą. Kiedy ich używamy?' },
-    { x: 600, y: 198, t: 'Kierunkowskazy i awaryjne', s: 'Sprawdź działanie przednich i tylnych kierunkowskazów.' },
-    { x: 440, y: 116, t: 'Poziom oleju', s: 'Wskaż bagnet i odczytaj poziom między MIN a MAX.', hood: true },
-    { x: 506, y: 112, t: 'Płyn chłodniczy', s: 'Pokaż zbiorniczek i oceń poziom płynu.', hood: true },
-    { x: 472, y: 100, t: 'Płyn hamulcowy', s: 'Wskaż zbiorniczek płynu hamulcowego i jego poziom.', hood: true },
-    { x: 545, y: 126, t: 'Płyn do spryskiwaczy', s: 'Pokaż, gdzie się go uzupełnia.', hood: true },
-  ];
-
-  // ---------- Rysunki pojazdów (grafiki zastępcze, viewBox 640×300, droga na y=270) ----------
-  function wheel(cx, cy, r) {
-    const sp = [0, 72, 144, 216, 288].map(a => { const t = a * Math.PI / 180; return `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.cos(t) * r * .62).toFixed(1)}" y2="${(cy + Math.sin(t) * r * .62).toFixed(1)}" stroke="var(--chrome)" stroke-width="${Math.max(3, r * .1).toFixed(1)}" stroke-linecap="round"/>`; }).join('');
-    return `<circle cx="${cx}" cy="${cy}" r="${r}" fill="var(--tire)"/><circle cx="${cx}" cy="${cy}" r="${r * .7}" fill="var(--rim)"/>${sp}<circle cx="${cx}" cy="${cy}" r="${r * .16}" fill="var(--chrome)"/>`;
-  }
-  const L = (x, y, w = 46, h = 22) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="3" fill="var(--blue)" stroke="#fff" stroke-width="2"/><text x="${x + w / 2}" y="${y + h - 4.5}" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="${h - 4}" fill="#fff">L</text>`;
-  function car(opts = {}) {
-    return `
-      <path d="M42 230 L42 178 Q44 152 76 146 L168 134 Q218 86 272 81 L402 81 Q442 83 476 131 L534 144 Q568 152 570 186 L570 230 Z" fill="var(--paint)"/>
-      <path d="M42 205 L570 205 L570 230 L42 230 Z" fill="var(--paint-2)"/>
-      <path d="M188 134 Q228 96 272 93 L328 93 L328 134 Z" fill="var(--glass)"/>
-      <path d="M340 93 L396 93 Q428 96 454 134 L340 134 Z" fill="var(--glass)"/>
-      <line x1="334" y1="138" x2="334" y2="205" stroke="var(--paint-2)" stroke-width="3"/>
-      <line x1="208" y1="138" x2="208" y2="205" stroke="var(--paint-2)" stroke-width="3"/>
-      <rect x="272" y="150" width="26" height="6" rx="3" fill="var(--paint-2)"/><rect x="392" y="150" width="26" height="6" rx="3" fill="var(--paint-2)"/>
-      ${opts.engine || ''}
-      ${opts.lid || ''}
-      <path d="M552 158 L570 164 L570 180 L550 176 Z" fill="#ffe9a8"/>
-      <rect x="560" y="186" width="10" height="8" rx="2" fill="var(--amber)" class="${opts.blinkCls || ''}"/>
-      <rect x="42" y="160" width="12" height="20" rx="2" fill="#e24b4b"/>
-      <circle cx="122" cy="230" r="47" fill="var(--paint-2)"/><circle cx="462" cy="230" r="47" fill="var(--paint-2)"/>
-      ${opts.noL ? '' : L(306, 58)}
-      ${wheel(122, 230, 40)}${wheel(462, 230, 40)}`;
-  }
-  function truck() {
-    return `
-      <rect x="30" y="40" width="392" height="168" rx="6" fill="#e9eef7"/>
-      <rect x="30" y="40" width="392" height="168" rx="6" fill="none" stroke="var(--chrome)" stroke-width="4"/>
-      <text x="226" y="148" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-weight="900" font-size="64" fill="var(--blue)">OES</text>
-      <path d="M432 214 L432 86 Q434 68 452 68 L540 68 Q566 70 582 118 L604 150 L604 214 Z" fill="var(--paint)"/>
-      <path d="M456 84 L536 84 Q552 87 566 130 L456 130 Z" fill="var(--glass)"/>
-      <path d="M590 168 L604 172 L604 188 L588 186 Z" fill="#ffe9a8"/>
-      <rect x="24" y="204" width="584" height="22" rx="4" fill="#2a3242"/>
-      <circle cx="120" cy="230" r="46" fill="#2a3242"/><circle cx="214" cy="230" r="46" fill="#2a3242"/><circle cx="526" cy="230" r="46" fill="#2a3242"/>
-      ${L(484, 44)}
-      ${wheel(120, 230, 40)}${wheel(214, 230, 40)}${wheel(526, 230, 40)}`;
-  }
-  function motorbike() {
-    return `
-      <line x1="300" y1="208" x2="170" y2="230" stroke="var(--chrome)" stroke-width="12" stroke-linecap="round"/>
-      <line x1="430" y1="100" x2="470" y2="230" stroke="var(--chrome)" stroke-width="11" stroke-linecap="round"/>
-      <path d="M236 216 L112 198 L114 212 L236 228 Z" fill="var(--chrome)"/>
-      <rect x="268" y="166" width="114" height="54" rx="10" fill="#2a3242"/>
-      <path d="M134 142 L206 138 L196 162 L146 160 Z" fill="var(--paint)"/>
-      <path d="M180 152 L262 140 L306 150 L274 162 L188 164 Z" fill="#111827"/>
-      <path d="M252 150 Q300 108 382 116 L424 134 L402 176 L302 180 Z" fill="var(--paint)"/>
-      <path d="M418 94 L458 100 L452 142 L424 136 Z" fill="var(--paint-2)"/>
-      <circle cx="456" cy="122" r="10" fill="#ffe9a8"/>
-      <line x1="404" y1="98" x2="446" y2="88" stroke="#111827" stroke-width="8" stroke-linecap="round"/>
-      ${L(132, 164, 30, 24)}
-      ${wheel(170, 230, 40)}${wheel(470, 230, 40)}`;
-  }
 
   // ---------- 2. Ekran wyboru ----------
   const picker = document.getElementById('picker');
@@ -543,53 +510,182 @@ footer a { color: var(--white); }
   picker.addEventListener('pointercancel', () => { down = false; });
 
   // ---------- 3. Pod maską ----------
-  const hoodSvg = document.getElementById('hoodSvg');
-  const engine = `<g class="engine-part">
-      <path d="M454 134 L540 144 L540 160 L454 150 Z" fill="#2a3242"/>
-      <rect x="452" y="128" width="14" height="14" rx="3" fill="#ffd34d"/>
-      <rect x="492" y="132" width="18" height="12" rx="3" fill="#ff7aa8"/>
-      <rect x="470" y="130" width="10" height="12" rx="2" fill="#f2c94c"/>
-      <rect x="520" y="138" width="16" height="10" rx="3" fill="#4c9bff"/>
-    </g>`;
-  const lid = `<path id="hoodLid" d="M456 131 L534 144 Q566 151 570 160 L570 164 L456 141 Z" fill="var(--paint)" stroke="var(--paint-2)" stroke-width="2"/>`;
-  const beam = `<path class="beam" d="M570 166 L640 140 L640 210 Z" fill="#fff3c4" opacity=".7"/>`;
-  hoodSvg.innerHTML = `<ellipse cx="306" cy="272" rx="280" ry="8" fill="#000" opacity=".15"/>${car({ engine, lid, noL: true, blinkCls: 'blink' })}${beam}`;
-  const stage = document.getElementById('hoodStage');
-  const qlist = document.getElementById('qlist');
-  const spots = QUESTIONS.map((q, i) => {
-    const h = document.createElement('button');
-    h.className = 'hotspot'; h.textContent = i + 1;
-    h.style.left = (q.x / 640 * 100) + '%'; h.style.top = (q.y / 300 * 100) + '%';
-    h.setAttribute('aria-label', q.t);
-    h.hidden = !!q.hood;
-    h.addEventListener('click', () => focusQ(i));
-    document.getElementById('hoodCanvas').appendChild(h);
-    const li = document.createElement('li');
-    li.innerHTML = `<button><b>${i + 1}</b><div><strong>${q.t}</strong><span>${q.s}</span></div></button>`;
-    li.firstChild.addEventListener('click', () => focusQ(i));
-    li.firstChild.addEventListener('mouseenter', () => focusQ(i));
-    qlist.appendChild(li);
-    return h;
-  });
-  const tHood = document.getElementById('tHood'), tLights = document.getElementById('tLights');
-  function setHood(open) {
-    stage.classList.toggle('open', open);
-    tHood.setAttribute('aria-pressed', open); tHood.textContent = open ? 'Zamknij maskę' : 'Otwórz maskę';
-    QUESTIONS.forEach((q, i) => { if (q.hood) spots[i].hidden = !open; });
+  // Własna grafika komory silnika i20 z góry (przód auta na dole) oraz przodu auta do świateł. viewBox 800×480.
+  const ENGINE_SVG = `
+    <defs>
+      <linearGradient id="gBody" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e9edf3"/><stop offset="1" stop-color="#c3cad5"/></linearGradient>
+      <linearGradient id="gBay" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1a1f27"/><stop offset="1" stop-color="#262c36"/></linearGradient>
+      <linearGradient id="gCover" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#474d58"/><stop offset="1" stop-color="#2c3139"/></linearGradient>
+      <linearGradient id="gTank" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f4f1ea" stop-opacity=".95"/><stop offset="1" stop-color="#d8d4cb" stop-opacity=".95"/></linearGradient>
+    </defs>
+    <rect width="800" height="480" fill="url(#gBody)"/>
+    <path d="M0 0 H800 V58 H0 Z" fill="#151a22"/>
+    <path d="M120 40 L380 24 M430 24 L690 40" stroke="#0a0d12" stroke-width="6" stroke-linecap="round"/>
+    <rect x="40" y="62" width="720" height="26" rx="8" fill="#20252e"/>
+    <g fill="#14181e">${Array.from({ length: 22 }, (_, i) => `<rect x="${250 + i * 14}" y="68" width="8" height="14" rx="2"/>`).join('')}</g>
+    <path d="M70 96 H730 Q750 96 752 118 L770 392 H30 L48 118 Q50 96 70 96 Z" fill="url(#gBay)"/>
+    <circle cx="160" cy="146" r="40" fill="#cfd5de"/><circle cx="160" cy="146" r="18" fill="#2a2f37"/><circle cx="160" cy="146" r="7" fill="#9aa3ae"/>
+    <circle cx="640" cy="146" r="40" fill="#cfd5de"/><circle cx="640" cy="146" r="18" fill="#2a2f37"/><circle cx="640" cy="146" r="7" fill="#9aa3ae"/>
+    <path d="M220 330 C260 300 300 296 330 300" stroke="#0e1116" stroke-width="10" fill="none" stroke-linecap="round"/>
+    <path d="M120 250 C200 210 230 190 260 170" stroke="#0e1116" stroke-width="6" fill="none"/>
+
+    <!-- silnik -->
+    <g class="part p-engine">
+      <rect x="250" y="160" width="290" height="140" rx="22" fill="url(#gCover)"/>
+      <g stroke="#2a2f37" stroke-width="3">${Array.from({ length: 9 }, (_, i) => `<line x1="${276 + i * 30}" y1="252" x2="${276 + i * 30}" y2="290"/>`).join('')}</g>
+      <g>${[0, 1, 2, 3].map(i => `<rect x="${300 + i * 58}" y="182" width="44" height="30" rx="6" fill="#2848a0"/><rect x="${308 + i * 58}" y="188" width="28" height="8" rx="3" fill="#4c72d6"/>`).join('')}</g>
+      <path d="M270 300 C270 350 300 360 300 380 M320 300 C320 350 345 360 345 380 M370 300 C370 350 392 360 392 380 M420 300 C420 350 440 360 440 380" stroke="#121519" stroke-width="22" fill="none" stroke-linecap="round"/>
+      <circle cx="235" cy="350" r="28" fill="#8e98a6"/><circle cx="235" cy="350" r="20" fill="#59616d"/>
+      <g class="fan"><path d="M235 334 L240 350 L235 366 L230 350 Z M219 350 L235 345 L251 350 L235 355 Z" fill="#b8c0cb"/></g>
+    </g>
+    <!-- akumulator i skrzynka bezpieczników -->
+    <g class="part p-battery">
+      <rect x="575" y="200" width="125" height="92" rx="8" fill="#16191e"/>
+      <rect x="590" y="214" width="60" height="22" rx="3" fill="#f0f2f5"/><rect x="594" y="218" width="20" height="5" fill="#e3a51c"/>
+      <circle cx="600" cy="276" r="9" fill="#d23b3b"/><circle cx="676" cy="276" r="9" fill="#3a3f48"/>
+      <rect x="705" y="205" width="48" height="110" rx="8" fill="#1c2027"/>
+    </g>
+    <!-- filtr powietrza i dolot -->
+    <g class="part p-air">
+      <path d="M540 330 C580 330 600 340 640 340" stroke="#121519" stroke-width="34" fill="none" stroke-linecap="round"/>
+      <rect x="610" y="300" width="130" height="80" rx="10" fill="#1d2128"/>
+    </g>
+
+    <!-- 1. olej: bagnet + korek wlewu -->
+    <g class="part p-oil" data-k="oil">
+      <circle cx="300" cy="240" r="17" fill="#141820"/><circle cx="300" cy="240" r="11" fill="#2a2f37"/>
+      <path d="M296 234 h8 l2 6 h-12 z" fill="#e8a33d"/>
+      <g id="dipstick">
+        <line x1="262" y1="306" x2="262" y2="420" stroke="#c7ccd4" stroke-width="5"/>
+        <g class="dip-scale"><rect x="256" y="380" width="12" height="34" rx="2" fill="#7a5a1e"/><line x1="250" y1="386" x2="274" y2="386" stroke="#fff" stroke-width="2"/><line x1="250" y1="410" x2="274" y2="410" stroke="#fff" stroke-width="2"/>
+          <text x="280" y="390" fill="#fff" font-size="13" font-family="Figtree, sans-serif" font-weight="700">MAX</text><text x="280" y="414" fill="#fff" font-size="13" font-family="Figtree, sans-serif" font-weight="700">MIN</text></g>
+        <circle cx="262" cy="298" r="13" fill="none" stroke="#f08a1c" stroke-width="7"/>
+      </g>
+    </g>
+    <!-- 2. płyn do spryskiwaczy -->
+    <g class="part p-washer" data-k="washer">
+      <rect x="92" y="262" width="80" height="120" rx="14" fill="url(#gTank)"/>
+      <rect class="liquid" x="98" y="300" width="68" height="76" rx="9" fill="#5fa8ff" opacity=".75"/>
+      <g class="minmax" stroke="#0b1633" stroke-width="2"><line x1="172" y1="300" x2="186" y2="300"/><line x1="172" y1="360" x2="186" y2="360"/></g>
+      <circle id="washerCap" cx="132" cy="268" r="22" fill="#2f7de1" stroke="#1e5bb0" stroke-width="3"/>
+    </g>
+    <!-- 3. płyn hamulcowy -->
+    <g class="part p-brake" data-k="brake">
+      <rect x="500" y="110" width="56" height="70" rx="10" fill="url(#gTank)"/>
+      <rect class="liquid" x="505" y="128" width="46" height="46" rx="6" fill="#d9b44a" opacity=".8"/>
+      <g class="minmax" stroke="#0b1633" stroke-width="2"><line x1="556" y1="130" x2="570" y2="130"/><line x1="556" y1="162" x2="570" y2="162"/>
+        <text x="574" y="134" fill="#0b1633" font-size="12" font-weight="800" font-family="Figtree, sans-serif">MAX</text><text x="574" y="166" fill="#0b1633" font-size="12" font-weight="800" font-family="Figtree, sans-serif">MIN</text></g>
+      <circle id="brakeCap" cx="528" cy="112" r="18" fill="#f2c230" stroke="#b88d10" stroke-width="3"/>
+    </g>
+    <!-- 4. płyn chłodniczy -->
+    <g class="part p-cool" data-k="cool">
+      <rect x="470" y="318" width="64" height="58" rx="10" fill="url(#gTank)"/>
+      <rect class="liquid" x="476" y="334" width="52" height="36" rx="6" fill="#ff6fa3" opacity=".75"/>
+      <g class="minmax" stroke="#0b1633" stroke-width="2"><line x1="456" y1="336" x2="470" y2="336"/><line x1="456" y1="362" x2="470" y2="362"/></g>
+      <circle id="coolCap" cx="502" cy="320" r="17" fill="#f3d23e" stroke="#2a2f37" stroke-width="5"/>
+    </g>
+
+    <!-- pas przedni, zderzak, reflektory -->
+    <rect x="30" y="388" width="740" height="40" rx="10" fill="#14181e"/>
+    <rect x="300" y="398" width="34" height="18" rx="3" fill="#f2c230"/><rect x="340" y="398" width="34" height="18" rx="3" fill="#fff"/>
+    <path d="M0 420 H800 V480 H0 Z" fill="url(#gBody)"/>
+    <ellipse cx="400" cy="452" rx="44" ry="16" fill="none" stroke="#9aa3ae" stroke-width="5"/>
+    <path d="M0 330 Q40 380 110 430 L0 440 Z" fill="#2b3240"/><path d="M800 330 Q760 380 690 430 L800 440 Z" fill="#2b3240"/>`;
+
+  const LIGHTS_SVG = `
+    <defs>
+      <radialGradient id="gLamp"><stop offset="0" stop-color="#fffbe8"/><stop offset=".35" stop-color="#fff2b8" stop-opacity=".9"/><stop offset="1" stop-color="#fff2b8" stop-opacity="0"/></radialGradient>
+      <radialGradient id="gAmber"><stop offset="0" stop-color="#fff1c2"/><stop offset=".35" stop-color="#ffab1f" stop-opacity=".95"/><stop offset="1" stop-color="#ffab1f" stop-opacity="0"/></radialGradient>
+      <linearGradient id="gBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6cc" stop-opacity=".9"/><stop offset="1" stop-color="#fff6cc" stop-opacity="0"/></linearGradient>
+      <linearGradient id="gPaint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f5f8"/><stop offset="1" stop-color="#bfc6d1"/></linearGradient>
+    </defs>
+    <rect width="800" height="480" fill="#0c1220"/>
+    <path d="M0 330 H800 V480 H0 Z" fill="#161c28"/>
+    <path class="beam-low" d="M190 300 L-40 480 H330 Z M610 300 L470 480 H840 Z" fill="url(#gBeam)"/>
+    <path class="beam-high" d="M190 300 L-120 480 H420 Z M610 300 L380 480 H920 Z" fill="url(#gBeam)"/>
+    <path d="M150 170 Q170 90 260 70 H540 Q630 90 650 170 Z" fill="#232a36"/>
+    <path d="M178 160 Q196 100 270 86 H530 Q604 100 622 160 Z" fill="#7d94b8" opacity=".55"/>
+    <path d="M90 200 Q100 160 150 160 H650 Q700 160 710 200 L726 330 Q726 360 690 362 H110 Q74 360 74 330 Z" fill="url(#gPaint)"/>
+    <path d="M118 222 Q150 210 255 238 L250 262 Q160 260 120 248 Z" fill="#2a3140"/>
+    <path d="M682 222 Q650 210 545 238 L550 262 Q640 260 680 248 Z" fill="#2a3140"/>
+    <path d="M270 262 L530 262 L560 330 L240 330 Z" fill="#1b2029"/>
+    <g stroke="#2e3542" stroke-width="3">${Array.from({ length: 8 }, (_, i) => `<line x1="${262 + i * 40}" y1="270" x2="${250 + i * 44}" y2="326"/>`).join('')}</g>
+    <ellipse cx="400" cy="246" rx="34" ry="12" fill="none" stroke="#9aa3ae" stroke-width="4"/>
+    <rect x="345" y="340" width="110" height="22" rx="3" fill="#fff"/>
+    <text x="400" y="356" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="14" font-weight="800" fill="#1d5bd8">KR OES</text>
+    <path d="M130 300 L170 340 L200 340 L160 296 Z M670 300 L630 340 L600 340 L640 296 Z" fill="#2a3140"/>
+    <!-- poświata lamp -->
+    <circle class="lamp-glow g-pos" cx="138" cy="232" r="22" fill="url(#gLamp)"/><circle class="lamp-glow g-pos" cx="662" cy="232" r="22" fill="url(#gLamp)"/>
+    <circle class="lamp-glow g-low" cx="200" cy="244" r="58" fill="url(#gLamp)"/><circle class="lamp-glow g-low" cx="600" cy="244" r="58" fill="url(#gLamp)"/>
+    <circle class="lamp-glow g-high" cx="225" cy="246" r="110" fill="url(#gLamp)"/><circle class="lamp-glow g-high" cx="575" cy="246" r="110" fill="url(#gLamp)"/>
+    <circle class="lamp-glow g-ind-l" cx="128" cy="244" r="40" fill="url(#gAmber)"/>
+    <circle class="lamp-glow g-ind-r" cx="672" cy="244" r="40" fill="url(#gAmber)"/>
+    <path d="M60 196 L84 190 L88 214 L64 220 Z" fill="#232a36"/><path d="M740 196 L716 190 L712 214 L736 220 Z" fill="#232a36"/>
+    <circle class="lamp-glow g-ind-l" cx="74" cy="205" r="22" fill="url(#gAmber)"/><circle class="lamp-glow g-ind-r" cx="726" cy="205" r="22" fill="url(#gAmber)"/>
+    <rect x="378" y="40" width="44" height="26" rx="4" fill="#1d5bd8" stroke="#fff" stroke-width="2"/>
+    <text x="400" y="60" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">L</text>`;
+
+  const MODES = {
+    fluids: { svg: ENGINE_SVG, label: 'Pytanie egzaminatora', items: [
+      { k: 'oil', x: 262, y: 352, t: 'Olej silnikowy', ask: '„Proszę sprawdzić poziom oleju w silniku.”', how: 'Wyciągnij bagnet (pomarańczowy uchwyt), wytrzyj go, włóż z powrotem i wyciągnij ponownie. Olej ma być między MIN a MAX. Dolewa się go przez korek na pokrywie silnika.' },
+      { k: 'brake', x: 470, y: 128, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Zbiorniczek z żółtym korkiem przy szybie, po stronie kierowcy. Poziom płynu odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
+      { k: 'cool', x: 566, y: 350, t: 'Płyn chłodniczy', ask: '„Proszę sprawdzić poziom płynu w układzie chłodzenia.”', how: 'Pokaż zbiorniczek z płynem chłodniczym i oceń poziom między MIN a MAX. Nigdy nie odkręcaj korka przy gorącym silniku, bo płyn jest pod ciśnieniem.' },
+      { k: 'washer', x: 200, y: 300, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu po lewej stronie. Tu wlewasz płyn, zimą zimowy.' },
+    ]},
+    lights: { svg: LIGHTS_SVG, label: 'Polecenie egzaminatora', items: [
+      { k: 'pos', x: 150, y: 296, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
+      { k: 'low', x: 222, y: 296, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Pokrętło na lewej dźwigni na symbol reflektora z ukośnymi promieniami w dół. Na desce zapali się zielona kontrolka.' },
+      { k: 'high', x: 400, y: 300, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka. Pociągnięcie do siebie to „mrugnięcie” drogowymi.' },
+      { k: 'left', x: 74, y: 160, t: 'Kierunkowskaz', ask: '„Proszę włączyć lewy kierunkowskaz.”', how: 'Lewa dźwignia w dół to lewy kierunkowskaz, w górę prawy. Na desce miga zielona strzałka.' },
+      { k: 'hazard', x: 726, y: 160, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski rozdzielczej. Migają wszystkie kierunkowskazy naraz.' },
+    ]},
+  };
+
+  const bay = document.getElementById('bay'), baySvg = document.getElementById('baySvg'), qlist = document.getElementById('qlist');
+  let mode = 'fluids';
+  function setMode(m) {
+    mode = m;
+    document.getElementById('tabFluids').setAttribute('aria-selected', m === 'fluids');
+    document.getElementById('tabLights').setAttribute('aria-selected', m === 'lights');
+    baySvg.innerHTML = MODES[m].svg;
+    bay.className = 'bay';
+    bay.querySelectorAll('.hs').forEach(h => h.remove());
+    qlist.innerHTML = '';
+    MODES[m].items.forEach((it, i) => {
+      const h = document.createElement('button');
+      h.className = 'hs'; h.textContent = i + 1; h.setAttribute('aria-label', it.t);
+      h.style.left = (it.x / 800 * 100) + '%'; h.style.top = (it.y / 480 * 100) + '%';
+      h.addEventListener('click', () => pick(i));
+      bay.appendChild(h);
+      const li = document.createElement('li');
+      li.innerHTML = `<button><b>${i + 1}</b>${it.t}</button>`;
+      li.firstChild.addEventListener('click', () => pick(i));
+      qlist.appendChild(li);
+    });
+    document.getElementById('qLabel').textContent = MODES[m].label;
+    document.getElementById('qTitle').textContent = 'Wybierz punkt';
+    document.getElementById('qAsk').textContent = 'Kliknij numer na rysunku albo na liście poniżej.';
+    document.getElementById('qHow').textContent = '';
+    document.getElementById('bayHint').hidden = false;
   }
-  function setLights(on) {
-    stage.classList.toggle('lights', on);
-    tLights.setAttribute('aria-pressed', on); tLights.textContent = on ? 'Wyłącz światła' : 'Włącz światła';
-  }
-  function focusQ(i) {
-    const q = QUESTIONS[i];
-    if (q.hood) setHood(true); else setLights(true);
-    spots.forEach((s, k) => s.classList.toggle('active', k === i));
+  function pick(i) {
+    const it = MODES[mode].items[i];
+    document.getElementById('bayHint').hidden = true;
+    if (mode === 'fluids') {
+      bay.classList.add('focus');
+      baySvg.querySelectorAll('.part').forEach(p => p.classList.toggle('on', p.dataset.k === it.k));
+    } else {
+      bay.className = 'bay l-' + it.k;
+    }
+    bay.querySelectorAll('.hs').forEach((h, k) => h.classList.toggle('active', k === i));
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
+    document.getElementById('qTitle').textContent = it.t;
+    document.getElementById('qAsk').textContent = it.ask;
+    document.getElementById('qHow').textContent = it.how;
   }
-  tHood.addEventListener('click', () => setHood(!stage.classList.contains('open')));
-  tLights.addEventListener('click', () => setLights(!stage.classList.contains('lights')));
-  stage.addEventListener('mouseenter', () => setHood(true));
+  document.getElementById('tabFluids').addEventListener('click', () => setMode('fluids'));
+  document.getElementById('tabLights').addEventListener('click', () => setMode('lights'));
+  setMode('fluids');
 
   // ---------- 7. Biura ----------
   document.getElementById('offices').innerHTML = OFFICES.map(([n, a, t]) => `
@@ -605,7 +701,7 @@ footer a { color: var(--white); }
 
   // ---------- Pojawianie się sekcji ----------
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const groups = ['.sec-head', '.hood-grid > *', '.why', '.steps li', '.review', '.office', '.hours', '.signup-grid > *'];
+    const groups = ['.sec-head', '.hood-tabs', '.hood-grid > *', '.why', '.steps li', '.review', '.office', '.hours', '.signup-grid > *'];
     const els = [];
     groups.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('rv');
