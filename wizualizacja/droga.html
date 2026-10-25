@@ -58,6 +58,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .nav { display: flex; gap: 22px; margin-left: auto; }
 .nav a { color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 15px; }
 .nav a:hover { color: var(--white); }
+.nav a[aria-current] { color: var(--white); }
 .top .phone { color: var(--white); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
 
 /* ---------- 2. Wybór pojazdu ---------- */
@@ -353,7 +354,7 @@ footer a { color: var(--white); }
     <a class="brand" href="index.html#start"><span class="lplate">L</span>OES</a>
     <nav class="nav" aria-label="Menu">
       <a href="index.html#start">Kategorie</a>
-      <a href="index.html#kroki">Poradnik</a>
+      <a href="droga.html" aria-current="page">Poradnik</a>
       <a href="index.html#biura">Biura</a>
       <a href="onas.html">O nas</a>
     </nav>
