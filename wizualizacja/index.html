@@ -173,11 +173,44 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 
 /* ---------- 6. Opinie ---------- */
 .reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-.review { background: var(--white); border: 1px dashed var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.review { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
 .stars { color: var(--amber); letter-spacing: 2px; font-size: 18px; }
 .review p { margin: 0; color: var(--muted); }
 .review .who { display: flex; gap: 10px; align-items: center; font-weight: 700; }
-.avatar { width: 36px; height: 36px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); }
+.avatar { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: var(--white); font-size: 15px; font-weight: 800; }
+.review p { color: var(--ink); }
+.review .who small { display: block; font-weight: 500; font-size: 13px; color: var(--muted); }
+.rating { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin-bottom: 22px; }
+.rating-big { display: flex; align-items: center; gap: 14px; }
+.rating-big b { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 52px; line-height: 1; color: var(--ink); }
+.rating-big span { color: var(--muted); font-size: 14px; line-height: 1.35; }
+.rating-big .stars { display: block; color: var(--amber); }
+.rating-offices { display: flex; flex-wrap: wrap; gap: 8px; }
+.rating-offices a { display: inline-flex; gap: 6px; align-items: center; padding: 7px 12px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; }
+.rating-offices a b { color: var(--blue); }
+.rating-offices a:hover { border-color: var(--blue); }
+.reviews-more { margin-top: 18px; }
+.reviews-more a { color: var(--blue); font-weight: 700; text-decoration: none; }
+
+/* ---------- 6b. TikTok ---------- */
+.tiktok-sec { background: var(--navy); color: var(--white); }
+.tiktok-sec .kicker { color: var(--blue-bright); }
+.tiktok-sec .sec-head p { color: var(--on-dark-muted); }
+.tt-row { display: grid; grid-template-columns: repeat(3, minmax(0, 260px)); gap: 18px; justify-content: start; }
+.tt { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,0,.7); cursor: pointer; transition: transform .3s; }
+.tt:hover { transform: translateY(-4px); }
+.tt video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tt-sound { position: absolute; right: 10px; bottom: 10px; border: 0; border-radius: 999px; padding: 7px 11px; background: rgba(7,18,51,.8); color: #fff; font: 700 13px var(--font-body); cursor: pointer; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.socials a { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--white); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); }
+.socials a.main { background: var(--blue); border-color: var(--blue); }
+.socials a:hover { background: rgba(255,255,255,.16); }
+.socials a.main:hover { background: var(--blue-bright); }
+@media (max-width: 720px) {
+  .tt-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 68%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; padding-bottom: 6px; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; }
+  .tt { scroll-snap-align: start; }
+  .rating-big b { font-size: 44px; }
+}
 
 /* ---------- 7. Biura ---------- */
 .offices-sec { background: var(--white); }
@@ -351,12 +384,42 @@ footer a { color: var(--white); }
       <div class="sec-head">
         <span class="kicker">Opinie</span>
         <h2>Co mówią kursanci</h2>
-        <p><span class="tag-mock">Miejsce na opinie</span> Tu pokażemy prawdziwe opinie z Google.</p>
+      </div>
+      <div class="rating">
+        <div class="rating-big"><b>4,7</b><span><span class="stars" aria-label="4,7 na 5">★★★★★</span>średnio w Google<br>470 opinii z 3 biur</span></div>
+        <div class="rating-offices">
+          <a href="https://www.google.com/maps/search/OES+Jerzmanowskiego+37+Krak%C3%B3w">Jerzmanowskiego <b>4,9 ★</b> (178)</a>
+          <a href="https://www.google.com/maps/search/OES+Wroc%C5%82awska+48+Krak%C3%B3w">Wrocławska <b>4,7 ★</b> (135)</a>
+          <a href="https://www.google.com/maps/search/OES+Czarnowiejska+13+Krak%C3%B3w">Czarnowiejska <b>4,6 ★</b> (157)</a>
+        </div>
       </div>
       <div class="reviews">
-        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
-        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
-        <div class="review"><div class="stars">★★★★★</div><p>Tu pojawi się opinia kursanta z Google.</p><div class="who"><span class="avatar"></span>Imię kursanta</div></div>
+        <div class="review"><div class="stars">★★★★★</div><p>„Super szkoła i instruktorzy. Najlepszy instruktor to Paweł Z. :) Profesjonalny od pierwszej do ostatniej lekcji, a przy tym pełen cierpliwości i pozytywnej energii.”</p><div class="who"><span class="avatar">A</span><span>AN<small>opinia z Google</small></span></div></div>
+        <div class="review"><div class="stars">★★★★★</div><p>„Świetny ośrodek szkolenia kierowców! Instruktorzy są bardzo cierpliwi, profesjonalni i potrafią w prosty sposób wytłumaczyć nawet trudniejsze zagadnienia.”</p><div class="who"><span class="avatar">D</span><span>Daniel K.<small>opinia z Google</small></span></div></div>
+        <div class="review"><div class="stars">★★★★★</div><p>„Panie na recepcji bardzo sympatyczne i rzeczowe. Załatwiłam zapisy na prawo jazdy w mniej niż 15 minut :)”</p><div class="who"><span class="avatar">G</span><span>Gabriela R.<small>opinia z Google</small></span></div></div>
+      </div>
+      <p class="reviews-more"><a href="https://www.google.com/maps/search/OES+O%C5%9Brodek+Szkolenia+Kierowc%C3%B3w+Krak%C3%B3w">Zobacz wszystkie opinie w Google →</a></p>
+    </div>
+  </section>
+
+  <!-- 6b. TikTok -->
+  <section class="tiktok-sec" id="tiktok">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">OES na TikToku</span>
+        <h2>Zobacz, jak u nas jest</h2>
+        <p>Kursanci, instruktorzy i trochę śmiechu przed egzaminem.</p>
+      </div>
+      <div class="tt-row">
+        <figure class="tt"><video src="img/tiktok/tt1.mp4" poster="img/tiktok/tt1.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: jak wyglądam o 7 rano przychodząc na jazdy vs mój instruktor"></video><button class="tt-sound">Włącz dźwięk</button></figure>
+        <figure class="tt"><video src="img/tiktok/tt2.mp4" poster="img/tiktok/tt2.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: najważniejsze to dobry vibe z instruktorem"></video><button class="tt-sound">Włącz dźwięk</button></figure>
+        <figure class="tt"><video src="img/tiktok/tt3.mp4" poster="img/tiktok/tt3.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: trafiłeś na kota szczęścia"></video><button class="tt-sound">Włącz dźwięk</button></figure>
+      </div>
+      <div class="socials">
+        <a class="main" href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">Obserwuj na TikToku</a>
+        <a href="https://www.youtube.com/@OesPL">YouTube</a>
+        <a href="https://www.facebook.com/OESKRAKOW">Facebook</a>
+        <a href="https://www.instagram.com/oeskrakow/">Instagram</a>
       </div>
     </div>
   </section>
@@ -398,7 +461,7 @@ footer a { color: var(--white); }
   <div class="wrap">
     <div><b>OES Ośrodek Szkolenia Kierowców</b><br>ul. Wrocławska 48, Kraków</div>
     <div>Tel. <b>501 294 854</b>, <b>12 633 49 77</b><br>biurowroclawska@oes.com.pl</div>
-    <div><a href="https://www.facebook.com/OESKRAKOW/">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
+    <div><a href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">TikTok</a> · <a href="https://www.youtube.com/@OesPL">YouTube</a> · <a href="https://www.facebook.com/OESKRAKOW">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
   </div>
 </footer>
 
@@ -660,6 +723,25 @@ footer a { color: var(--white); }
   }
   setMode('fluids');
 
+  // ---------- 6b. TikTok: grają po cichu, gdy są na ekranie ----------
+  const tts = [...document.querySelectorAll('.tt')];
+  const ttIO = new IntersectionObserver(es => es.forEach(e => {
+    const v = e.target.querySelector('video');
+    if (e.isIntersecting) v.play().catch(() => {}); else v.pause();
+  }), { threshold: .6 });
+  tts.forEach(t => {
+    const v = t.querySelector('video'), b = t.querySelector('.tt-sound');
+    ttIO.observe(t);
+    const toggle = () => {
+      const on = v.muted;
+      // dźwięk tylko w jednym filmiku naraz
+      tts.forEach(o => { o.querySelector('video').muted = true; o.querySelector('.tt-sound').textContent = 'Włącz dźwięk'; });
+      v.muted = !on; b.textContent = on ? 'Wycisz' : 'Włącz dźwięk';
+      if (on) { v.currentTime = 0; v.play().catch(() => {}); }
+    };
+    t.addEventListener('click', toggle);
+  });
+
   // ---------- 7. Biura ----------
   document.getElementById('offices').innerHTML = OFFICES.map(([n, a, t]) => `
     <div class="office"><h3>${n}</h3><span class="addr">${a}</span><span class="tel">${t}</span>
@@ -674,7 +756,7 @@ footer a { color: var(--white); }
 
   // ---------- Pojawianie się sekcji ----------
   if ('IntersectionObserver' in window && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    const groups = ['.sec-head', '.hood-tabs', '.hood-grid > *', '.why', '.steps li', '.review', '.office', '.hours', '.signup-grid > *'];
+    const groups = ['.sec-head', '.hood-tabs', '.hood-grid > *', '.why', '.steps li', '.review', '.rating', '.tt', '.office', '.hours', '.signup-grid > *'];
     const els = [];
     groups.forEach(sel => document.querySelectorAll(sel).forEach(el => {
       el.classList.add('rv');
