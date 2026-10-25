@@ -62,6 +62,9 @@
   .ai-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; color: #8a5a00; background: #fff3d6; border-radius: 6px; padding: 3px 7px; margin-bottom: 7px; }
   .ai-kick { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #6b7fa8; margin-bottom: 4px; }
   .ai-note { display: block; margin-top: 7px; font-size: 12.5px; color: #5b6b8c; line-height: 1.45; }
+  .ai-fa { display: inline-block; width: 1em; height: 1em; fill: currentColor; vertical-align: -.125em; }
+  .ai-wave { color: #f5b301; transform-origin: 70% 90%; animation: aiWave 1.6s ease-in-out 2; }
+  @keyframes aiWave { 0%, 60%, 100% { transform: none; } 10%, 30% { transform: rotate(14deg); } 20%, 40% { transform: rotate(-8deg); } }
   .ai-promo { display: block; margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: #edf3ff; color: #12398f; font-size: 13px; font-weight: 600; line-height: 1.4; }
   .ai-rows { display: grid; gap: 1px; margin: 8px 0 2px; background: #e3e9f5; border-radius: 10px; overflow: hidden; }
   .ai-rows div { display: flex; justify-content: space-between; gap: 10px; padding: 7px 10px; background: #f7f9fd; font-size: 13.5px; }
@@ -92,14 +95,18 @@
     .ai-panel { right: 0; left: 0; bottom: 0; width: 100%; height: min(86vh, 680px); border-radius: 20px 20px 0 0; padding-bottom: env(safe-area-inset-bottom, 0px); }
     .ai-fab .ai-ico { width: 54px; height: 54px; }
   }
-  @media (prefers-reduced-motion: reduce) { .ai-panel, .ai-msg, .ai-typing i { animation: none; } }`;
+  @media (prefers-reduced-motion: reduce) { .ai-panel, .ai-msg, .ai-typing i, .ai-wave { animation: none; } }`;
   document.head.insertAdjacentHTML('beforeend', `<style>${css}</style>`);
 
+  // ikony: Font Awesome Free 6.5.2 (https://fontawesome.com, licencja ikon CC BY 4.0), wklejone jako SVG
+  const handIco = '<svg class="ai-fa ai-wave" viewBox="0 0 512 512" aria-hidden="true"><path d="M288 32c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V336c0 1.5 0 3.1 .1 4.6L67.6 283c-16-15.2-41.3-14.6-56.6 1.4s-14.6 41.3 1.4 56.6L124.8 448c43.1 41.1 100.4 64 160 64H304c97.2 0 176-78.8 176-176V128c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V64c0-17.7-14.3-32-32-32s-32 14.3-32 32V240c0 8.8-7.2 16-16 16s-16-7.2-16-16V32z"/></svg>';
+  const tagsIco = '<svg class="ai-fa" viewBox="0 0 512 512" aria-hidden="true"><path d="M345 39.1L472.8 168.4c52.4 53 52.4 138.2 0 191.2L360.8 472.9c-9.3 9.4-24.5 9.5-33.9 .2s-9.5-24.5-.2-33.9L438.6 325.9c33.9-34.3 33.9-89.4 0-123.7L310.9 72.9c-9.3-9.4-9.2-24.6 .2-33.9s24.6-9.2 33.9 .2zM0 229.5V80C0 53.5 21.5 32 48 32H197.5c17 0 33.3 6.7 45.3 18.7l168 168c25 25 25 65.5 0 90.5L277.3 442.7c-25 25-65.5 25-90.5 0l-168-168C6.7 262.7 0 246.5 0 229.5zM144 144a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>';
+  const warnIco = '<svg class="ai-fa" viewBox="0 0 512 512" aria-hidden="true"><path d="M256 32c14.2 0 27.3 7.5 34.5 19.8l216 368c7.3 12.4 7.3 27.7 .2 40.1S486.3 480 472 480H40c-14.3 0-27.6-7.7-34.7-20.1s-7-27.8 .2-40.1l216-368C228.7 39.5 241.8 32 256 32zm0 128c-13.3 0-24 10.7-24 24V296c0 13.3 10.7 24 24 24s24-10.7 24-24V184c0-13.3-10.7-24-24-24zm32 224a32 32 0 1 0 -64 0 32 32 0 1 0 64 0z"/></svg>';
   const chatIco = '<svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 10.5h.01M12 10.5h.01M15.5 10.5h.01" stroke-width="2.6"/></svg>';
   const sendIco = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12l16-8-6 16-2.5-6.5z"/></svg>';
   const listIco = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>';
   document.body.insertAdjacentHTML('beforeend', `
-    <button class="ai-fab" type="button" aria-expanded="false" aria-controls="aiPanel" aria-label="Otwórz asystenta OES"><span class="ai-ico">${chatIco}</span><span class="ai-bub">Masz pytanie? 👋</span></button>
+    <button class="ai-fab" type="button" aria-expanded="false" aria-controls="aiPanel" aria-label="Otwórz asystenta OES"><span class="ai-ico">${chatIco}</span><span class="ai-bub">${handIco} Masz pytanie?</span></button>
     <div class="ai-panel" id="aiPanel" role="dialog" aria-label="Asystent OES" hidden>
       <div class="ai-head"><span class="ai-av">L</span><div><b>Asystent OES</b><small>odpowiada od razu</small></div><button class="ai-hbtn ai-home" type="button" aria-label="Wszystkie tematy" title="Wszystkie tematy">${listIco}</button><button class="ai-hbtn ai-x" type="button" aria-label="Zamknij">×</button></div>
       <div class="ai-log" aria-live="polite"></div>
@@ -194,11 +201,11 @@
   const related = d => search(d.q).map(r => r.d).filter(x => x.id !== d.id && !asked.has(x.id)).slice(0, 3).map(x => x.id);
 
   // przy cenach zawsze dopisek o zniżkach: szkoła często daje promocje indywidualnie (prośba Piotra)
-  const PROMO = '<span class="ai-promo">💬 O zniżki i aktualne promocje zapytaj w biurze. Zadzwoń albo przyjdź, a podamy Ci najlepszą cenę.</span>';
+  const PROMO = `<span class="ai-promo">${tagsIco} O zniżki i aktualne promocje zapytaj w biurze. Zadzwoń albo przyjdź, a podamy Ci najlepszą cenę.</span>`;
   const isPrice = d => d.dzial.startsWith('Ceny') || d.dzial === 'Promocje' || /cennik/i.test(d.a);
   async function showFaq(d) {
     asked.add(d.id);
-    const tag = d.ok ? '' : '<span class="ai-tag">⚠ do potwierdzenia w biurze</span><br>';
+    const tag = d.ok ? '' : `<span class="ai-tag">${warnIco} do potwierdzenia w biurze</span><br>`;
     const links = [...(LINKS[d.dzial] || [])];
     if (!d.ok || isPrice(d)) links.unshift(callLink());
     await reply(tag + rich(d.a) + (isPrice(d) ? PROMO : ''), links);
@@ -284,7 +291,7 @@
     panel.hidden = false; fab.setAttribute('aria-expanded', 'true'); fab.classList.remove('hello');
     if (!started) {
       started = true;
-      add('Cześć! 👋 Jestem asystentem szkoły jazdy OES. Wybierz pytanie, przejrzyj tematy albo napisz własne.', 'bot');
+      add(`${handIco} Cześć! Jestem asystentem szkoły jazdy OES. Wybierz pytanie, przejrzyj tematy albo napisz własne.`, 'bot');
       ready = load().then(d => {
         D = d; IDX = index();
         add(`<span class="ai-kick">Najczęściej pytacie</span><div class="ai-qlist">${START.map(a => `<button type="button" data-act="${a}">${esc(label(a))}</button>`).join('')}</div>`, 'bot', true);
