@@ -213,7 +213,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 }
 
 /* ---------- 7. Biura ---------- */
-.offices-sec { background: var(--paper); }
+.offices-sec { background: var(--white); }
 .offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
 .office { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; }
 .office h3 { font-size: 19px; font-weight: 800; font-stretch: 105%; }
@@ -314,7 +314,38 @@ footer a { color: var(--white); }
     </div>
   </section>
 
-  <!-- 3. Opinie -->
+  <!-- 3. Pod maską -->
+  <section class="hood" id="pod-maska">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Przygotuj się do egzaminu</span>
+        <h2>Zajrzyj pod maskę</h2>
+        <p>Przed jazdą egzaminator poprosi cię o sprawdzenie płynów, świateł i klaksonu. Kliknij punkt i zobacz, co pokazać.</p>
+      </div>
+      <div class="hood-tabs" role="tablist" aria-label="Tryb">
+        <button class="hood-tab" role="tab" id="tabFluids" aria-selected="true">Płyny pod maską</button>
+        <button class="hood-tab" role="tab" id="tabLights" aria-selected="false">Światła</button>
+        <button class="hood-tab" role="tab" id="tabHorn" aria-selected="false">Klakson</button>
+      </div>
+      <div class="hood-grid">
+        <div class="bay" id="bay">
+          
+        </div>
+        <div>
+          <div class="qcard" aria-live="polite">
+            <span class="q-label" id="qLabel">Pytanie egzaminatora</span>
+            <h3 id="qTitle">Wybierz punkt</h3>
+            <p class="q-ask" id="qAsk">Kliknij numer na rysunku albo na liście poniżej.</p>
+            <p class="q-how" id="qHow"></p>
+            <div class="q-say" id="qSay" hidden><span>Co powiedzieć egzaminatorowi</span><p id="qSayText"></p></div>
+          </div>
+          <ul class="qlist" id="qlist"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4. Opinie -->
   <section id="opinie">
     <div class="wrap">
       <div class="sec-head">
@@ -338,7 +369,7 @@ footer a { color: var(--white); }
     </div>
   </section>
 
-  <!-- 4. TikTok -->
+  <!-- 4b. TikTok -->
   <section class="tiktok-sec" id="tiktok">
     <div class="wrap">
       <div class="sec-head">
@@ -391,37 +422,6 @@ footer a { color: var(--white); }
         <li><h3>Teoria i jazdy</h3><p>Zajęcia z teorii, a potem jazdy z instruktorem na placu i w mieście.</p></li>
         <li><h3>Egzamin w WORD</h3><p>Zdajesz teorię i praktykę, a potem odbierasz prawo jazdy.</p></li>
       </ol>
-    </div>
-  </section>
-
-  <!-- 6b. Pod maską -->
-  <section class="hood" id="pod-maska">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">Przygotuj się do egzaminu</span>
-        <h2>Zajrzyj pod maskę</h2>
-        <p>Przed jazdą egzaminator poprosi cię o sprawdzenie płynów, świateł i klaksonu. Kliknij punkt i zobacz, co pokazać.</p>
-      </div>
-      <div class="hood-tabs" role="tablist" aria-label="Tryb">
-        <button class="hood-tab" role="tab" id="tabFluids" aria-selected="true">Płyny pod maską</button>
-        <button class="hood-tab" role="tab" id="tabLights" aria-selected="false">Światła</button>
-        <button class="hood-tab" role="tab" id="tabHorn" aria-selected="false">Klakson</button>
-      </div>
-      <div class="hood-grid">
-        <div class="bay" id="bay">
-          
-        </div>
-        <div>
-          <div class="qcard" aria-live="polite">
-            <span class="q-label" id="qLabel">Pytanie egzaminatora</span>
-            <h3 id="qTitle">Wybierz punkt</h3>
-            <p class="q-ask" id="qAsk">Kliknij numer na rysunku albo na liście poniżej.</p>
-            <p class="q-how" id="qHow"></p>
-            <div class="q-say" id="qSay" hidden><span>Co powiedzieć egzaminatorowi</span><p id="qSayText"></p></div>
-          </div>
-          <ul class="qlist" id="qlist"></ul>
-        </div>
-      </div>
     </div>
   </section>
 
