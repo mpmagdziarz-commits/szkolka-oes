@@ -57,7 +57,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .top .phone { color: var(--white); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
 
 /* ---------- 2. Wybór pojazdu ---------- */
-.garage { position: relative; background: radial-gradient(120% 80% at 50% 70%, #16307a 0%, var(--navy-2) 40%, var(--navy) 75%); color: var(--white); overflow: hidden; padding-block: 36px 48px; }
+.garage { position: relative; background: radial-gradient(120% 80% at 50% 70%, #16307a 0%, var(--navy-2) 40%, var(--navy) 75%); color: var(--white); overflow: hidden; overflow: clip; padding-block: 36px 48px; }
 .garage::before { content: ""; position: absolute; inset: auto -10% 0 -10%; height: 45%; background:
   linear-gradient(transparent 0, rgba(7,18,51,.0) 0),
   repeating-linear-gradient(90deg, rgba(76,155,255,.10) 0 1px, transparent 1px 80px),
@@ -540,7 +540,7 @@ footer a { color: var(--white); }
       { id: 'C1', img: 'C', model: 'Mercedes-Benz Atego', age: 18, hours: null, price: null, desc: 'Ciężarówki od 3,5 do 7,5 t.' },
       { id: 'C1+E', img: 'C', model: 'Mercedes-Benz Atego', age: 18, hours: null, price: null, desc: 'Mniejsze ciężarówki z przyczepą.' },
       { id: 'C',  img: 'C', model: 'Mercedes-Benz Atego', age: 21, hours: 30, price: 5900, desc: 'Ciężarówki powyżej 3,5 t.' },
-      { id: 'C+E', img: 'C', model: 'Mercedes-Benz Atego', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
+      { id: 'C+E', img: 'CE', model: 'Scania P320 z przyczepą', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
     ], start: 2 },
   ];
   const OFFICES = [
