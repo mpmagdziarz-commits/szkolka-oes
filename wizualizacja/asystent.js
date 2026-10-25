@@ -62,6 +62,7 @@
   .ai-tag { display: inline-flex; align-items: center; gap: 5px; font-size: 11.5px; font-weight: 800; letter-spacing: .02em; text-transform: uppercase; color: #8a5a00; background: #fff3d6; border-radius: 6px; padding: 3px 7px; margin-bottom: 7px; }
   .ai-kick { display: block; font-size: 11.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; color: #6b7fa8; margin-bottom: 4px; }
   .ai-note { display: block; margin-top: 7px; font-size: 12.5px; color: #5b6b8c; line-height: 1.45; }
+  .ai-promo { display: block; margin-top: 8px; padding: 8px 10px; border-radius: 10px; background: #edf3ff; color: #12398f; font-size: 13px; font-weight: 600; line-height: 1.4; }
   .ai-rows { display: grid; gap: 1px; margin: 8px 0 2px; background: #e3e9f5; border-radius: 10px; overflow: hidden; }
   .ai-rows div { display: flex; justify-content: space-between; gap: 10px; padding: 7px 10px; background: #f7f9fd; font-size: 13.5px; }
   .ai-rows div > span:last-child { text-align: right; }
@@ -192,12 +193,15 @@
   // podobne pytania, których jeszcze nie było
   const related = d => search(d.q).map(r => r.d).filter(x => x.id !== d.id && !asked.has(x.id)).slice(0, 3).map(x => x.id);
 
+  // przy cenach zawsze dopisek o zniżkach: szkoła często daje promocje indywidualnie (prośba Piotra)
+  const PROMO = '<span class="ai-promo">💬 O zniżki i aktualne promocje zapytaj w biurze. Zadzwoń albo przyjdź, a podamy Ci najlepszą cenę.</span>';
+  const isPrice = d => d.dzial.startsWith('Ceny') || d.dzial === 'Promocje' || /cennik/i.test(d.a);
   async function showFaq(d) {
     asked.add(d.id);
     const tag = d.ok ? '' : '<span class="ai-tag">⚠ do potwierdzenia w biurze</span><br>';
     const links = [...(LINKS[d.dzial] || [])];
-    if (!d.ok) links.unshift(callLink());
-    await reply(tag + rich(d.a), links);
+    if (!d.ok || isPrice(d)) links.unshift(callLink());
+    await reply(tag + rich(d.a) + (isPrice(d) ? PROMO : ''), links);
   }
   const rowsHtml = rows => `<div class="ai-rows">${rows.join('')}</div>`;
   async function showPrices(cs) {
@@ -205,8 +209,8 @@
     if (!rows.length) return false;
     const h = rows.map(r => `<div><span>${esc(r[0])} · ${esc(r[1])}${r[5] ? `<small>${r[4] ? r[4] + ' h teorii, ' : 'bez teorii, '}${r[5]} h jazd</small>` : ''}</span><span><b>${fmt(r[2])}</b>${r[3] > r[2] ? `<s>${fmt(r[3])}</s>` : ''}</span></div>`);
     const zk = cs.find(c => ZAPIS_KAT.includes(c));
-    await reply(`<span class="ai-kick">Cennik kat. ${esc(cs.join(', '))}</span>${rowsHtml(h)}<span class="ai-note">Ceny z cennika OES na ${plDate(D.stan)}. Mogą się zmienić przed opłaceniem kursu, więc potwierdź je w biurze.</span>`,
-      zk ? [['Zapisz się na kat. ' + zk, 'zapis.html?kat=' + encodeURIComponent(zk)]] : [callLink()], true);
+    await reply(`<span class="ai-kick">Cennik kat. ${esc(cs.join(', '))}</span>${rowsHtml(h)}<span class="ai-note">Ceny z cennika OES na ${plDate(D.stan)}. Mogą się zmienić przed opłaceniem kursu.</span>${PROMO}`,
+      [callLink(), ...(zk ? [['Zapisz się na kat. ' + zk, 'zapis.html?kat=' + encodeURIComponent(zk)]] : [])], true);
     return true;
   }
   async function showOffice(i) {
