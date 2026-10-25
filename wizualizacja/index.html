@@ -114,7 +114,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .stage-wrap { position: relative; transform: scale(var(--z, 1)) translate(var(--tx, 0%), var(--ty, 0%)); transition: transform .9s cubic-bezier(.3,.9,.3,1); }
 .stage-wrap > img, .stage-wrap > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
 .dim { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s .2s; background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), transparent 0 6%, rgba(4,9,22,.72) 12%); }
-.ring { position: absolute; width: 7%; aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 3px var(--blue-bright), 0 0 24px rgba(76,155,255,.8); opacity: 0; pointer-events: none; transition: opacity .4s .6s; animation: ringPulse 1.6s ease-in-out infinite; }
+.ring { position: absolute; width: calc(14% / var(--z, 2)); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 3px var(--blue-bright), 0 0 24px rgba(76,155,255,.8); opacity: 0; pointer-events: none; transition: opacity .4s .6s; animation: ringPulse 1.6s ease-in-out infinite; }
 @keyframes ringPulse { 50% { box-shadow: 0 0 0 6px rgba(76,155,255,.35), 0 0 36px rgba(76,155,255,1); } }
 .bay.zoom .dim, .bay.zoom .ring { opacity: 1; }
 .bay.zoom .hs { opacity: 0; pointer-events: none; }
@@ -124,24 +124,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 @keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
 .hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
 .hs.active::after { animation: none; opacity: 0; }
-.bay.gallery { background: #05080f; }
-.mosaic { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; padding: 6px; }
-.mosaic button { position: relative; border: 0; padding: 0; border-radius: 10px; overflow: hidden; aspect-ratio: 3 / 4; cursor: pointer; background: #000; }
-.mosaic img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .4s; }
-.mosaic button:hover img { transform: scale(1.06); }
-.mosaic span { position: absolute; left: 0; right: 0; bottom: 0; padding: 22px 8px 8px; font: 700 13px/1.2 var(--font-body); color: #fff; text-align: left; background: linear-gradient(transparent, rgba(4,9,22,.9)); }
-.mosaic b { display: inline-grid; place-items: center; width: 20px; height: 20px; margin-right: 6px; border-radius: 50%; background: var(--blue); font-size: 11px; }
-.shot { position: relative; height: min(540px, 70vh); overflow: hidden; }
-.shot .bg { position: absolute; inset: -30px; background-size: cover; background-position: center; filter: blur(24px) brightness(.45); transition: background-image .5s; }
-.shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; opacity: 0; transition: opacity .6s; }
-.shot img.on { opacity: 1; }
-.shot-steps { position: absolute; left: 0; right: 0; bottom: 14px; z-index: 3; display: flex; justify-content: center; gap: 6px; flex-wrap: wrap; padding-inline: 12px; }
-.shot-steps button { position: relative; overflow: hidden; border: 0; border-radius: 999px; padding: 8px 14px; background: rgba(7,18,51,.8); color: #c9d6f0; font: 700 13px var(--font-body); cursor: pointer; }
-.shot-steps button.on { background: var(--white); color: var(--blue); }
-.shot-steps button i { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--blue-bright); }
-.shot-steps button.on.run i { animation: stepBar var(--dur) linear forwards; }
-@keyframes stepBar { to { width: 100%; } }
-@media (max-width: 560px) { .mosaic { grid-template-columns: repeat(2, 1fr); } .mosaic button { aspect-ratio: 4 / 3; } }
+.hs.wide { width: auto; padding: 0 10px; margin-left: 0; border-radius: 17px; translate: -50% 0; }
 .bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
 .qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
 .qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
@@ -519,80 +502,49 @@ footer a { color: var(--white); }
       { k: 'brake', say: 'Poziom płynu hamulcowego sprawdzamy w zbiorniczku płynu hamulcowego. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
       { k: 'washer', say: 'Płyn do spryskiwaczy znajduje się w zbiorniku pod maską, oznaczonym symbolem szyby z rozpylanym płynem. Jego obecność możemy sprawdzić przez uruchomienie spryskiwaczy, a w razie potrzeby uzupełniamy płyn.', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
     ]},
-    lights: { gallery: true, back: 'Wszystkie światła', label: 'Polecenie egzaminatora', items: [
-      { k: 'pos', shots: ['Przełącznik', 'Przód', 'Tył'], t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
-      { k: 'low', shots: ['Przełącznik', 'Przód'], t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
-      { k: 'high', shots: ['Przełącznik', 'Kontrolka na desce', 'Przód'], t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka.' },
-      { k: 'fog', shots: ['Przełącznik', 'Tył'], t: 'Tylne światło przeciwmgielne', ask: '„Proszę włączyć tylne światło przeciwmgielne.”', how: 'Drugi przełącznik na lewej dźwigni przekręć na ostatnią pozycję. Zapali się pomarańczowa kontrolka.' },
-      { k: 'ind', shots: ['Dźwignia', 'Przód z boku', 'Tył z boku'], t: 'Kierunkowskazy', ask: '„Proszę włączyć prawy kierunkowskaz.”', how: 'Lewa dźwignia w górę to prawy kierunkowskaz, w dół lewy. Świeci z przodu, z boku i z tyłu.' },
-      { k: 'hazard', shots: ['Przycisk', 'Przód'], t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski. Migają wszystkie kierunkowskazy naraz.' },
-      { k: 'reverse', shots: ['Bieg wsteczny', 'Tył'], t: 'Światło cofania', ask: '„Proszę pokazać światło cofania.”', how: 'Wciśnij sprzęgło i wrzuć bieg wsteczny. Z tyłu zapali się białe światło.' },
-      { k: 'stop', shots: ['Hamulec', 'Tył'], t: 'Światła hamowania (STOP)', ask: '„Proszę sprawdzić światła hamowania.”', how: 'Poproś egzaminatora o pomoc albo wciśnij hamulec i sprawdź w odbiciu. Z tyłu świecą 3 światła STOP.' },
+    lights: { photo: 'img/kokpit.webp', alt: 'Kokpit Hyundaia i20 z przełącznikami świateł', back: 'Cały kokpit', w: 1280, h: 960, pickTitle: 'Wybierz światło', label: 'Polecenie egzaminatora', items: [
+      { k: 'pos', hs: '1–5', x: 360, y: 372, fx: 337, fy: 360, z: 3, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
+      { k: 'low', hs: null, fx: 337, fy: 360, z: 3, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
+      { k: 'high', hs: null, fx: 402, fy: 366, z: 3, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka.' },
+      { k: 'fog', hs: null, fx: 372, fy: 388, z: 3, t: 'Tylne światło przeciwmgielne', ask: '„Proszę włączyć tylne światło przeciwmgielne.”', how: 'Drugi przełącznik na lewej dźwigni przekręć na ostatnią pozycję. Zapali się pomarańczowa kontrolka.' },
+      { k: 'ind', hs: null, fx: 402, fy: 376, z: 3, t: 'Kierunkowskazy', ask: '„Proszę włączyć prawy kierunkowskaz.”', how: 'Lewa dźwignia w górę to prawy kierunkowskaz, w dół lewy. Świeci z przodu, z boku i z tyłu.' },
+      { k: 'hazard', hs: 6, x: 1162, y: 432, fx: 1162, fy: 432, z: 2.5, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski. Migają wszystkie kierunkowskazy naraz.' },
+      { k: 'reverse', hs: 7, x: 1190, y: 915, fx: 1190, fy: 915, z: 1.6, t: 'Światło cofania', ask: '„Proszę pokazać światło cofania.”', how: 'Wciśnij sprzęgło i wrzuć bieg wsteczny. Z tyłu zapali się białe światło.' },
+      { k: 'stop', hs: 8, x: 590, y: 770, fx: 590, fy: 770, z: 1.6, t: 'Światła hamowania (STOP)', ask: '„Proszę sprawdzić światła hamowania.”', how: 'Poproś egzaminatora o pomoc albo wciśnij hamulec i sprawdź w odbiciu. Z tyłu świecą 3 światła STOP.' },
     ]},
   };
 
   const bay = document.getElementById('bay'), qlist = document.getElementById('qlist');
-  let mode = 'fluids', wrap = null, timer = null;
-  const shotSrc = (k, n) => `img/swiatla/${k}-${n + 1}.webp`;
-  // Światła: siatka wszystkich świateł, a po wyborze zdjęcia krok po kroku
-  function showMosaic() {
-    clearTimeout(timer);
-    const M = MODES.lights;
-    bay.className = 'bay gallery';
-    bay.innerHTML = `<div class="mosaic">${M.items.map((it, i) => `<button data-i="${i}"><img src="${shotSrc(it.k, 0)}" alt="${it.t}" loading="lazy"><span><b>${i + 1}</b>${it.t}</span></button>`).join('')}</div>`;
-    bay.querySelectorAll('.mosaic button').forEach(b => b.addEventListener('click', () => pick(+b.dataset.i)));
-    [...qlist.children].forEach(li => li.firstChild.classList.remove('active'));
-  }
-  function showShots(it) {
-    clearTimeout(timer);
-    bay.className = 'bay gallery';
-    bay.innerHTML = `<div class="shot"><div class="bg"></div>${it.shots.map((s, n) => `<img src="${shotSrc(it.k, n)}" alt="${it.t}: ${s}">`).join('')}
-      <div class="shot-steps">${it.shots.map((s, n) => `<button style="--dur:${DUR}ms"><i></i>${n + 1}. ${s}</button>`).join('')}</div></div>
-      <button class="bay-back">← ${MODES.lights.back}</button>`;
-    bay.querySelector('.bay-back').addEventListener('click', showMosaic);
-    const imgs = bay.querySelectorAll('.shot img'), btns = bay.querySelectorAll('.shot-steps button'), bg = bay.querySelector('.bg');
-    const show = (n, auto) => {
-      imgs.forEach((im, j) => im.classList.toggle('on', j === n));
-      btns.forEach((b, j) => { b.classList.toggle('on', j === n); b.classList.toggle('run', auto); });
-      bg.style.backgroundImage = `url(${shotSrc(it.k, n)})`;
-      clearTimeout(timer);
-      // same przechodzą dalej, dopóki ktoś nie kliknie kroku
-      if (auto) timer = setTimeout(() => show((n + 1) % imgs.length, true), DUR);
-    };
-    btns.forEach((b, j) => b.addEventListener('click', () => show(j, false)));
-    show(0, true);
-  }
-  const DUR = 2800;
+  let mode = 'fluids', wrap = null, hsOf = [];
   function setMode(m) {
     mode = m;
     const M = MODES[m];
     document.getElementById('tabFluids').setAttribute('aria-selected', m === 'fluids');
     document.getElementById('tabLights').setAttribute('aria-selected', m === 'lights');
-    clearTimeout(timer);
-    if (M.gallery) showMosaic();
-    else {
-      bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}"><img src="${M.photo}" alt="${M.alt}"><div class="dim"></div><div class="ring"></div></div>
-        <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na zdjęciu</span>`;
-      wrap = bay.querySelector('.stage-wrap');
-      bay.querySelector('.bay-back').addEventListener('click', zoomOut);
-    }
-    qlist.innerHTML = '';
+    bay.className = 'bay';
+    bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}"><img src="${M.photo}" alt="${M.alt}"><div class="dim"></div><div class="ring"></div></div>
+      <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na zdjęciu</span>`;
+    wrap = bay.querySelector('.stage-wrap');
+    bay.querySelector('.bay-back').addEventListener('click', zoomOut);
+    qlist.innerHTML = ''; hsOf = [];
     M.items.forEach((it, i) => {
-      if (!M.gallery) {
-        const h = document.createElement('button');
-        h.className = 'hs'; h.textContent = i + 1; h.setAttribute('aria-label', it.t);
+      // hs: null = punkt wspólny z poprzednim (kilka świateł na jednej dźwigni)
+      if (it.hs !== null) {
+        const h = document.createElement('button'), label = String(it.hs ?? i + 1);
+        h.className = 'hs' + (label.length > 1 ? ' wide' : ''); h.textContent = label; h.setAttribute('aria-label', it.t);
         h.style.left = (it.x / M.w * 100) + '%'; h.style.top = (it.y / M.h * 100) + '%';
         h.addEventListener('click', () => pick(i));
         wrap.appendChild(h);
       }
+      hsOf[i] = wrap.lastElementChild;
       const li = document.createElement('li');
       li.innerHTML = `<button><b>${i + 1}</b>${it.t}</button>`;
       li.firstChild.addEventListener('click', () => pick(i));
       qlist.appendChild(li);
     });
     document.getElementById('qLabel').textContent = M.label;
-    document.getElementById('qTitle').textContent = M.gallery ? 'Wybierz światło' : 'Wybierz punkt';
-    document.getElementById('qAsk').textContent = M.gallery ? 'Kliknij zdjęcie albo światło na liście, a pokażemy krok po kroku, jak je włączyć.' : 'Kliknij numer na zdjęciu albo na liście poniżej.';
+    document.getElementById('qTitle').textContent = M.pickTitle || 'Wybierz punkt';
+    document.getElementById('qAsk').textContent = 'Kliknij numer na zdjęciu albo na liście poniżej.';
     document.getElementById('qHow').textContent = '';
     document.getElementById('qSay').hidden = true;
   }
@@ -606,22 +558,19 @@ footer a { color: var(--white); }
   }
   function pick(i) {
     const M = MODES[mode], it = M.items[i];
-    if (M.gallery) showShots(it);
-    else {
-      bay.querySelector('.bay-hint').hidden = true;
-      // przybliż i wyśrodkuj wybraną część, nie wychodząc poza krawędź zdjęcia
-      const z = 2, lim = 50 - 50 / z;
-      const fx = (it.fx ?? it.x) / M.w * 100, fy = (it.fy ?? it.y) / M.h * 100;
-      const clamp = v => Math.max(-lim, Math.min(lim, v));
-      wrap.style.setProperty('--z', z);
-      wrap.style.setProperty('--tx', clamp(50 - fx) + '%');
-      wrap.style.setProperty('--ty', clamp(50 - fy) + '%');
-      wrap.style.setProperty('--sx', fx + '%'); wrap.style.setProperty('--sy', fy + '%');
-      const ring = wrap.querySelector('.ring'); ring.style.left = fx + '%'; ring.style.top = fy + '%';
-      bay.className = 'bay zoom';
-      bay.querySelector('.bay-back').hidden = false;
-      wrap.querySelectorAll('.hs').forEach((h, k) => h.classList.toggle('active', k === i));
-    }
+    bay.querySelector('.bay-hint').hidden = true;
+    // przybliż i wyśrodkuj wybraną część, nie wychodząc poza krawędź zdjęcia
+    const z = it.z || 2, lim = 50 - 50 / z;
+    const fx = (it.fx ?? it.x) / M.w * 100, fy = (it.fy ?? it.y) / M.h * 100;
+    const clamp = v => Math.max(-lim, Math.min(lim, v));
+    wrap.style.setProperty('--z', z);
+    wrap.style.setProperty('--tx', clamp(50 - fx) + '%');
+    wrap.style.setProperty('--ty', clamp(50 - fy) + '%');
+    wrap.style.setProperty('--sx', fx + '%'); wrap.style.setProperty('--sy', fy + '%');
+    const ring = wrap.querySelector('.ring'); ring.style.left = fx + '%'; ring.style.top = fy + '%';
+    bay.className = 'bay zoom';
+    bay.querySelector('.bay-back').hidden = false;
+    wrap.querySelectorAll('.hs').forEach(h => h.classList.toggle('active', h === hsOf[i]));
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
     document.getElementById('qTitle').textContent = it.t;
     document.getElementById('qAsk').textContent = it.ask;
