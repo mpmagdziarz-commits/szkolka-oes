@@ -124,8 +124,8 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 @keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
 .hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
 .hs.active::after { animation: none; opacity: 0; }
-.inset { position: absolute; right: 12px; bottom: 12px; z-index: 3; width: 36%; border-radius: 10px; overflow: hidden; border: 2px solid rgba(255,255,255,.3); box-shadow: 0 8px 24px rgba(0,0,0,.5); }
-.inset svg { display: block; width: 100%; height: auto; }
+.bay.video { display: grid; place-items: center; background: #05080f; padding-block: 16px; }
+.bay.video video { display: block; height: min(560px, 72vh); max-width: 100%; aspect-ratio: 9 / 16; border-radius: 10px; background: #000; }
 .bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
 .qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
 .qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
@@ -140,17 +140,6 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .qlist button b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
 .qlist button.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,216,.12); }
 .qlist button.active b { background: var(--blue); color: var(--white); }
-/* światła */
-.lamp-glow { opacity: 0; transition: opacity .35s; }
-.l-pos .g-pos, .l-low .g-pos, .l-high .g-pos { opacity: 1; }
-.l-low .g-low, .l-high .g-low { opacity: 1; }
-.l-high .g-high { opacity: 1; }
-.l-left .g-ind-l, .l-hazard .g-ind-l, .l-hazard .g-ind-r { animation: indicator .8s steps(1) infinite; }
-@keyframes indicator { 0% { opacity: 1; } 50% { opacity: 0; } }
-.beam-low { opacity: 0; transition: opacity .4s; }
-.l-low .beam-low, .l-high .beam-low { opacity: .55; }
-.beam-high { opacity: 0; transition: opacity .4s; }
-.l-high .beam-high { opacity: .6; }
 
 /* ---------- 4. Dlaczego OES ---------- */
 .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
@@ -507,39 +496,6 @@ footer a { color: var(--white); }
 
   // ---------- 3. Pod maską ----------
   // Własna grafika komory silnika i20 z góry (przód auta na dole) oraz przodu auta do świateł. viewBox 800×480.
-  const LIGHTS_SVG = `
-    <defs>
-      <radialGradient id="gLamp"><stop offset="0" stop-color="#fffbe8"/><stop offset=".35" stop-color="#fff2b8" stop-opacity=".9"/><stop offset="1" stop-color="#fff2b8" stop-opacity="0"/></radialGradient>
-      <radialGradient id="gAmber"><stop offset="0" stop-color="#fff1c2"/><stop offset=".35" stop-color="#ffab1f" stop-opacity=".95"/><stop offset="1" stop-color="#ffab1f" stop-opacity="0"/></radialGradient>
-      <linearGradient id="gBeam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff6cc" stop-opacity=".9"/><stop offset="1" stop-color="#fff6cc" stop-opacity="0"/></linearGradient>
-      <linearGradient id="gPaint" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f3f5f8"/><stop offset="1" stop-color="#bfc6d1"/></linearGradient>
-    </defs>
-    <rect width="800" height="480" fill="#0c1220"/>
-    <path d="M0 330 H800 V480 H0 Z" fill="#161c28"/>
-    <path class="beam-low" d="M190 300 L-40 480 H330 Z M610 300 L470 480 H840 Z" fill="url(#gBeam)"/>
-    <path class="beam-high" d="M190 300 L-120 480 H420 Z M610 300 L380 480 H920 Z" fill="url(#gBeam)"/>
-    <path d="M150 170 Q170 90 260 70 H540 Q630 90 650 170 Z" fill="#232a36"/>
-    <path d="M178 160 Q196 100 270 86 H530 Q604 100 622 160 Z" fill="#7d94b8" opacity=".55"/>
-    <path d="M90 200 Q100 160 150 160 H650 Q700 160 710 200 L726 330 Q726 360 690 362 H110 Q74 360 74 330 Z" fill="url(#gPaint)"/>
-    <path d="M118 222 Q150 210 255 238 L250 262 Q160 260 120 248 Z" fill="#2a3140"/>
-    <path d="M682 222 Q650 210 545 238 L550 262 Q640 260 680 248 Z" fill="#2a3140"/>
-    <path d="M270 262 L530 262 L560 330 L240 330 Z" fill="#1b2029"/>
-    <g stroke="#2e3542" stroke-width="3">${Array.from({ length: 8 }, (_, i) => `<line x1="${262 + i * 40}" y1="270" x2="${250 + i * 44}" y2="326"/>`).join('')}</g>
-    <ellipse cx="400" cy="246" rx="34" ry="12" fill="none" stroke="#9aa3ae" stroke-width="4"/>
-    <rect x="345" y="340" width="110" height="22" rx="3" fill="#fff"/>
-    <text x="400" y="356" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="14" font-weight="800" fill="#1d5bd8">KR OES</text>
-    <path d="M130 300 L170 340 L200 340 L160 296 Z M670 300 L630 340 L600 340 L640 296 Z" fill="#2a3140"/>
-    <!-- poświata lamp -->
-    <circle class="lamp-glow g-pos" cx="138" cy="232" r="22" fill="url(#gLamp)"/><circle class="lamp-glow g-pos" cx="662" cy="232" r="22" fill="url(#gLamp)"/>
-    <circle class="lamp-glow g-low" cx="200" cy="244" r="58" fill="url(#gLamp)"/><circle class="lamp-glow g-low" cx="600" cy="244" r="58" fill="url(#gLamp)"/>
-    <circle class="lamp-glow g-high" cx="225" cy="246" r="110" fill="url(#gLamp)"/><circle class="lamp-glow g-high" cx="575" cy="246" r="110" fill="url(#gLamp)"/>
-    <circle class="lamp-glow g-ind-l" cx="128" cy="244" r="40" fill="url(#gAmber)"/>
-    <circle class="lamp-glow g-ind-r" cx="672" cy="244" r="40" fill="url(#gAmber)"/>
-    <path d="M60 196 L84 190 L88 214 L64 220 Z" fill="#232a36"/><path d="M740 196 L716 190 L712 214 L736 220 Z" fill="#232a36"/>
-    <circle class="lamp-glow g-ind-l" cx="74" cy="205" r="22" fill="url(#gAmber)"/><circle class="lamp-glow g-ind-r" cx="726" cy="205" r="22" fill="url(#gAmber)"/>
-    <rect x="378" y="40" width="44" height="26" rx="4" fill="#1d5bd8" stroke="#fff" stroke-width="2"/>
-    <text x="400" y="60" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">L</text>`;
-
   const MODES = {
     fluids: { photo: 'img/silnik.webp', alt: 'Komora silnika Hyundaia i20 widziana z góry', back: 'Cały silnik', w: 1600, h: 900, label: 'Pytanie egzaminatora', items: [
       { k: 'oil', say: 'Poziom oleju silnikowego sprawdzamy na wyłączonym silniku, gdy samochód stoi na równym podłożu. Wyciągamy bagnet, wycieramy go, wkładamy ponownie i wyciągamy. Poziom oleju powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 522, y: 612, t: 'Olej silnikowy', ask: '„Proszę sprawdzić poziom oleju w silniku.”', how: 'Bagnet ma pomarańczowy uchwyt. Wyciągnij go, wytrzyj, włóż z powrotem i wyciągnij ponownie. Olej ma być między MIN a MAX. Dolewa się go przez czarny korek na pokrywie silnika.' },
@@ -547,45 +503,58 @@ footer a { color: var(--white); }
       { k: 'brake', say: 'Poziom płynu hamulcowego sprawdzamy w zbiorniczku płynu hamulcowego. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
       { k: 'washer', say: 'Płyn do spryskiwaczy znajduje się w zbiorniku pod maską, oznaczonym symbolem szyby z rozpylanym płynem. Jego obecność możemy sprawdzić przez uruchomienie spryskiwaczy, a w razie potrzeby uzupełniamy płyn.', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
     ]},
-    lights: { photo: 'img/kokpit.webp', alt: 'Kierownica i deska rozdzielcza Hyundaia i20', back: 'Cała deska', inset: LIGHTS_SVG, w: 1280, h: 960, label: 'Polecenie egzaminatora', items: [
-      { k: 'pos', x: 300, y: 330, fx: 350, fy: 380, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
-      { k: 'low', x: 372, y: 318, fx: 350, fy: 380, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Pokrętło na lewej dźwigni na symbol reflektora z ukośnymi promieniami w dół. Na desce zapali się zielona kontrolka.' },
-      { k: 'high', x: 250, y: 400, fx: 380, fy: 380, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka. Pociągnięcie do siebie to „mrugnięcie” drogowymi.' },
-      { k: 'left', x: 440, y: 420, fx: 400, fy: 380, t: 'Kierunkowskaz', ask: '„Proszę włączyć lewy kierunkowskaz.”', how: 'Lewa dźwignia w dół to lewy kierunkowskaz, w górę prawy. Na desce miga zielona strzałka.' },
-      { k: 'hazard', x: 1160, y: 432, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski rozdzielczej. Migają wszystkie kierunkowskazy naraz.' },
+    lights: { video: 'img/swiatla.mp4', poster: 'img/swiatla-poster.jpg', label: 'Polecenie egzaminatora', items: [
+      { k: 'pos', s: 0, e: 11.8, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
+      { k: 'low', s: 11.8, e: 20, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Przekręć pokrętło na lewej dźwigni do samego końca. Na desce zapali się zielona kontrolka.' },
+      { k: 'high', s: 20, e: 28, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka.' },
+      { k: 'fog', s: 28, e: 41.5, t: 'Tylne światło przeciwmgielne', ask: '„Proszę włączyć tylne światło przeciwmgielne.”', how: 'Drugi przełącznik na lewej dźwigni przekręć na ostatnią pozycję. Zapali się pomarańczowa kontrolka.' },
+      { k: 'ind', s: 41.5, e: 55, t: 'Kierunkowskazy', ask: '„Proszę włączyć prawy kierunkowskaz.”', how: 'Lewa dźwignia w górę to prawy kierunkowskaz, w dół lewy. Świeci z przodu, z boku i z tyłu.' },
+      { k: 'hazard', s: 55, e: 63, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski. Migają wszystkie kierunkowskazy naraz.' },
+      { k: 'reverse', s: 63, e: 71, t: 'Światło cofania', ask: '„Proszę pokazać światło cofania.”', how: 'Wciśnij sprzęgło i wrzuć bieg wsteczny. Z tyłu zapali się białe światło.' },
+      { k: 'stop', s: 71, e: 77.2, t: 'Światła hamowania (STOP)', ask: '„Proszę sprawdzić światła hamowania.”', how: 'Poproś egzaminatora o pomoc albo wciśnij hamulec i sprawdź w odbiciu. Z tyłu świecą 3 światła STOP.' },
     ]},
   };
 
   const bay = document.getElementById('bay'), qlist = document.getElementById('qlist');
-  let mode = 'fluids', wrap = null;
+  let mode = 'fluids', wrap = null, seg = null;
   function setMode(m) {
     mode = m;
     const M = MODES[m];
     document.getElementById('tabFluids').setAttribute('aria-selected', m === 'fluids');
     document.getElementById('tabLights').setAttribute('aria-selected', m === 'lights');
-    bay.className = 'bay';
-    bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}">${M.photo
-        ? `<img src="${M.photo}" alt="${M.alt}">`
-        : `<svg viewBox="0 0 ${M.w} ${M.h}" aria-hidden="true">${M.svg}</svg>`}<div class="dim"></div><div class="ring"></div></div>
-      ${M.inset ? `<div class="inset" aria-hidden="true"><svg viewBox="0 0 800 480">${M.inset}</svg></div>` : ''}
-      <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na ${M.photo ? 'zdjęciu' : 'rysunku'}</span>`;
-    wrap = bay.querySelector('.stage-wrap');
-    bay.querySelector('.bay-back').addEventListener('click', zoomOut);
+    bay.className = 'bay' + (M.video ? ' video' : '');
+    seg = null;
+    if (M.video) {
+      bay.innerHTML = `<video id="lightsVideo" src="${M.video}" poster="${M.poster}" muted playsinline preload="metadata"></video>
+        <button class="bay-back" id="vidSound">Włącz dźwięk</button><span class="bay-hint">Wybierz światło z listy</span>`;
+      const v = bay.querySelector('video');
+      // odtwarzaj w pętli tylko fragment z wybranym światłem
+      v.addEventListener('timeupdate', () => { if (seg && v.currentTime >= seg.e) v.currentTime = seg.s; });
+      bay.querySelector('#vidSound').addEventListener('click', e => { v.muted = !v.muted; e.target.textContent = v.muted ? 'Włącz dźwięk' : 'Wycisz'; });
+      wrap = bay;
+    } else {
+      bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}"><img src="${M.photo}" alt="${M.alt}"><div class="dim"></div><div class="ring"></div></div>
+        <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na zdjęciu</span>`;
+      wrap = bay.querySelector('.stage-wrap');
+      bay.querySelector('.bay-back').addEventListener('click', zoomOut);
+    }
     qlist.innerHTML = '';
     M.items.forEach((it, i) => {
-      const h = document.createElement('button');
-      h.className = 'hs'; h.textContent = i + 1; h.setAttribute('aria-label', it.t);
-      h.style.left = (it.x / M.w * 100) + '%'; h.style.top = (it.y / M.h * 100) + '%';
-      h.addEventListener('click', () => pick(i));
-      wrap.appendChild(h);
+      if (!M.video) {
+        const h = document.createElement('button');
+        h.className = 'hs'; h.textContent = i + 1; h.setAttribute('aria-label', it.t);
+        h.style.left = (it.x / M.w * 100) + '%'; h.style.top = (it.y / M.h * 100) + '%';
+        h.addEventListener('click', () => pick(i));
+        wrap.appendChild(h);
+      }
       const li = document.createElement('li');
       li.innerHTML = `<button><b>${i + 1}</b>${it.t}</button>`;
       li.firstChild.addEventListener('click', () => pick(i));
       qlist.appendChild(li);
     });
     document.getElementById('qLabel').textContent = M.label;
-    document.getElementById('qTitle').textContent = 'Wybierz punkt';
-    document.getElementById('qAsk').textContent = 'Kliknij numer na ' + (M.photo ? 'zdjęciu' : 'rysunku') + ' albo na liście poniżej.';
+    document.getElementById('qTitle').textContent = M.video ? 'Wybierz światło' : 'Wybierz punkt';
+    document.getElementById('qAsk').textContent = M.video ? 'Kliknij światło na liście poniżej, a film pokaże, jak je włączyć.' : 'Kliknij numer na zdjęciu albo na liście poniżej.';
     document.getElementById('qHow').textContent = '';
     document.getElementById('qSay').hidden = true;
   }
@@ -600,7 +569,12 @@ footer a { color: var(--white); }
   function pick(i) {
     const M = MODES[mode], it = M.items[i];
     bay.querySelector('.bay-hint').hidden = true;
-    if (M.photo) {
+    if (M.video) {
+      const v = bay.querySelector('video');
+      seg = it;
+      v.currentTime = it.s;
+      v.play().catch(() => {});
+    } else {
       // przybliż i wyśrodkuj wybraną część, nie wychodząc poza krawędź zdjęcia
       const z = 2, lim = 50 - 50 / z;
       const fx = (it.fx ?? it.x) / M.w * 100, fy = (it.fy ?? it.y) / M.h * 100;
@@ -610,12 +584,10 @@ footer a { color: var(--white); }
       wrap.style.setProperty('--ty', clamp(50 - fy) + '%');
       wrap.style.setProperty('--sx', fx + '%'); wrap.style.setProperty('--sy', fy + '%');
       const ring = wrap.querySelector('.ring'); ring.style.left = fx + '%'; ring.style.top = fy + '%';
-      bay.className = 'bay zoom' + (M.inset ? ' l-' + it.k : '');
+      bay.className = 'bay zoom';
       bay.querySelector('.bay-back').hidden = false;
-    } else {
-      bay.className = 'bay l-' + it.k;
+      wrap.querySelectorAll('.hs').forEach((h, k) => h.classList.toggle('active', k === i));
     }
-    wrap.querySelectorAll('.hs').forEach((h, k) => h.classList.toggle('active', k === i));
     [...qlist.children].forEach((li, k) => li.firstChild.classList.toggle('active', k === i));
     document.getElementById('qTitle').textContent = it.t;
     document.getElementById('qAsk').textContent = it.ask;
