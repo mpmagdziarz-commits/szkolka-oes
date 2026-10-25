@@ -541,7 +541,9 @@ footer a { color: var(--white); }
     });
   });
   // wejście z linku „Zobacz więcej” na konkretny krok
-  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+  // podstrona zawsze otwiera się od samej góry
+  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+  window.scrollTo({ top: 0, behavior: 'instant' });
 </script>
 </body>
 </html>
