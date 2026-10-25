@@ -1,0 +1,487 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OES – droga do prawa jazdy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Układ: ciemny „ekran wyboru pojazdu” jak w grze, niżej jasne sekcje z treścią.
+   Jedna, świadomie wybrana kolorystyka niebiesko-biała (bez trybu ciemnego). */
+:root {
+  --navy: #071233;
+  --navy-2: #0d1d4a;
+  --blue: #1d5bd8;
+  --blue-bright: #4c9bff;
+  --white: #ffffff;
+  --paper: #f2f6fc;
+  --ink: #0b1633;
+  --muted: #5b6a86;
+  --line: #d6dff0;
+  --on-dark-muted: #9fb2d9;
+  --glow: rgba(76, 155, 255, .35);
+  --tire: #111317;
+  --rim: #c9d1dc;
+  --chrome: #8e99a8;
+  --glass: #a9c8f0;
+  --paint: #1d5bd8;
+  --paint-2: #1546a8;
+  --amber: #ffb020;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--navy); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 640px; }
+.sec-head p { margin: 0; color: var(--muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 8px; padding: 13px 20px; font: 700 15px/1 var(--font-body); cursor: pointer; text-decoration: none; }
+.btn-primary { background: var(--blue); color: var(--white); }
+.btn-primary:hover { background: #2a68e6; }
+.btn-light { background: var(--white); color: var(--navy); }
+:focus-visible { outline: 3px solid var(--blue-bright); outline-offset: 3px; }
+.tag-mock { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(255, 176, 32, .16); color: #a86a00; }
+
+/* ---------- 1. Górny pasek ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--navy); color: var(--white); border-bottom: 1px solid rgba(255,255,255,.08); }
+.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 22px; color: var(--white); text-decoration: none; }
+.lplate { display: inline-grid; place-items: center; width: 34px; height: 34px; background: var(--blue); border-radius: 5px; font-size: 24px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a:hover { color: var(--white); }
+.top .phone { color: var(--white); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+
+/* ---------- 2. Wybór pojazdu ---------- */
+.garage { position: relative; background: radial-gradient(120% 80% at 50% 70%, #16307a 0%, var(--navy-2) 40%, var(--navy) 75%); color: var(--white); overflow: hidden; padding-block: 36px 48px; }
+.garage::before { content: ""; position: absolute; inset: auto -10% 0 -10%; height: 45%; background:
+  linear-gradient(transparent 0, rgba(7,18,51,.0) 0),
+  repeating-linear-gradient(90deg, rgba(76,155,255,.10) 0 1px, transparent 1px 80px),
+  repeating-linear-gradient(0deg, rgba(76,155,255,.10) 0 1px, transparent 1px 40px);
+  transform: perspective(500px) rotateX(58deg); transform-origin: 50% 100%; pointer-events: none; }
+.garage .wrap { position: relative; }
+.garage-head { text-align: center; display: grid; gap: 8px; justify-items: center; }
+.garage-head .kicker { color: var(--blue-bright); }
+.garage-head h1 { font-size: clamp(34px, 6.4vw, 72px); font-weight: 900; font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; }
+.garage-head p { margin: 0; color: var(--on-dark-muted); max-width: 46ch; }
+
+.picker { position: relative; height: clamp(220px, 34vw, 380px); margin-top: 14px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.spot { position: absolute; left: 50%; bottom: 6%; width: 70%; height: 22%; transform: translateX(-50%); background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
+.slot { position: absolute; left: 50%; bottom: 12%; width: min(560px, 60%); aspect-ratio: 640 / 380; isolation: isolate; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
+.slot img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 18px 18px rgba(0,0,0,.45)); transition: opacity .18s, transform .18s; pointer-events: none; }
+.slot img.swap { opacity: 0; transform: translateY(8px) scale(.97); }
+.slot.center::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: -7%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, rgba(76,155,255,.28), rgba(76,155,255,.06) 70%, transparent); box-shadow: 0 0 0 2px rgba(76,155,255,.35), 0 0 40px rgba(76,155,255,.35); z-index: -1; }
+.slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
+.slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.right { transform: translateX(32%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.left:hover, .slot.right:hover { opacity: .85; }
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(7,18,51,.5); color: var(--white); cursor: pointer; display: grid; place-items: center; }
+.arrow:hover { border-color: var(--blue-bright); }
+.arrow svg { width: 22px; height: 22px; }
+.arrow.prev { left: 0; } .arrow.next { right: 0; }
+
+.select-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 940px; margin: 8px auto 0; }
+.select-panel > * { min-width: 0; }
+.vehicle-name { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.vehicle-name h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 900; text-transform: uppercase; }
+.vehicle-name span { color: var(--on-dark-muted); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { border: 2px solid rgba(255,255,255,.2); background: transparent; color: var(--white); border-radius: 8px; padding: 9px 14px; min-width: 62px; cursor: pointer; font-family: var(--font-display); font-weight: 900; font-stretch: 110%; font-size: 19px; line-height: 1; }
+.chip:hover { border-color: var(--blue-bright); }
+.chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 0 4px var(--glow); }
+.cat-desc { margin: 14px 0 0; color: var(--on-dark-muted); }
+.stats { display: grid; gap: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 20px; }
+.stat { display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center; }
+.stat dt { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); }
+.stat dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; min-width: 80px; }
+.bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,.1); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); border-radius: 4px; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.stats .btn { margin-top: 6px; }
+.mock-note { text-align: center; margin-top: 18px; font-size: 12px; color: var(--on-dark-muted); }
+
+/* ---------- 3. Pod maską ---------- */
+.hood { background: var(--white); }
+.hood-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--paper); border-radius: 10px; margin-bottom: 18px; }
+.hood-tab { border: 0; background: transparent; padding: 10px 18px; border-radius: 7px; font: 700 15px var(--font-body); color: var(--muted); cursor: pointer; }
+.hood-tab[aria-selected="true"] { background: var(--white); color: var(--blue); box-shadow: 0 1px 4px rgba(11,22,51,.12); }
+@media (max-width: 560px) { .hood-tab { padding: 10px 11px; font-size: 14px; white-space: nowrap; } }
+.hood-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; }
+.hood-grid > * { min-width: 0; }
+.bay { position: relative; border-radius: 16px; overflow: hidden; background: #0f1520; box-shadow: 0 20px 40px -20px rgba(7,18,51,.5); }
+.stage-wrap { position: relative; transform: scale(var(--z, 1)) translate(var(--tx, 0%), var(--ty, 0%)); transition: transform .9s cubic-bezier(.3,.9,.3,1); }
+.stage-wrap > img, .stage-wrap > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dim { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s .2s; background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), transparent 0 6%, rgba(4,9,22,.72) 12%); }
+.ring { position: absolute; width: calc(14% / var(--z, 2)); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 3px var(--blue-bright), 0 0 24px rgba(76,155,255,.8); opacity: 0; pointer-events: none; transition: opacity .4s .6s; animation: ringPulse 1.6s ease-in-out infinite; }
+@keyframes ringPulse { 50% { box-shadow: 0 0 0 6px rgba(76,155,255,.35), 0 0 36px rgba(76,155,255,1); } }
+.bay.zoom .dim, .bay.zoom .ring { opacity: 1; }
+.bay.zoom .hs { opacity: 0; pointer-events: none; }
+.bay-back { position: absolute; top: 12px; right: 12px; z-index: 3; border: 0; border-radius: 8px; padding: 9px 14px; background: rgba(7,18,51,.85); color: #fff; font: 700 14px var(--font-body); cursor: pointer; }
+.hs { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 2px solid #fff; background: var(--blue); color: #fff; font: 800 14px/30px var(--font-body); text-align: center; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.45); transition: transform .2s, background .2s; }
+.hs::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid var(--blue-bright); animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
+.hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
+.hs.active::after { animation: none; opacity: 0; }
+.hs.wide { width: auto; padding: 0 10px; margin-left: 0; border-radius: 17px; translate: -50% 0; }
+.honk-pad { position: absolute; width: 21%; aspect-ratio: 1.25; transform: translate(-50%, -50%); border: 0; border-radius: 50%; background: transparent; cursor: pointer; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; z-index: 2; }
+.honk-pad::before, .honk-pad::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--blue-bright); opacity: 0; }
+.bay.honking .honk-pad::before { animation: honkWave .7s ease-out infinite; }
+.bay.honking .honk-pad::after { animation: honkWave .7s .35s ease-out infinite; }
+@keyframes honkWave { from { transform: scale(.8); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.bay.honking { animation: honkShake .1s linear infinite; }
+@keyframes honkShake { 25% { translate: -1.5px 1px; } 75% { translate: 1.5px -1px; } }
+.bay.player { aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 40%, #13213f, #05080f 70%); }
+.bay.player .main { position: absolute; inset: 0; margin: auto; display: block; height: 100%; max-width: 100%; aspect-ratio: 9 / 16; background: #000; }
+.pip { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 62%; margin: 0; border-radius: 12px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 14px 34px rgba(0,0,0,.65); opacity: 0; transform: scale(.5); transform-origin: 100% 100%; transition: opacity .35s, transform .55s cubic-bezier(.2,.9,.3,1.25); pointer-events: none; }
+.pip.on { opacity: 1; transform: none; }
+.pip video { display: block; height: 100%; width: auto; }
+.pip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 7px; font: 700 12px/1.2 var(--font-body); color: #fff; background: linear-gradient(transparent, rgba(4,9,22,.9)); }
+.bay-back.replay { top: auto; right: auto; left: 12px; bottom: 12px; }
+.bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
+.qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
+.qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
+.qcard h3 { font-size: 24px; font-weight: 900; }
+.qcard .q-ask { margin: 0; font-size: 17px; font-weight: 600; }
+.qcard .q-how { margin: 0; color: var(--on-dark-muted); }
+.q-say { margin-top: 6px; padding: 14px 16px; border-radius: 10px; background: rgba(76,155,255,.12); border-left: 3px solid var(--blue-bright); }
+.q-say span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 4px; }
+.q-say p { margin: 0; color: var(--white); font-size: 16px; line-height: 1.55; }
+.qlist { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+.qlist button { width: 100%; text-align: left; display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 10px 12px; cursor: pointer; font: 600 15px var(--font-body); color: var(--ink); }
+.qlist button b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
+.qlist button.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,216,.12); }
+.qlist button.active b { background: var(--blue); color: var(--white); }
+
+/* ---------- 4. Dlaczego OES ---------- */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.why { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 6px; align-content: start; }
+.why .big { font-family: var(--font-display); font-weight: 900; font-stretch: 115%; font-size: 38px; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
+.why p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* ---------- 5. Kroki ---------- */
+.steps-sec { background: var(--navy); color: var(--white); }
+.steps-sec .kicker { color: var(--blue-bright); }
+.steps-sec .sec-head p { color: var(--on-dark-muted); }
+.road { position: relative; }
+.road-svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.road-svg path { fill: none; stroke-linecap: round; }
+.r-base { stroke: #17295a; stroke-width: 32; }
+.r-done { stroke: rgba(76,155,255,.38); stroke-width: 32; }
+.r-line { stroke: rgba(255,255,255,.5); stroke-width: 2.5; stroke-dasharray: 12 14; }
+.road-steps { list-style: none; margin: 0; padding: 40px 0 30px; display: grid; gap: 40px; }
+.road-step { width: calc(50% - 80px); }
+.road-step:nth-child(even) { justify-self: end; }
+.road-step details, .finish-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; opacity: .6; transition: opacity .4s, border-color .4s, background .4s, box-shadow .4s; }
+.road-step.on details, .road-step.on .finish-card { opacity: 1; border-color: var(--blue-bright); background: rgba(76,155,255,.1); box-shadow: 0 0 0 4px rgba(76,155,255,.12); }
+.road-step summary { list-style: none; display: flex; gap: 14px; align-items: center; padding: 18px; cursor: pointer; }
+.road-step summary::-webkit-details-marker { display: none; }
+.road-step summary::after { content: "+"; margin-left: auto; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); font-size: 20px; font-weight: 700; }
+.road-step details[open] summary::after { content: "−"; }
+.road-step h3 { font-size: 20px; font-weight: 800; }
+.ico { flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.08); font-size: 26px; }
+.time { display: inline-block; margin-top: 3px; font-size: 13px; font-weight: 700; color: var(--blue-bright); }
+.road-step details p { margin: 0 18px 8px; color: var(--on-dark-muted); font-size: 15px; }
+.road-step .more { display: inline-block; margin: -6px 18px 18px; color: var(--blue-bright); font-weight: 700; font-size: 14px; text-decoration: none; }
+.road-step .more:hover { text-decoration: underline; }
+.road-more { margin: 8px 0 0; text-align: center; }
+.road-step details ul { margin: 0 18px 18px; padding-left: 20px; color: var(--white); font-size: 15px; display: grid; gap: 4px; }
+.finish-card { padding: 20px; display: grid; gap: 8px; justify-items: start; }
+.finish-card h3 { font-size: 24px; font-weight: 900; }
+.finish-card p { margin: 0; color: var(--on-dark-muted); }
+.rnode { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: #17295a; border: 3px solid #34508f; color: var(--on-dark-muted); font: 800 14px/28px var(--font-body); text-align: center; transition: background .4s, border-color .4s, color .4s, box-shadow .4s; }
+.rnode.on { background: var(--blue); border-color: var(--white); color: var(--white); box-shadow: 0 0 0 7px rgba(76,155,255,.25); }
+.road-car { position: absolute; left: 0; top: 0; z-index: 3; width: 26px; height: 46px; margin: -23px 0 0 -13px; will-change: transform; filter: drop-shadow(0 6px 8px rgba(0,0,0,.55)); }
+@media (max-width: 700px) {
+  .road-step, .road-step:nth-child(even) { width: auto; justify-self: stretch; margin-left: 50px; }
+  .road-steps { gap: 24px; }
+  .road-step summary { padding: 14px; gap: 12px; }
+  .ico { width: 44px; height: 44px; font-size: 22px; }
+}
+
+/* ---------- 6. Opinie ---------- */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.stars { color: var(--amber); letter-spacing: 2px; font-size: 18px; }
+.review p { margin: 0; color: var(--muted); }
+.review .who { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+.avatar { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: var(--white); font-size: 15px; font-weight: 800; }
+.review p { color: var(--ink); }
+.review .who small { display: block; font-weight: 500; font-size: 13px; color: var(--muted); }
+.rating { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin-bottom: 22px; }
+.rating-big { display: flex; align-items: center; gap: 14px; }
+.rating-big b { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 52px; line-height: 1; color: var(--ink); }
+.rating-big span { color: var(--muted); font-size: 14px; line-height: 1.35; }
+.rating-big .stars { display: block; color: var(--amber); }
+.rating-offices { display: flex; flex-wrap: wrap; gap: 8px; }
+.rating-offices a { display: inline-flex; gap: 6px; align-items: center; padding: 7px 12px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; }
+.rating-offices a b { color: var(--blue); }
+.rating-offices a:hover { border-color: var(--blue); }
+.reviews-more { margin-top: 18px; }
+.reviews-more a { color: var(--blue); font-weight: 700; text-decoration: none; }
+
+/* ---------- 6b. TikTok ---------- */
+.tiktok-sec { background: var(--navy); color: var(--white); }
+.tiktok-sec .kicker { color: var(--blue-bright); }
+.tiktok-sec .sec-head p { color: var(--on-dark-muted); }
+.tt-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.tt { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,0,.7); cursor: pointer; transition: transform .3s; }
+.tt:hover { transform: translateY(-4px); }
+.tt video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tt-sound { position: absolute; right: 10px; bottom: 10px; border: 0; border-radius: 999px; padding: 7px 11px; background: rgba(7,18,51,.8); color: #fff; font: 700 13px var(--font-body); cursor: pointer; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.socials a { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--white); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); }
+.socials a.main { background: var(--blue); border-color: var(--blue); }
+.socials a:hover { background: rgba(255,255,255,.16); }
+.socials a.main:hover { background: var(--blue-bright); }
+@media (max-width: 720px) {
+  .tt-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 68%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; padding-bottom: 6px; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; }
+  .tt { scroll-snap-align: start; }
+  .rating-big b { font-size: 44px; }
+}
+
+/* ---------- 7. Biura ---------- */
+.offices-sec { background: var(--white); }
+.offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.office { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; }
+.office h3 { font-size: 19px; font-weight: 800; font-stretch: 105%; }
+.office .addr { color: var(--muted); }
+.office .tel { font-weight: 700; font-variant-numeric: tabular-nums; user-select: all; }
+.office a.map { color: var(--blue); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+.hours { margin-top: 20px; color: var(--muted); }
+.hours b { color: var(--ink); }
+
+/* ---------- 8. Zapis ---------- */
+.signup { background: linear-gradient(135deg, var(--blue) 0%, #123f9e 100%); color: var(--white); }
+.signup-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.signup-grid > * { min-width: 0; }
+.signup .kicker { color: #cfe0ff; }
+.signup p { color: #dbe6ff; }
+form { background: var(--white); color: var(--ink); border-radius: 14px; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+form label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
+form input, form select { font: 500 16px var(--font-body); padding: 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); width: 100%; }
+form .full { grid-column: 1 / -1; }
+.form-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--blue); font-weight: 600; }
+
+/* ---------- 9. Stopka ---------- */
+footer { background: var(--navy); color: var(--on-dark-muted); padding-block: 40px; font-size: 14px; }
+footer .wrap { display: flex; gap: 24px 48px; flex-wrap: wrap; justify-content: space-between; }
+footer b { color: var(--white); }
+footer a { color: var(--white); }
+
+/* ---------- Pojawianie się sekcji przy przewijaniu ---------- */
+.js-reveal .rv { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--d, 0) * 90ms); }
+.js-reveal .rv.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .select-panel, .hood-grid, .signup-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .reviews, .offices { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .top .btn { display: none; }
+  .top .phone { margin-left: auto; }
+  .slot { width: 80%; }
+  .slot.left { transform: translateX(-118%) scale(.42); }
+  .slot.right { transform: translateX(18%) scale(.42); }
+  .arrow { width: 42px; height: 42px; top: 40%; }
+  .why-grid { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .stat { grid-template-columns: 74px 1fr auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Podstrona: droga do prawa jazdy ---------- */
+.page-hero { background: radial-gradient(120% 90% at 50% 100%, #16307a 0%, var(--navy-2) 45%, var(--navy) 80%); color: var(--white); padding-block: 56px 40px; }
+.page-hero .kicker { color: var(--blue-bright); }
+.page-hero h1 { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: clamp(36px, 6vw, 64px); line-height: 1; margin: 10px 0 14px; }
+.page-hero p { max-width: 640px; color: var(--on-dark-muted); margin: 0; }
+.back { display: inline-block; margin-bottom: 18px; color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 14px; }
+.back:hover { color: var(--white); }
+.steps-sec.detail { padding-top: 20px; }
+.road.left .road-step, .road.left .road-step:nth-child(even) { width: auto; max-width: 820px; justify-self: stretch; margin-left: 64px; }
+.road-step details h4 { margin: 18px 18px 6px; font-size: 16px; font-weight: 800; color: var(--white); }
+.road-step details ol { margin: 0 18px 18px; padding-left: 22px; color: var(--white); font-size: 15px; display: grid; gap: 4px; }
+.road-step details p b { color: var(--white); }
+.road-step { scroll-margin-top: 90px; }
+.costs { width: 100%; max-width: 720px; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.costs td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.costs tr:last-child td { border-bottom: 0; }
+.costs td:last-child { text-align: right; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; }
+.faq summary { cursor: pointer; padding: 16px 18px; font-weight: 700; list-style: none; display: flex; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; margin-left: auto; color: var(--blue); font-size: 20px; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0 18px 16px; color: var(--muted); }
+.sources { margin-top: 26px; color: var(--muted); font-size: 14px; }
+.sources a { color: var(--blue); }
+@media (max-width: 700px) { .road.left .road-step, .road.left .road-step:nth-child(even) { margin-left: 50px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html#start"><span class="lplate">L</span>OES</a>
+    <nav class="nav" aria-label="Menu">
+      <a href="index.html#start">Kategorie</a>
+      <a href="index.html#pod-maska">Pod maską</a>
+      <a href="index.html#biura">Biura</a>
+      <a href="index.html#zapis">Zapisy</a>
+    </nav>
+    <a class="phone" href="tel:+48501294854">501 294 854</a>
+    <a class="btn btn-primary" href="index.html#zapis">Zapisz się</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#start">← Strona główna</a>
+      <span class="kicker" style="display:block">Poradnik krok po kroku</span>
+      <h1>Droga do prawa jazdy</h1>
+      <p>Wszystko, co trzeba załatwić od badania u lekarza do odebrania dokumentu. Przewijaj, a auto pojedzie z tobą.</p>
+    </div>
+  </section>
+
+  <section class="steps-sec detail">
+    <div class="wrap">
+      <div class="road left" id="road">
+        <svg class="road-svg" aria-hidden="true"><path class="r-base"/><path class="r-done"/><path class="r-line"/></svg>
+        <svg class="road-car" viewBox="0 0 26 46" aria-hidden="true"><rect x="2" y="2" width="22" height="42" rx="8" fill="#fff"/><rect x="5" y="9" width="16" height="8" rx="3" fill="#0b1633"/><rect x="5" y="31" width="16" height="6" rx="2.5" fill="#0b1633"/><rect x="6" y="18" width="14" height="12" rx="2" fill="#1d5bd8"/><rect x="9.5" y="20.5" width="7" height="7" rx="1" fill="#fff"/><path d="M11.6 21.8v4.6h3.2" stroke="#1d5bd8" stroke-width="1.4" fill="none"/><rect x="4" y="2.5" width="5" height="2.5" rx="1" fill="#ffe9a8"/><rect x="17" y="2.5" width="5" height="2.5" rx="1" fill="#ffe9a8"/></svg>
+        <ol class="road-steps">
+          <li class="road-step" id="krok-1"><details open><summary><span class="ico">🩺</span><span><h3>Badania i PKK</h3><span class="time">PKK nawet od ręki</span></span></summary>
+            <h4>Badania lekarskie</h4>
+            <p>Badanie przeprowadza lekarz uprawniony do badań kierowców. Sprawdza, czy stan zdrowia pozwala bezpiecznie prowadzić: wzrok, słuch, układ nerwowy, krążenie i sprawność ruchową. W razie potrzeby może zlecić dodatkowe konsultacje.</p>
+            <p><b>Zabierz:</b> dokument tożsamości, okulary lub soczewki (jeśli używasz), informacje o lekach i dokumentację ważnych schorzeń.</p>
+            <p><b>Wynik:</b> orzeczenie lekarskie. Lekarz może wpisać ograniczenia, np. obowiązek jazdy w okularach. Okulary nie wykluczają prawa jazdy.</p>
+            <p><b>Badania psychologiczne</b> dla kat. B nie są rutynowo wymagane. <b>Koszt badania:</b> najwyżej 200 zł.</p>
+            <h4>Dokumenty do numeru PKK</h4>
+            <ul><li>wypełniony wniosek o wydanie prawa jazdy</li><li>orzeczenie lekarskie o braku przeciwwskazań</li><li>kolorowe zdjęcie 35 × 45 mm, zrobione najwyżej 6 miesięcy wcześniej</li><li>dowód osobisty albo paszport</li><li>pisemna zgoda rodzica lub opiekuna, jeśli nie masz 18 lat</li><li>kopia prawa jazdy, jeśli dokładasz nową kategorię</li></ul>
+            <p class="tip">Urząd może poprosić o dodatkowe dokumenty, np. potwierdzające miejsce zamieszkania.</p>
+            <h4>Gdzie złożyć wniosek</h4>
+            <p>W wydziale komunikacji właściwym dla miejsca zamieszkania: w starostwie powiatowym albo w urzędzie miasta na prawach powiatu. Przed wizytą sprawdź lokalne zasady.</p>
+            <h4>Ile się czeka</h4>
+            <p>Przy kompletnych dokumentach numer PKK bywa od ręki albo w ciągu ok. 2 dni roboczych. Gdy trzeba coś wyjaśnić, nawet do miesiąca, a w trudnych sprawach do 2 miesięcy.</p>
+            <h4>Kolejność</h4>
+            <ol><li>Umów badanie u lekarza uprawnionego do badań kierowców.</li><li>Zrób aktualne zdjęcie do prawa jazdy.</li><li>Przygotuj wniosek i wszystkie dokumenty.</li><li>Złóż dokumenty w wydziale komunikacji.</li><li>Odbierz numer PKK i przekaż go do OES.</li></ol>
+          </details></li>
+          <li class="road-step" id="krok-2"><details open><summary><span class="ico">📝</span><span><h3>Zapis w OES</h3><span class="time">15 minut</span></span></summary>
+            <p>Wybierasz kategorię i najbliższe biuro. Zapiszesz się na miejscu, telefonicznie albo przez formularz.</p>
+            <ul><li>numer PKK</li><li>dowód osobisty</li><li>pasujące godziny zajęć</li></ul>
+            <p><b>Masz 16 lat?</b> Od 3 marca 2026 r. kat. B jest dostępna od 17 lat, a kurs możesz zacząć do 3 miesięcy przed wymaganym wiekiem. Dla niepełnoletnich obowiązuje zgoda opiekuna i ograniczenia w prowadzeniu.</p>
+            <p><b>Nie masz jeszcze PKK?</b> Bez numeru PKK kursu formalnie nie zaczniesz, ale termin możesz ustalić z nami wcześniej. Pomożemy też wskazać lekarza i przygotować wniosek.</p>
+          </details></li>
+          <li class="road-step" id="krok-3"><details open><summary><span class="ico">🚗</span><span><h3>Teoria i jazdy</h3><span class="time">ok. 2–3 miesiące</span></span></summary>
+            <p>Najpierw zajęcia z teorii, potem jazdy z instruktorem na placu i w mieście. Na końcu egzamin wewnętrzny w OES.</p>
+            <ul><li>kat. B: 30 h teorii i 30 h jazd</li><li>jazdy w godzinach, które ci pasują</li><li>próbny egzamin przed WORD</li></ul>
+          </details></li>
+          <li class="road-step" id="krok-4"><details open><summary><span class="ico">🎓</span><span><h3>Egzamin w WORD</h3><span class="time">termin zwykle w kilka tygodni</span></span></summary>
+            <p>Zapisujesz się na egzamin w WORD w Krakowie. Najpierw teoria, potem praktyka na placu i w ruchu miejskim.</p>
+            <ul><li>teoria: 32 pytania na komputerze</li><li>praktyka: plac manewrowy i miasto</li><li>zabierz dowód osobisty</li></ul>
+          </details></li>
+          <li class="road-step finish" id="krok-5"><div class="finish-card"><span class="ico">🏁</span><h3>Prawo jazdy w ręku!</h3><p>Odbierasz dokument w wydziale komunikacji. Opłata za wydanie prawa jazdy to 100,50 zł.</p><a class="btn btn-primary" href="index.html#zapis">Zacznij swoją drogę</a></div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section id="koszty">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">Opłaty urzędowe</span><h2>Ile to kosztuje poza kursem</h2></div>
+      <table class="costs">
+        <tr><td>Wygenerowanie numeru PKK</td><td>0 zł</td></tr>
+        <tr><td>Badanie lekarskie</td><td>do 200 zł</td></tr>
+        <tr><td>Zdjęcie 35 × 45 mm</td><td>wg cennika fotografa</td></tr>
+        <tr><td>Wydanie prawa jazdy po zdanych egzaminach</td><td>100,50 zł</td></tr>
+      </table>
+    </div>
+  </section>
+
+  <section id="pytania" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head"><span class="kicker">Pytania i odpowiedzi</span><h2>Najczęstsze pytania</h2></div>
+      <div class="faq">
+        <details><summary>Czy mogę zacząć kurs bez PKK?</summary><p>Do formalnego rozpoczęcia szkolenia potrzebny jest numer PKK. Termin kursu możesz jednak ustalić z nami wcześniej.</p></details>
+        <details><summary>Czy okulary wykluczają prawo jazdy?</summary><p>Nie. Lekarz może tylko wpisać obowiązek jazdy w okularach lub soczewkach.</p></details>
+        <details><summary>Czy numer PKK wygasa?</summary><p>Sam numer zasadniczo nie ma terminu ważności. Trzeba jednak pilnować, żeby wymagane orzeczenia były aktualne.</p></details>
+        <details><summary>Czy 17-latek może mieć prawo jazdy kat. B?</summary><p>Tak. Od 3 marca 2026 r. kat. B jest dostępna od 17 lat, z dodatkowymi warunkami dla niepełnoletnich, m.in. zgodą opiekuna i ograniczeniami w prowadzeniu. Kurs można zacząć do 3 miesięcy przed wymaganym wiekiem.</p></details>
+        <details><summary>Czy szkoła jazdy pomoże w formalnościach?</summary><p>Tak. Wskażemy lekarza, wyjaśnimy dokumenty i pomożemy przygotować wniosek. Sam numer PKK nadaje jednak urząd.</p></details>
+      </div>
+      <p class="sources">Stan na 25 października 2026 r. Przed złożeniem dokumentów sprawdź bieżące wymagania w urzędzie. Źródła: <a href="https://www.gov.pl/web/infrastruktura/jak-uzyskac-prawo-jazdy">Ministerstwo Infrastruktury</a>, <a href="https://www.gov.pl/web/gov/uzyskaj-prawo-jazdy">gov.pl – uzyskaj prawo jazdy</a>, <a href="https://www.gov.pl/web/gov/kategorie-prawa-jazdy">gov.pl – kategorie prawa jazdy</a>.</p>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>OES Ośrodek Szkolenia Kierowców</b><br>ul. Wrocławska 48, Kraków</div>
+    <div>Tel. <b>501 294 854</b>, <b>12 633 49 77</b><br>biurowroclawska@oes.com.pl</div>
+    <div><a href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">TikTok</a> · <a href="https://www.youtube.com/@OesPL">YouTube</a> · <a href="https://www.facebook.com/OESKRAKOW">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
+  </div>
+</footer>
+
+<script>
+  // ---------- 6. Krok po kroku: auto jedzie po drodze razem z przewijaniem ----------
+  (() => {
+    const road = document.getElementById('road'), svg = road.querySelector('.road-svg'), car = road.querySelector('.road-car');
+    const [base, done, line] = svg.querySelectorAll('path'), steps = [...road.querySelectorAll('.road-step')];
+    const nodes = steps.map((li, i) => {
+      const n = document.createElement('span'); n.className = 'rnode'; n.textContent = li.classList.contains('finish') ? '★' : i + 1;
+      road.appendChild(n); return n;
+    });
+    let L = 1, marks = [], queued = false;
+    function layout() {
+      const W = road.clientWidth, H = road.clientHeight, narrow = W < 700 || road.classList.contains('left');
+      const cx = narrow ? 22 : W / 2, sway = narrow ? 0 : 70;
+      const pts = [[cx, 0]];
+      steps.forEach((li, i) => {
+        // droga skręca w stronę karty kroku
+        const x = cx + (i % 2 ? sway : -sway), y = li.offsetTop + 44;
+        pts.push([x, y]); nodes[i].style.left = x + 'px'; nodes[i].style.top = y + 'px';
+      });
+      pts.push([cx, H]);
+      let d = `M${pts[0][0]},${pts[0][1]}`;
+      for (let k = 1; k < pts.length; k++) {
+        const [x0, y0] = pts[k - 1], [x1, y1] = pts[k], m = (y1 - y0) / 2;
+        d += ` C${x0},${y0 + m} ${x1},${y1 - m} ${x1},${y1}`;
+      }
+      svg.setAttribute('width', W); svg.setAttribute('height', H); svg.setAttribute('viewBox', `0 0 ${W} ${H}`);
+      [base, done, line].forEach(pth => pth.setAttribute('d', d));
+      L = base.getTotalLength();
+      done.style.strokeDasharray = L;
+      // długość drogi do każdego punktu (y rośnie wzdłuż drogi)
+      marks = pts.slice(1, -1).map(([, y]) => { let lo = 0, hi = L; for (let t = 0; t < 22; t++) { const mid = (lo + hi) / 2; base.getPointAtLength(mid).y < y ? lo = mid : hi = mid; } return lo; });
+      update();
+    }
+    function update() {
+      queued = false;
+      const r = road.getBoundingClientRect();
+      const prog = Math.max(0, Math.min(1, (innerHeight * .62 - r.top) / r.height));
+      const len = prog * L, a = base.getPointAtLength(len), b = base.getPointAtLength(Math.min(len + 2, L)), c = base.getPointAtLength(Math.max(len - 2, 0));
+      const ang = Math.atan2(b.y - c.y, b.x - c.x) * 180 / Math.PI + 90;
+      car.style.transform = `translate(${a.x}px, ${a.y}px) rotate(${ang}deg)`;
+      done.style.strokeDashoffset = L - len;
+      marks.forEach((m, i) => { const on = len >= m - 4; steps[i].classList.toggle('on', on); nodes[i].classList.toggle('on', on); });
+    }
+    addEventListener('scroll', () => { if (!queued) { queued = true; requestAnimationFrame(update); } }, { passive: true });
+    new ResizeObserver(layout).observe(road);
+    layout();
+  })();
+
+
+  // wejście z linku „Zobacz więcej” na konkretny krok
+  if (location.hash) document.querySelector(location.hash)?.scrollIntoView();
+</script>
+</body>
+</html>
