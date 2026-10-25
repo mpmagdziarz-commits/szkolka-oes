@@ -196,7 +196,7 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .tiktok-sec { background: var(--navy); color: var(--white); }
 .tiktok-sec .kicker { color: var(--blue-bright); }
 .tiktok-sec .sec-head p { color: var(--on-dark-muted); }
-.tt-row { display: grid; grid-template-columns: repeat(3, minmax(0, 260px)); gap: 18px; justify-content: start; }
+.tt-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
 .tt { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,0,.7); cursor: pointer; transition: transform .3s; }
 .tt:hover { transform: translateY(-4px); }
 .tt video { display: block; width: 100%; height: 100%; object-fit: cover; }
@@ -414,6 +414,7 @@ footer a { color: var(--white); }
         <figure class="tt"><video src="img/tiktok/tt1.mp4" poster="img/tiktok/tt1.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: jak wyglądam o 7 rano przychodząc na jazdy vs mój instruktor"></video><button class="tt-sound">Włącz dźwięk</button></figure>
         <figure class="tt"><video src="img/tiktok/tt2.mp4" poster="img/tiktok/tt2.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: najważniejsze to dobry vibe z instruktorem"></video><button class="tt-sound">Włącz dźwięk</button></figure>
         <figure class="tt"><video src="img/tiktok/tt3.mp4" poster="img/tiktok/tt3.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: trafiłeś na kota szczęścia"></video><button class="tt-sound">Włącz dźwięk</button></figure>
+        <figure class="tt"><video src="img/tiktok/tt4.mp4" data-full="img/tiktok/tt4-full.mp4" poster="img/tiktok/tt4.jpg" muted loop playsinline preload="none" aria-label="TikTok OES: przypomnienie przed egzaminem na kategorię T"></video><button class="tt-sound">Włącz dźwięk</button></figure>
       </div>
       <div class="socials">
         <a class="main" href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">Obserwuj na TikToku</a>
@@ -737,6 +738,8 @@ footer a { color: var(--white); }
       // dźwięk tylko w jednym filmiku naraz
       tts.forEach(o => { o.querySelector('video').muted = true; o.querySelector('.tt-sound').textContent = 'Włącz dźwięk'; });
       v.muted = !on; b.textContent = on ? 'Wycisz' : 'Włącz dźwięk';
+      // długi filmik: na ekranie krótka zapowiedź, z dźwiękiem cały
+      if (on && v.dataset.full) { v.src = v.dataset.full; delete v.dataset.full; v.loop = false; }
       if (on) { v.currentTime = 0; v.play().catch(() => {}); }
     };
     t.addEventListener('click', toggle);
