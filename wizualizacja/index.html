@@ -72,8 +72,8 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 .picker { position: relative; height: clamp(220px, 34vw, 380px); margin-top: 14px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .spot { position: absolute; left: 50%; bottom: 6%; width: 70%; height: 22%; transform: translateX(-50%); background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
 .slot { position: absolute; left: 50%; bottom: 12%; width: min(560px, 60%); aspect-ratio: 640 / 380; isolation: isolate; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
-.slot img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 18px 18px rgba(0,0,0,.45)); transition: opacity .18s, transform .18s; pointer-events: none; }
-.slot img.swap { opacity: 0; transform: translateY(8px) scale(.97); }
+.slot img { position: absolute; inset: 0; width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 18px 18px rgba(0,0,0,.45)); opacity: 0; transform: scale(.96); transform-origin: 50% 100%; transition: opacity .1s, transform .1s; pointer-events: none; }
+.slot img.on { opacity: 1; transform: none; transition: opacity .22s ease, transform .35s cubic-bezier(.2,.8,.2,1); }
 .slot.center::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: -7%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, rgba(76,155,255,.28), rgba(76,155,255,.06) 70%, transparent); box-shadow: 0 0 0 2px rgba(76,155,255,.35), 0 0 40px rgba(76,155,255,.35); z-index: -1; }
 .slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
 .slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
@@ -558,8 +558,10 @@ footer a { color: var(--white); }
     const b = document.createElement('button');
     b.className = 'slot';
     b.setAttribute('aria-label', g.name);
-    const c = g.cats[g.start || 0];
-    b.innerHTML = `<img src="img/${c.img}.webp" alt="${g.name}: ${c.model}" draggable="false">`;
+    // Wszystkie zdjęcia grupy ładują się od razu i leżą jedno na drugim, więc zmiana kategorii jest natychmiastowa
+    const on = g.cats[g.start || 0].img;
+    b.innerHTML = [...new Set(g.cats.map(c => c.img))].map(im =>
+      `<img src="img/${im}.webp" data-img="${im}" alt="" class="${im === on ? 'on' : ''}" draggable="false" decoding="async">`).join('');
     b.addEventListener('click', () => { if (!dragMoved) selectGroup(i); });
     picker.insertBefore(b, document.getElementById('prev'));
     return b;
@@ -591,11 +593,11 @@ footer a { color: var(--white); }
     catIndex[gi] = k;
     const c = GROUPS[gi].cats[k];
     document.getElementById('vModel').textContent = c.model;
-    const img = slots[gi].querySelector('img');
-    if (!img.src.endsWith('img/' + c.img + '.webp')) {
-      img.classList.add('swap');
-      setTimeout(() => { img.src = 'img/' + c.img + '.webp'; img.alt = GROUPS[gi].name + ': ' + c.model; img.classList.remove('swap'); }, 180);
-    } else img.alt = GROUPS[gi].name + ': ' + c.model;
+    slots[gi].querySelectorAll('img').forEach(im => {
+      const show = im.dataset.img === c.img;
+      im.classList.toggle('on', show);
+      im.alt = show ? GROUPS[gi].name + ': ' + c.model : '';
+    });
     [...document.getElementById('chips').children].forEach((b, j) => b.setAttribute('aria-pressed', j === k));
     document.getElementById('catDesc').textContent = c.desc;
     document.getElementById('sAge').textContent = 'od ' + c.age + (c.age === 24 ? ' lat*' : ' lat');
