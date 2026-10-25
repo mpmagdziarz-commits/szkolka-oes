@@ -124,6 +124,8 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 @keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
 .hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
 .hs.active::after { animation: none; opacity: 0; }
+.inset { position: absolute; right: 12px; bottom: 12px; z-index: 3; width: 36%; border-radius: 10px; overflow: hidden; border: 2px solid rgba(255,255,255,.3); box-shadow: 0 8px 24px rgba(0,0,0,.5); }
+.inset svg { display: block; width: 100%; height: auto; }
 .bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
 .qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
 .qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
@@ -539,18 +541,18 @@ footer a { color: var(--white); }
     <text x="400" y="60" text-anchor="middle" font-family="Archivo, Arial, sans-serif" font-size="20" font-weight="900" fill="#fff">L</text>`;
 
   const MODES = {
-    fluids: { photo: 'img/silnik.webp', w: 1600, h: 900, label: 'Pytanie egzaminatora', items: [
+    fluids: { photo: 'img/silnik.webp', alt: 'Komora silnika Hyundaia i20 widziana z góry', back: 'Cały silnik', w: 1600, h: 900, label: 'Pytanie egzaminatora', items: [
       { k: 'oil', say: 'Poziom oleju silnikowego sprawdzamy na wyłączonym silniku, gdy samochód stoi na równym podłożu. Wyciągamy bagnet, wycieramy go, wkładamy ponownie i wyciągamy. Poziom oleju powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 522, y: 612, t: 'Olej silnikowy', ask: '„Proszę sprawdzić poziom oleju w silniku.”', how: 'Bagnet ma pomarańczowy uchwyt. Wyciągnij go, wytrzyj, włóż z powrotem i wyciągnij ponownie. Olej ma być między MIN a MAX. Dolewa się go przez czarny korek na pokrywie silnika.' },
       { k: 'cool', say: 'Poziom płynu chłodniczego sprawdzamy w zbiorniczku wyrównawczym. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX. Sprawdzamy go na zimnym silniku i nie odkręcamy korka na gorącym silniku.', x: 1182, y: 800, t: 'Płyn chłodniczy', ask: '„Proszę sprawdzić poziom płynu w układzie chłodzenia.”', how: 'Pokaż zbiorniczek wyrównawczy i oceń poziom płynu między MIN a MAX. Korka chłodnicy z ostrzeżeniem nigdy nie odkręcaj przy gorącym silniku, bo płyn jest pod ciśnieniem.' },
       { k: 'brake', say: 'Poziom płynu hamulcowego sprawdzamy w zbiorniczku płynu hamulcowego. Powinien znajdować się pomiędzy oznaczeniami MIN i MAX.', x: 1100, y: 225, t: 'Płyn hamulcowy', ask: '„Proszę sprawdzić poziom płynu w układzie hamulcowym.”', how: 'Przezroczysty zbiorniczek z czarnym korkiem przy szybie, po stronie kierowcy. Poziom odczytujesz z boku zbiorniczka: musi być między MIN a MAX. Nie odkręcaj korka.' },
       { k: 'washer', say: 'Płyn do spryskiwaczy znajduje się w zbiorniku pod maską, oznaczonym symbolem szyby z rozpylanym płynem. Jego obecność możemy sprawdzić przez uruchomienie spryskiwaczy, a w razie potrzeby uzupełniamy płyn.', x: 118, y: 545, t: 'Płyn do spryskiwaczy', ask: '„Proszę pokazać, gdzie uzupełnia się płyn do spryskiwaczy.”', how: 'Niebieski korek z symbolem szyby i fontanny, z przodu z lewej strony. Tu wlewasz płyn, zimą zimowy.' },
     ]},
-    lights: { svg: LIGHTS_SVG, w: 800, h: 480, label: 'Polecenie egzaminatora', items: [
-      { k: 'pos', x: 150, y: 296, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
-      { k: 'low', x: 222, y: 296, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Pokrętło na lewej dźwigni na symbol reflektora z ukośnymi promieniami w dół. Na desce zapali się zielona kontrolka.' },
-      { k: 'high', x: 400, y: 300, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka. Pociągnięcie do siebie to „mrugnięcie” drogowymi.' },
-      { k: 'left', x: 74, y: 160, t: 'Kierunkowskaz', ask: '„Proszę włączyć lewy kierunkowskaz.”', how: 'Lewa dźwignia w dół to lewy kierunkowskaz, w górę prawy. Na desce miga zielona strzałka.' },
-      { k: 'hazard', x: 726, y: 160, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski rozdzielczej. Migają wszystkie kierunkowskazy naraz.' },
+    lights: { photo: 'img/kokpit.webp', alt: 'Kierownica i deska rozdzielcza Hyundaia i20', back: 'Cała deska', inset: LIGHTS_SVG, w: 1280, h: 960, label: 'Polecenie egzaminatora', items: [
+      { k: 'pos', x: 300, y: 330, fx: 350, fy: 380, t: 'Światła pozycyjne', ask: '„Proszę włączyć światła pozycyjne.”', how: 'Przekręć pokrętło na końcu lewej dźwigni na symbol dwóch małych lampek. Pokaż, że świecą z przodu i z tyłu.' },
+      { k: 'low', x: 372, y: 318, fx: 350, fy: 380, t: 'Światła mijania', ask: '„Proszę włączyć światła mijania.”', how: 'Pokrętło na lewej dźwigni na symbol reflektora z ukośnymi promieniami w dół. Na desce zapali się zielona kontrolka.' },
+      { k: 'high', x: 250, y: 400, fx: 380, fy: 380, t: 'Światła drogowe', ask: '„Proszę włączyć światła drogowe.”', how: 'Przy włączonych światłach mijania pchnij lewą dźwignię od siebie. Zapali się niebieska kontrolka. Pociągnięcie do siebie to „mrugnięcie” drogowymi.' },
+      { k: 'left', x: 440, y: 420, fx: 400, fy: 380, t: 'Kierunkowskaz', ask: '„Proszę włączyć lewy kierunkowskaz.”', how: 'Lewa dźwignia w dół to lewy kierunkowskaz, w górę prawy. Na desce miga zielona strzałka.' },
+      { k: 'hazard', x: 1160, y: 432, t: 'Światła awaryjne', ask: '„Proszę włączyć światła awaryjne.”', how: 'Czerwony przycisk z trójkątem na środku deski rozdzielczej. Migają wszystkie kierunkowskazy naraz.' },
     ]},
   };
 
@@ -563,9 +565,10 @@ footer a { color: var(--white); }
     document.getElementById('tabLights').setAttribute('aria-selected', m === 'lights');
     bay.className = 'bay';
     bay.innerHTML = `<div class="stage-wrap" style="aspect-ratio:${M.w} / ${M.h}">${M.photo
-        ? `<img src="${M.photo}" alt="Komora silnika Hyundaia i20 widziana z góry">`
+        ? `<img src="${M.photo}" alt="${M.alt}">`
         : `<svg viewBox="0 0 ${M.w} ${M.h}" aria-hidden="true">${M.svg}</svg>`}<div class="dim"></div><div class="ring"></div></div>
-      <button class="bay-back" hidden>← Cały silnik</button><span class="bay-hint">Kliknij numer na ${M.photo ? 'zdjęciu' : 'rysunku'}</span>`;
+      ${M.inset ? `<div class="inset" aria-hidden="true"><svg viewBox="0 0 800 480">${M.inset}</svg></div>` : ''}
+      <button class="bay-back" hidden>← ${M.back}</button><span class="bay-hint">Kliknij numer na ${M.photo ? 'zdjęciu' : 'rysunku'}</span>`;
     wrap = bay.querySelector('.stage-wrap');
     bay.querySelector('.bay-back').addEventListener('click', zoomOut);
     qlist.innerHTML = '';
@@ -587,7 +590,7 @@ footer a { color: var(--white); }
     document.getElementById('qSay').hidden = true;
   }
   function zoomOut() {
-    bay.classList.remove('zoom');
+    bay.className = 'bay';
     ['--z', '--tx', '--ty'].forEach(v => wrap.style.removeProperty(v));
     bay.querySelector('.bay-back').hidden = true;
     bay.querySelector('.bay-hint').hidden = false;
@@ -607,7 +610,7 @@ footer a { color: var(--white); }
       wrap.style.setProperty('--ty', clamp(50 - fy) + '%');
       wrap.style.setProperty('--sx', fx + '%'); wrap.style.setProperty('--sy', fy + '%');
       const ring = wrap.querySelector('.ring'); ring.style.left = fx + '%'; ring.style.top = fy + '%';
-      bay.classList.add('zoom');
+      bay.className = 'bay zoom' + (M.inset ? ' l-' + it.k : '');
       bay.querySelector('.bay-back').hidden = false;
     } else {
       bay.className = 'bay l-' + it.k;
