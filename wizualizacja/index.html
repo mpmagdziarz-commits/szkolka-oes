@@ -71,8 +71,10 @@ section { padding-block: clamp(56px, 8vw, 96px); }
 
 .picker { position: relative; height: clamp(220px, 34vw, 380px); margin-top: 14px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
 .spot { position: absolute; left: 50%; bottom: 6%; width: 70%; height: 22%; transform: translateX(-50%); background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
-.slot { position: absolute; left: 50%; bottom: 10%; width: min(560px, 62%); aspect-ratio: 640 / 300; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
-.slot svg { width: 100%; height: 100%; display: block; overflow: visible; }
+.slot { position: absolute; left: 50%; bottom: 12%; width: min(560px, 60%); aspect-ratio: 640 / 380; isolation: isolate; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
+.slot img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 18px 18px rgba(0,0,0,.45)); transition: opacity .18s, transform .18s; pointer-events: none; }
+.slot img.swap { opacity: 0; transform: translateY(8px) scale(.97); }
+.slot.center::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: -7%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, rgba(76,155,255,.28), rgba(76,155,255,.06) 70%, transparent); box-shadow: 0 0 0 2px rgba(76,155,255,.35), 0 0 40px rgba(76,155,255,.35); z-index: -1; }
 .slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
 .slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
 .slot.right { transform: translateX(32%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
@@ -252,7 +254,7 @@ footer a { color: var(--white); }
           <a class="btn btn-primary" href="#zapis" id="pickBtn">Wybieram ten kurs</a>
         </dl>
       </div>
-      <p class="mock-note"><span class="tag-mock">Wizualizacja</span> Pojazdy to grafiki zastępcze. Podmienimy je na zdjęcia i20, motocykla i ciężarówki.</p>
+      <p class="mock-note"><span class="tag-mock">Wizualizacja</span> Zdjęcia z wyciętym tłem. Na gotową stronę najlepiej zrobić własne zdjęcia pod jednym kątem.</p>
     </div>
   </section>
 
@@ -373,22 +375,22 @@ footer a { color: var(--white); }
 (() => {
   // ---------- Dane ----------
   const GROUPS = [
-    { id: 'moto', name: 'Motocykl', model: 'model do ustalenia', draw: motorbike, cats: [
-      { id: 'AM', age: 14, hours: 10, price: 1700, desc: 'Motorowery i skutery do 50 cm³ oraz lekkie quady.' },
-      { id: 'A1', age: 16, hours: 20, price: 2900, desc: 'Motocykle do 125 cm³ i 11 kW.' },
-      { id: 'A2', age: 18, hours: 20, price: 3500, desc: 'Motocykle do 35 kW.' },
-      { id: 'A',  age: 24, hours: 20, price: 3500, desc: 'Wszystkie motocykle, bez ograniczenia mocy.' },
-    ]},
-    { id: 'car', name: 'Samochód', model: 'Hyundai i20', draw: car, cats: [
-      { id: 'B1', age: 16, hours: 30, price: 4650, desc: 'Czterokołowce, np. większe quady.' },
-      { id: 'B',  age: 18, hours: 30, price: 4500, desc: 'Samochody osobowe. Najpopularniejszy kurs.' },
-      { id: 'B+E', age: 18, hours: 15, price: 2800, desc: 'Samochód z większą przyczepą.' },
+    { id: 'moto', name: 'Motocykl', cats: [
+      { id: 'AM', img: 'AM', model: 'quad, mikroauto, skuter', age: 14, hours: 10, price: 1700, desc: 'Motorowery i skutery do 50 cm³ oraz lekkie quady.' },
+      { id: 'A1', img: 'A1', model: 'Yamaha YBR 125', age: 16, hours: 20, price: 2900, desc: 'Motocykle do 125 cm³ i 11 kW.' },
+      { id: 'A2', img: 'A2', model: 'Yamaha XJ6', age: 18, hours: 20, price: 3500, desc: 'Motocykle do 35 kW.' },
+      { id: 'A',  img: 'A', model: 'Kawasaki Ninja 400', age: 24, hours: 20, price: 3500, desc: 'Wszystkie motocykle, bez ograniczenia mocy.' },
+    ], start: 3 },
+    { id: 'car', name: 'Samochód', cats: [
+      { id: 'B1', img: 'B1', model: 'Ligier JS50', age: 16, hours: 30, price: 4650, desc: 'Czterokołowce, np. większe quady.' },
+      { id: 'B',  img: 'B', model: 'Hyundai i20', age: 18, hours: 30, price: 4500, desc: 'Samochody osobowe. Najpopularniejszy kurs.' },
+      { id: 'B+E', img: 'B', model: 'Hyundai i20 z przyczepą', age: 18, hours: 15, price: 2800, desc: 'Samochód z większą przyczepą.' },
     ], start: 1 },
-    { id: 'truck', name: 'Ciężarówka', model: 'model do ustalenia', draw: truck, cats: [
-      { id: 'C1', age: 18, hours: null, price: null, desc: 'Ciężarówki od 3,5 do 7,5 t.' },
-      { id: 'C1+E', age: 18, hours: null, price: null, desc: 'Mniejsze ciężarówki z przyczepą.' },
-      { id: 'C',  age: 21, hours: 30, price: 5900, desc: 'Ciężarówki powyżej 3,5 t.' },
-      { id: 'C+E', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
+    { id: 'truck', name: 'Ciężarówka', cats: [
+      { id: 'C1', img: 'C', model: 'Mercedes-Benz Atego', age: 18, hours: null, price: null, desc: 'Ciężarówki od 3,5 do 7,5 t.' },
+      { id: 'C1+E', img: 'C', model: 'Mercedes-Benz Atego', age: 18, hours: null, price: null, desc: 'Mniejsze ciężarówki z przyczepą.' },
+      { id: 'C',  img: 'C', model: 'Mercedes-Benz Atego', age: 21, hours: 30, price: 5900, desc: 'Ciężarówki powyżej 3,5 t.' },
+      { id: 'C+E', img: 'C', model: 'Mercedes-Benz Atego', age: 21, hours: 25, price: 6900, desc: 'Ciężarówki z przyczepą, np. TIR-y.' },
     ], start: 2 },
   ];
   const OFFICES = [
@@ -467,7 +469,8 @@ footer a { color: var(--white); }
     const b = document.createElement('button');
     b.className = 'slot';
     b.setAttribute('aria-label', g.name);
-    b.innerHTML = `<svg viewBox="0 0 640 300"><ellipse cx="320" cy="272" rx="280" ry="9" fill="#000" opacity=".35"/>${g.draw()}</svg>`;
+    const c = g.cats[g.start || 0];
+    b.innerHTML = `<img src="img/${c.img}.webp" alt="${g.name}: ${c.model}" draggable="false">`;
     b.addEventListener('click', () => { if (!dragMoved) selectGroup(i); });
     picker.insertBefore(b, document.getElementById('prev'));
     return b;
@@ -485,7 +488,6 @@ footer a { color: var(--white); }
     });
     const g = GROUPS[gi];
     document.getElementById('vName').textContent = g.name;
-    document.getElementById('vModel').textContent = g.model;
     const chips = document.getElementById('chips');
     chips.innerHTML = '';
     g.cats.forEach((c, k) => {
@@ -499,6 +501,12 @@ footer a { color: var(--white); }
   function selectCat(k) {
     catIndex[gi] = k;
     const c = GROUPS[gi].cats[k];
+    document.getElementById('vModel').textContent = c.model;
+    const img = slots[gi].querySelector('img');
+    if (!img.src.endsWith('img/' + c.img + '.webp')) {
+      img.classList.add('swap');
+      setTimeout(() => { img.src = 'img/' + c.img + '.webp'; img.alt = GROUPS[gi].name + ': ' + c.model; img.classList.remove('swap'); }, 180);
+    } else img.alt = GROUPS[gi].name + ': ' + c.model;
     [...document.getElementById('chips').children].forEach((b, j) => b.setAttribute('aria-pressed', j === k));
     document.getElementById('catDesc').textContent = c.desc;
     document.getElementById('sAge').textContent = 'od ' + c.age + (c.age === 24 ? ' lat*' : ' lat');
