@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>OES – o nas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500..900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* Układ: ciemny „ekran wyboru pojazdu” jak w grze, niżej jasne sekcje z treścią.
+   Jedna, świadomie wybrana kolorystyka niebiesko-biała (bez trybu ciemnego). */
+:root {
+  --navy: #071233;
+  --navy-2: #0d1d4a;
+  --blue: #1d5bd8;
+  --blue-bright: #4c9bff;
+  --white: #ffffff;
+  --paper: #f2f6fc;
+  --ink: #0b1633;
+  --muted: #5b6a86;
+  --line: #d6dff0;
+  --on-dark-muted: #9fb2d9;
+  --glow: rgba(76, 155, 255, .35);
+  --tire: #111317;
+  --rim: #c9d1dc;
+  --chrome: #8e99a8;
+  --glass: #a9c8f0;
+  --paint: #1d5bd8;
+  --paint-2: #1546a8;
+  --amber: #ffb020;
+  --font-display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--paper); color: var(--ink); font-family: var(--font-body); font-size: 16px; line-height: 1.55; overflow-x: hidden; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 60; background: var(--navy); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--font-display); font-stretch: 112%; line-height: 1.02; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(30px, 4.6vw, 48px); font-weight: 900; }
+.kicker { font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--blue); }
+section { padding-block: clamp(56px, 8vw, 96px); }
+.sec-head { display: grid; gap: 10px; margin-bottom: 36px; max-width: 640px; }
+.sec-head p { margin: 0; color: var(--muted); }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; border: 0; border-radius: 8px; padding: 13px 20px; font: 700 15px/1 var(--font-body); cursor: pointer; text-decoration: none; }
+.btn-primary { background: var(--blue); color: var(--white); }
+.btn-primary:hover { background: #2a68e6; }
+.btn-light { background: var(--white); color: var(--navy); }
+:focus-visible { outline: 3px solid var(--blue-bright); outline-offset: 3px; }
+.tag-mock { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; padding: 3px 8px; border-radius: 4px; background: rgba(255, 176, 32, .16); color: #a86a00; }
+
+/* ---------- 1. Górny pasek ---------- */
+.top { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 50; background: var(--navy); color: var(--white); border-bottom: 1px solid rgba(255,255,255,.08); }
+.top .wrap { display: flex; align-items: center; gap: 24px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 22px; color: var(--white); text-decoration: none; }
+.lplate { display: inline-grid; place-items: center; width: 34px; height: 34px; background: var(--blue); border-radius: 5px; font-size: 24px; box-shadow: inset 0 0 0 2px rgba(255,255,255,.4); }
+.nav { display: flex; gap: 22px; margin-left: auto; }
+.nav a { color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a:hover { color: var(--white); }
+.top .phone { color: var(--white); font-weight: 700; text-decoration: none; font-variant-numeric: tabular-nums; }
+
+/* ---------- 2. Wybór pojazdu ---------- */
+.garage { position: relative; background: radial-gradient(120% 80% at 50% 70%, #16307a 0%, var(--navy-2) 40%, var(--navy) 75%); color: var(--white); overflow: hidden; padding-block: 36px 48px; }
+.garage::before { content: ""; position: absolute; inset: auto -10% 0 -10%; height: 45%; background:
+  linear-gradient(transparent 0, rgba(7,18,51,.0) 0),
+  repeating-linear-gradient(90deg, rgba(76,155,255,.10) 0 1px, transparent 1px 80px),
+  repeating-linear-gradient(0deg, rgba(76,155,255,.10) 0 1px, transparent 1px 40px);
+  transform: perspective(500px) rotateX(58deg); transform-origin: 50% 100%; pointer-events: none; }
+.garage .wrap { position: relative; }
+.garage-head { text-align: center; display: grid; gap: 8px; justify-items: center; }
+.garage-head .kicker { color: var(--blue-bright); }
+.garage-head h1 { font-size: clamp(34px, 6.4vw, 72px); font-weight: 900; font-stretch: 125%; letter-spacing: .01em; text-transform: uppercase; }
+.garage-head p { margin: 0; color: var(--on-dark-muted); max-width: 46ch; }
+
+.picker { position: relative; height: clamp(220px, 34vw, 380px); margin-top: 14px; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+.spot { position: absolute; left: 50%; bottom: 6%; width: 70%; height: 22%; transform: translateX(-50%); background: radial-gradient(closest-side, var(--glow), transparent); pointer-events: none; }
+.slot { position: absolute; left: 50%; bottom: 12%; width: min(560px, 60%); aspect-ratio: 640 / 380; isolation: isolate; max-width: 100%; transform-origin: 50% 100%; transition: transform .55s cubic-bezier(.2,.8,.2,1), opacity .55s, filter .55s; cursor: pointer; border: 0; padding: 0; background: none; }
+.slot img { width: 100%; height: 100%; display: block; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 18px 18px rgba(0,0,0,.45)); transition: opacity .18s, transform .18s; pointer-events: none; }
+.slot img.swap { opacity: 0; transform: translateY(8px) scale(.97); }
+.slot.center::before { content: ""; position: absolute; left: 6%; right: 6%; bottom: -7%; height: 22%; border-radius: 50%; background: radial-gradient(closest-side, rgba(76,155,255,.28), rgba(76,155,255,.06) 70%, transparent); box-shadow: 0 0 0 2px rgba(76,155,255,.35), 0 0 40px rgba(76,155,255,.35); z-index: -1; }
+.slot.center { transform: translateX(-50%) scale(1); opacity: 1; filter: none; z-index: 3; }
+.slot.left { transform: translateX(-132%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.right { transform: translateX(32%) scale(.5); opacity: .55; filter: saturate(.4) brightness(.8); z-index: 2; }
+.slot.left:hover, .slot.right:hover { opacity: .85; }
+.arrow { position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 52px; height: 52px; border-radius: 50%; border: 2px solid rgba(255,255,255,.25); background: rgba(7,18,51,.5); color: var(--white); cursor: pointer; display: grid; place-items: center; }
+.arrow:hover { border-color: var(--blue-bright); }
+.arrow svg { width: 22px; height: 22px; }
+.arrow.prev { left: 0; } .arrow.next { right: 0; }
+
+.select-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 28px; align-items: start; max-width: 940px; margin: 8px auto 0; }
+.select-panel > * { min-width: 0; }
+.vehicle-name { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.vehicle-name h3 { font-size: clamp(26px, 3.4vw, 36px); font-weight: 900; text-transform: uppercase; }
+.vehicle-name span { color: var(--on-dark-muted); font-size: 14px; }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+.chip { border: 2px solid rgba(255,255,255,.2); background: transparent; color: var(--white); border-radius: 8px; padding: 9px 14px; min-width: 62px; cursor: pointer; font-family: var(--font-display); font-weight: 900; font-stretch: 110%; font-size: 19px; line-height: 1; }
+.chip:hover { border-color: var(--blue-bright); }
+.chip[aria-pressed="true"] { background: var(--blue); border-color: var(--blue); box-shadow: 0 0 0 4px var(--glow); }
+.cat-desc { margin: 14px 0 0; color: var(--on-dark-muted); }
+.stats { display: grid; gap: 14px; background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 20px; }
+.stat { display: grid; grid-template-columns: 96px 1fr auto; gap: 12px; align-items: center; }
+.stat dt { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--on-dark-muted); }
+.stat dd { margin: 0; font-weight: 700; font-variant-numeric: tabular-nums; text-align: right; min-width: 80px; }
+.bar { height: 8px; border-radius: 4px; background: rgba(255,255,255,.1); overflow: hidden; }
+.bar i { display: block; height: 100%; width: 0; background: linear-gradient(90deg, var(--blue), var(--blue-bright)); border-radius: 4px; transition: width .5s cubic-bezier(.2,.8,.2,1); }
+.stats .btn { margin-top: 6px; }
+.mock-note { text-align: center; margin-top: 18px; font-size: 12px; color: var(--on-dark-muted); }
+
+/* ---------- 3. Pod maską ---------- */
+.hood { background: var(--white); }
+.hood-tabs { display: inline-flex; gap: 4px; padding: 4px; background: var(--paper); border-radius: 10px; margin-bottom: 18px; }
+.hood-tab { border: 0; background: transparent; padding: 10px 18px; border-radius: 7px; font: 700 15px var(--font-body); color: var(--muted); cursor: pointer; }
+.hood-tab[aria-selected="true"] { background: var(--white); color: var(--blue); box-shadow: 0 1px 4px rgba(11,22,51,.12); }
+@media (max-width: 560px) { .hood-tab { padding: 10px 11px; font-size: 14px; white-space: nowrap; } }
+.hood-grid { display: grid; grid-template-columns: 1.45fr 1fr; gap: 32px; align-items: start; }
+.hood-grid > * { min-width: 0; }
+.bay { position: relative; border-radius: 16px; overflow: hidden; background: #0f1520; box-shadow: 0 20px 40px -20px rgba(7,18,51,.5); }
+.stage-wrap { position: relative; transform: scale(var(--z, 1)) translate(var(--tx, 0%), var(--ty, 0%)); transition: transform .9s cubic-bezier(.3,.9,.3,1); }
+.stage-wrap > img, .stage-wrap > svg { display: block; width: 100%; height: 100%; object-fit: cover; }
+.dim { position: absolute; inset: 0; pointer-events: none; opacity: 0; transition: opacity .6s .2s; background: radial-gradient(circle at var(--sx, 50%) var(--sy, 50%), transparent 0 6%, rgba(4,9,22,.72) 12%); }
+.ring { position: absolute; width: calc(14% / var(--z, 2)); aspect-ratio: 1; transform: translate(-50%, -50%); border-radius: 50%; border: 2px solid #fff; box-shadow: 0 0 0 3px var(--blue-bright), 0 0 24px rgba(76,155,255,.8); opacity: 0; pointer-events: none; transition: opacity .4s .6s; animation: ringPulse 1.6s ease-in-out infinite; }
+@keyframes ringPulse { 50% { box-shadow: 0 0 0 6px rgba(76,155,255,.35), 0 0 36px rgba(76,155,255,1); } }
+.bay.zoom .dim, .bay.zoom .ring { opacity: 1; }
+.bay.zoom .hs { opacity: 0; pointer-events: none; }
+.bay-back { position: absolute; top: 12px; right: 12px; z-index: 3; border: 0; border-radius: 8px; padding: 9px 14px; background: rgba(7,18,51,.85); color: #fff; font: 700 14px var(--font-body); cursor: pointer; }
+.hs { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; border: 2px solid #fff; background: var(--blue); color: #fff; font: 800 14px/30px var(--font-body); text-align: center; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.45); transition: transform .2s, background .2s; }
+.hs::after { content: ""; position: absolute; inset: -8px; border-radius: 50%; border: 2px solid var(--blue-bright); animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(.7); opacity: .9; } to { transform: scale(1.5); opacity: 0; } }
+.hs:hover, .hs.active { transform: scale(1.18); background: var(--white); color: var(--blue); }
+.hs.active::after { animation: none; opacity: 0; }
+.hs.wide { width: auto; padding: 0 10px; margin-left: 0; border-radius: 17px; translate: -50% 0; }
+.honk-pad { position: absolute; width: 21%; aspect-ratio: 1.25; transform: translate(-50%, -50%); border: 0; border-radius: 50%; background: transparent; cursor: pointer; touch-action: none; -webkit-user-select: none; user-select: none; -webkit-touch-callout: none; z-index: 2; }
+.honk-pad::before, .honk-pad::after { content: ""; position: absolute; inset: 0; border-radius: 50%; border: 3px solid var(--blue-bright); opacity: 0; }
+.bay.honking .honk-pad::before { animation: honkWave .7s ease-out infinite; }
+.bay.honking .honk-pad::after { animation: honkWave .7s .35s ease-out infinite; }
+@keyframes honkWave { from { transform: scale(.8); opacity: .9; } to { transform: scale(2.2); opacity: 0; } }
+.bay.honking { animation: honkShake .1s linear infinite; }
+@keyframes honkShake { 25% { translate: -1.5px 1px; } 75% { translate: 1.5px -1px; } }
+.bay.player { aspect-ratio: 4 / 3; background: radial-gradient(circle at 50% 40%, #13213f, #05080f 70%); }
+.bay.player .main { position: absolute; inset: 0; margin: auto; display: block; height: 100%; max-width: 100%; aspect-ratio: 9 / 16; background: #000; }
+.pip { position: absolute; right: 12px; bottom: 12px; z-index: 2; height: 62%; margin: 0; border-radius: 12px; overflow: hidden; border: 3px solid #fff; box-shadow: 0 14px 34px rgba(0,0,0,.65); opacity: 0; transform: scale(.5); transform-origin: 100% 100%; transition: opacity .35s, transform .55s cubic-bezier(.2,.9,.3,1.25); pointer-events: none; }
+.pip.on { opacity: 1; transform: none; }
+.pip video { display: block; height: 100%; width: auto; }
+.pip figcaption { position: absolute; left: 0; right: 0; bottom: 0; padding: 18px 8px 7px; font: 700 12px/1.2 var(--font-body); color: #fff; background: linear-gradient(transparent, rgba(4,9,22,.9)); }
+.bay-back.replay { top: auto; right: auto; left: 12px; bottom: 12px; }
+.bay-hint { position: absolute; left: 14px; bottom: 12px; z-index: 2; font-size: 13px; font-weight: 600; color: #c9d6f0; background: rgba(7,18,51,.7); padding: 6px 10px; border-radius: 6px; pointer-events: none; }
+.qcard { background: var(--navy); color: var(--white); border-radius: 14px; padding: 22px; display: grid; gap: 10px; min-height: 210px; align-content: start; }
+.qcard .q-label { font-size: 12px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue-bright); }
+.qcard h3 { font-size: 24px; font-weight: 900; }
+.qcard .q-ask { margin: 0; font-size: 17px; font-weight: 600; }
+.qcard .q-how { margin: 0; color: var(--on-dark-muted); }
+.q-say { margin-top: 6px; padding: 14px 16px; border-radius: 10px; background: rgba(76,155,255,.12); border-left: 3px solid var(--blue-bright); }
+.q-say span { display: block; font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--blue-bright); margin-bottom: 4px; }
+.q-say p { margin: 0; color: var(--white); font-size: 16px; line-height: 1.55; }
+.qlist { display: grid; gap: 8px; margin: 16px 0 0; padding: 0; list-style: none; }
+.qlist button { width: 100%; text-align: left; display: flex; gap: 12px; align-items: center; border: 1px solid var(--line); background: var(--white); border-radius: 10px; padding: 10px 12px; cursor: pointer; font: 600 15px var(--font-body); color: var(--ink); }
+.qlist button b { display: grid; place-items: center; flex: 0 0 28px; height: 28px; border-radius: 50%; background: var(--paper); color: var(--blue); font-weight: 800; }
+.qlist button.active { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,91,216,.12); }
+.qlist button.active b { background: var(--blue); color: var(--white); }
+
+/* ---------- 4. Dlaczego OES ---------- */
+.why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.why { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 6px; align-content: start; }
+.why .big { font-family: var(--font-display); font-weight: 900; font-stretch: 115%; font-size: 38px; line-height: 1; color: var(--blue); font-variant-numeric: tabular-nums; }
+.why p { margin: 0; color: var(--muted); font-size: 15px; }
+
+/* ---------- 5. Kroki ---------- */
+.steps-sec { background: var(--navy); color: var(--white); }
+.steps-sec .kicker { color: var(--blue-bright); }
+.steps-sec .sec-head p { color: var(--on-dark-muted); }
+.road { position: relative; }
+.road-svg { position: absolute; left: 0; top: 0; overflow: visible; pointer-events: none; }
+.road-svg path { fill: none; stroke-linecap: round; }
+.r-base { stroke: #17295a; stroke-width: 32; }
+.r-done { stroke: rgba(76,155,255,.38); stroke-width: 32; }
+.r-line { stroke: rgba(255,255,255,.5); stroke-width: 2.5; stroke-dasharray: 12 14; }
+.road-steps { list-style: none; margin: 0; padding: 40px 0 30px; display: grid; gap: 40px; }
+.road-step { width: calc(50% - 80px); }
+.road-step:nth-child(even) { justify-self: end; }
+.road-step details, .finish-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 14px; opacity: .6; transition: opacity .4s, border-color .4s, background .4s, box-shadow .4s; }
+.road-step.on details, .road-step.on .finish-card { opacity: 1; border-color: var(--blue-bright); background: rgba(76,155,255,.1); box-shadow: 0 0 0 4px rgba(76,155,255,.12); }
+.road-step summary { list-style: none; display: flex; gap: 14px; align-items: center; padding: 18px; cursor: pointer; }
+.road-step summary::-webkit-details-marker { display: none; }
+.road-step summary::after { content: "+"; margin-left: auto; flex: none; width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; background: rgba(255,255,255,.1); font-size: 20px; font-weight: 700; }
+.road-step details[open] summary::after { content: "−"; }
+.road-step h3 { font-size: 20px; font-weight: 800; }
+.ico { flex: none; width: 52px; height: 52px; border-radius: 12px; display: grid; place-items: center; background: rgba(255,255,255,.08); font-size: 26px; }
+.time { display: inline-block; margin-top: 3px; font-size: 13px; font-weight: 700; color: var(--blue-bright); }
+.road-step details p { margin: 0 18px 8px; color: var(--on-dark-muted); font-size: 15px; }
+.road-step .more { display: inline-block; margin: -6px 18px 18px; color: var(--blue-bright); font-weight: 700; font-size: 14px; text-decoration: none; }
+.road-step .more:hover { text-decoration: underline; }
+.road-more { margin: 8px 0 0; text-align: center; }
+.loc { margin: 0 18px 18px; }
+.loc-toggle { border: 0; border-radius: 10px; padding: 10px 14px; background: var(--blue); color: var(--white); font: 700 14px var(--font-body); cursor: pointer; }
+.loc-toggle:hover { background: var(--blue-bright); }
+.loc-list { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.loc-list button { border: 1px solid rgba(255,255,255,.22); background: rgba(255,255,255,.06); color: var(--white); border-radius: 999px; padding: 7px 12px; font: 600 13px var(--font-body); cursor: pointer; }
+.loc-list button:hover { border-color: var(--blue-bright); }
+.loc-list button.on { background: var(--white); border-color: var(--white); color: var(--blue); }
+.loc-pick { margin-top: 10px; padding: 12px 14px; border-radius: 10px; background: rgba(255,255,255,.07); display: grid; gap: 3px; font-size: 14px; color: var(--on-dark-muted); }
+.loc-pick b { color: var(--white); font-size: 15px; }
+.loc-pick a { color: var(--blue-bright); font-weight: 700; text-decoration: none; }
+.loc-pick a:hover { text-decoration: underline; }
+.road-step details ul { margin: 0 18px 18px; padding-left: 20px; color: var(--white); font-size: 15px; display: grid; gap: 4px; }
+.finish-card { padding: 20px; display: grid; gap: 8px; justify-items: start; }
+.finish-card h3 { font-size: 24px; font-weight: 900; }
+.finish-card p { margin: 0; color: var(--on-dark-muted); }
+.rnode { position: absolute; z-index: 2; width: 34px; height: 34px; margin: -17px 0 0 -17px; border-radius: 50%; background: #17295a; border: 3px solid #34508f; color: var(--on-dark-muted); font: 800 14px/28px var(--font-body); text-align: center; transition: background .4s, border-color .4s, color .4s, box-shadow .4s; }
+.rnode.on { background: var(--blue); border-color: var(--white); color: var(--white); box-shadow: 0 0 0 7px rgba(76,155,255,.25); }
+.road-car { position: absolute; left: 0; top: 0; z-index: 3; width: 26px; height: 46px; margin: -23px 0 0 -13px; will-change: transform; filter: drop-shadow(0 6px 8px rgba(0,0,0,.55)); }
+@media (max-width: 700px) {
+  .road-step, .road-step:nth-child(even) { width: auto; justify-self: stretch; margin-left: 50px; }
+  .road-steps { gap: 24px; }
+  .road-step summary { padding: 14px; gap: 12px; }
+  .ico { width: 44px; height: 44px; font-size: 22px; }
+}
+
+/* ---------- 6. Opinie ---------- */
+.reviews { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.review { background: var(--white); border: 1px solid var(--line); border-radius: 12px; padding: 22px; display: grid; gap: 10px; align-content: start; }
+.stars { color: var(--amber); letter-spacing: 2px; font-size: 18px; }
+.review p { margin: 0; color: var(--muted); }
+.review .who { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+.avatar { width: 36px; height: 36px; flex: none; border-radius: 50%; display: grid; place-items: center; background: var(--blue); color: var(--white); font-size: 15px; font-weight: 800; }
+.review p { color: var(--ink); }
+.review .who small { display: block; font-weight: 500; font-size: 13px; color: var(--muted); }
+.rating { display: flex; flex-wrap: wrap; gap: 12px 28px; align-items: center; margin-bottom: 22px; }
+.rating-big { display: flex; align-items: center; gap: 14px; }
+.rating-big b { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: 52px; line-height: 1; color: var(--ink); }
+.rating-big span { color: var(--muted); font-size: 14px; line-height: 1.35; }
+.rating-big .stars { display: block; color: var(--amber); }
+.rating-offices { display: flex; flex-wrap: wrap; gap: 8px; }
+.rating-offices a { display: inline-flex; gap: 6px; align-items: center; padding: 7px 12px; border-radius: 999px; background: var(--white); border: 1px solid var(--line); color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 600; }
+.rating-offices a b { color: var(--blue); }
+.rating-offices a:hover { border-color: var(--blue); }
+.reviews-more { margin-top: 18px; }
+.reviews-more a { color: var(--blue); font-weight: 700; text-decoration: none; }
+
+/* ---------- 6b. TikTok ---------- */
+.tiktok-sec { background: var(--navy); color: var(--white); }
+.tiktok-sec .kicker { color: var(--blue-bright); }
+.tiktok-sec .sec-head p { color: var(--on-dark-muted); }
+.tt-row { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 18px; }
+.tt { position: relative; margin: 0; aspect-ratio: 9 / 16; border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 20px 40px -18px rgba(0,0,0,.7); cursor: pointer; transition: transform .3s; }
+.tt:hover { transform: translateY(-4px); }
+.tt video { display: block; width: 100%; height: 100%; object-fit: cover; }
+.tt-sound { position: absolute; right: 10px; bottom: 10px; border: 0; border-radius: 999px; padding: 7px 11px; background: rgba(7,18,51,.8); color: #fff; font: 700 13px var(--font-body); cursor: pointer; }
+.socials { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 26px; }
+.socials a { display: inline-flex; align-items: center; gap: 8px; padding: 11px 16px; border-radius: 10px; text-decoration: none; font-weight: 700; color: var(--white); background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.16); }
+.socials a.main { background: var(--blue); border-color: var(--blue); }
+.socials a:hover { background: rgba(255,255,255,.16); }
+.socials a.main:hover { background: var(--blue-bright); }
+@media (max-width: 720px) {
+  .tt-row { grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 68%; overflow-x: auto; scroll-snap-type: x mandatory; scroll-padding-inline: 16px; padding-bottom: 6px; margin-inline: -16px; padding-inline: 16px; scrollbar-width: none; }
+  .tt { scroll-snap-align: start; }
+  .rating-big b { font-size: 44px; }
+}
+
+/* ---------- 7. Biura ---------- */
+.offices-sec { background: var(--white); }
+.offices { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.office { border: 1px solid var(--line); border-radius: 12px; padding: 20px; display: grid; gap: 4px; }
+.office h3 { font-size: 19px; font-weight: 800; font-stretch: 105%; }
+.office .addr { color: var(--muted); }
+.office .tel { font-weight: 700; font-variant-numeric: tabular-nums; user-select: all; }
+.office a.map { color: var(--blue); font-weight: 700; font-size: 14px; text-decoration: none; margin-top: 6px; }
+.hours { margin-top: 20px; color: var(--muted); }
+.hours b { color: var(--ink); }
+
+/* ---------- 8. Zapis ---------- */
+.signup { background: linear-gradient(135deg, var(--blue) 0%, #123f9e 100%); color: var(--white); }
+.signup-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 40px; align-items: center; }
+.signup-grid > * { min-width: 0; }
+.signup .kicker { color: #cfe0ff; }
+.signup p { color: #dbe6ff; }
+form { background: var(--white); color: var(--ink); border-radius: 14px; padding: 24px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+form label { display: grid; gap: 6px; font-size: 13px; font-weight: 700; }
+form input, form select { font: 500 16px var(--font-body); padding: 12px; border: 1.5px solid var(--line); border-radius: 8px; background: var(--white); color: var(--ink); width: 100%; }
+form .full { grid-column: 1 / -1; }
+.form-msg { grid-column: 1 / -1; margin: 0; font-size: 14px; color: var(--blue); font-weight: 600; }
+
+/* ---------- 9. Stopka ---------- */
+footer { background: var(--navy); color: var(--on-dark-muted); padding-block: 40px; font-size: 14px; }
+footer .wrap { display: flex; gap: 24px 48px; flex-wrap: wrap; justify-content: space-between; }
+footer b { color: var(--white); }
+footer a { color: var(--white); }
+
+/* ---------- Pojawianie się sekcji przy przewijaniu ---------- */
+.js-reveal .rv { opacity: 0; transform: translateY(36px); transition: opacity .7s ease, transform .7s cubic-bezier(.2,.8,.2,1); transition-delay: calc(var(--d, 0) * 90ms); }
+.js-reveal .rv.in { opacity: 1; transform: none; }
+
+@media (max-width: 900px) {
+  .nav { display: none; }
+  .select-panel, .hood-grid, .signup-grid { grid-template-columns: 1fr; }
+  .why-grid { grid-template-columns: 1fr 1fr; }
+  .reviews, .offices { grid-template-columns: 1fr; }
+}
+@media (max-width: 560px) {
+  .top .btn { display: none; }
+  .top .phone { margin-left: auto; }
+  .slot { width: 80%; }
+  .slot.left { transform: translateX(-118%) scale(.42); }
+  .slot.right { transform: translateX(18%) scale(.42); }
+  .arrow { width: 42px; height: 42px; top: 40%; }
+  .why-grid { grid-template-columns: 1fr; }
+  form { grid-template-columns: 1fr; }
+  .stat { grid-template-columns: 74px 1fr auto; }
+}
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; animation: none !important; }
+}
+
+/* ---------- Podstrona: droga do prawa jazdy ---------- */
+.page-hero { background: radial-gradient(120% 90% at 50% 100%, #16307a 0%, var(--navy-2) 45%, var(--navy) 80%); color: var(--white); padding-block: 56px 40px; }
+.page-hero .kicker { color: var(--blue-bright); }
+.page-hero h1 { font-family: var(--font-display); font-weight: 900; font-stretch: 125%; font-size: clamp(36px, 6vw, 64px); line-height: 1; margin: 10px 0 14px; }
+.page-hero p { max-width: 640px; color: var(--on-dark-muted); margin: 0; }
+.back { display: inline-block; margin-bottom: 18px; color: var(--on-dark-muted); text-decoration: none; font-weight: 600; font-size: 14px; }
+.back:hover { color: var(--white); }
+.steps-sec.detail { padding-top: 20px; }
+.road.left .road-step, .road.left .road-step:nth-child(even) { width: auto; max-width: 820px; justify-self: stretch; margin-left: 64px; }
+.road-step details h4 { margin: 18px 18px 6px; font-size: 16px; font-weight: 800; color: var(--white); }
+.road-step details ol { margin: 0 18px 18px; padding-left: 22px; color: var(--white); font-size: 15px; display: grid; gap: 4px; }
+.road-step details p b { color: var(--white); }
+.road-step { scroll-margin-top: 90px; }
+.costs { width: 100%; max-width: 720px; border-collapse: collapse; background: var(--white); border-radius: 12px; overflow: hidden; border: 1px solid var(--line); }
+.costs td { padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.costs tr:last-child td { border-bottom: 0; }
+.costs td small { display: block; color: var(--muted); font-size: 13px; }
+.costs tr.sum td { background: var(--paper); font-weight: 800; }
+.variants { max-width: 720px; margin: 14px 0 0; color: var(--muted); font-size: 15px; }
+.road-step details a.inline { color: var(--blue-bright); font-weight: 700; }
+.road-step details ul b { color: var(--white); }
+.variants b { color: var(--ink); }
+.costs td:last-child { text-align: right; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.faq { display: grid; gap: 10px; max-width: 820px; }
+.faq details { background: var(--white); border: 1px solid var(--line); border-radius: 12px; }
+.faq summary { cursor: pointer; padding: 16px 18px; font-weight: 700; list-style: none; display: flex; gap: 12px; }
+.faq summary::-webkit-details-marker { display: none; }
+.faq summary::after { content: "+"; margin-left: auto; color: var(--blue); font-size: 20px; line-height: 1; }
+.faq details[open] summary::after { content: "−"; }
+.faq details p { margin: 0 18px 16px; color: var(--muted); }
+.sources { margin-top: 26px; color: var(--muted); font-size: 14px; }
+.sources a { color: var(--blue); }
+@media (max-width: 560px) { .costs td { padding: 12px 14px; } .costs tr.sum td:last-child { white-space: normal; } }
+@media (max-width: 700px) { .road.left .road-step, .road.left .road-step:nth-child(even) { margin-left: 50px; } }
+
+/* O nas */
+.nav a[aria-current] { color: var(--white); }
+.about-intro { display: grid; grid-template-columns: 1.1fr 1fr; gap: 40px; align-items: center; }
+.about-intro p { color: var(--muted); margin: 0 0 14px; }
+.about-intro .why-grid { grid-template-columns: repeat(2, 1fr); }
+.team { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.member { background: var(--white); border: 1px solid var(--line); border-radius: 14px; padding: 22px; display: grid; grid-template-columns: 72px 1fr; gap: 4px 16px; align-items: center; }
+.avatar { grid-row: span 3; width: 72px; height: 72px; border-radius: 50%; background: linear-gradient(160deg, #dfe8fb, #b9cdf3); display: grid; place-items: center; color: var(--blue); }
+.member b { font-size: 17px; }
+.member .role { color: var(--blue); font-weight: 700; font-size: 14px; }
+.member .ph { color: var(--muted); font-size: 14px; font-style: italic; }
+.team-note { margin-top: 18px; padding: 14px 18px; border: 1px dashed #9fb6e6; border-radius: 12px; color: var(--muted); font-size: 15px; background: #f4f7fd; }
+.fleet-sec { background: var(--navy); color: var(--white); }
+.fleet-sec .kicker { color: var(--blue-bright); }
+.fleet-sec .sec-head p { color: var(--on-dark-muted); }
+.fleet { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; }
+.fleet figure { margin: 0; background: radial-gradient(120% 90% at 50% 100%, #16307a, var(--navy-2) 70%); border: 1px solid rgba(255,255,255,.08); border-radius: 14px; padding: 18px 14px 14px; display: grid; gap: 10px; }
+.fleet img { width: 100%; aspect-ratio: 16 / 10; object-fit: contain; object-position: 50% 100%; filter: drop-shadow(0 10px 10px rgba(0,0,0,.45)); }
+.fleet figcaption { font-size: 14px; color: var(--on-dark-muted); }
+.fleet figcaption b { display: block; color: var(--white); font-size: 16px; }
+.cta-band { display: flex; flex-wrap: wrap; gap: 18px 32px; align-items: center; justify-content: space-between; background: var(--blue); color: var(--white); border-radius: 18px; padding: 32px; }
+.cta-band h2 { margin: 0; }
+.cta-band p { margin: 6px 0 0; color: #dbe7ff; }
+.cta-band .btns { display: flex; flex-wrap: wrap; gap: 10px; }
+.cta-band .btn-ghost { background: transparent; color: var(--white); box-shadow: inset 0 0 0 2px rgba(255,255,255,.6); }
+@media (max-width: 900px) { .about-intro { grid-template-columns: 1fr; } .team { grid-template-columns: repeat(2, 1fr); } .fleet { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 600px) { .about-intro .why { padding: 18px; } .about-intro .why .big { font-size: 26px; white-space: nowrap; } .team { grid-template-columns: 1fr; } .fleet { grid-template-columns: repeat(2, 1fr); } .cta-band { padding: 24px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="index.html#start"><span class="lplate">L</span>OES</a>
+    <nav class="nav" aria-label="Menu">
+      <a href="index.html#start">Kategorie</a>
+      <a href="index.html#kroki">Poradnik</a>
+      <a href="index.html#biura">Biura</a>
+      <a href="onas.html" aria-current="page">O nas</a>
+    </nav>
+    <a class="phone" href="tel:+48501294854">501 294 854</a>
+    <a class="btn btn-primary" href="index.html#zapis">Zapisz się</a>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="wrap">
+      <a class="back" href="index.html#start">← Strona główna</a>
+      <span class="kicker" style="display:block">O nas</span>
+      <h1>Szkoła jazdy OES</h1>
+      <p>Od 2001 roku uczymy w Krakowie bezpiecznej jazdy: od skutera i quada, przez samochód, po ciężarówkę z przyczepą i traktor.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap about-intro">
+      <div>
+        <div class="sec-head" style="margin-bottom:18px">
+          <span class="kicker">Kim jesteśmy</span>
+          <h2>Krakowski ośrodek z 25-letnim stażem</h2>
+        </div>
+        <p>OES Ośrodek Szkolenia Kierowców to sześć biur w Krakowie, Wieliczce i Zabierzowie. Szkolimy na kategorie AM, A1, A2, A, B1, B, B+E, C1, C1+E, C, C+E oraz T.</p>
+        <p>Uczymy na placach i autach takich, jak na egzaminie, a jazdy ustalasz z instruktorem w godzinach, które ci pasują.</p>
+      </div>
+      <div class="why-grid">
+        <div class="why"><span class="big">25 lat</span><p>uczymy jeździć w Krakowie</p></div>
+        <div class="why"><span class="big">15 000+</span><p>kursantów z prawem jazdy</p></div>
+        <div class="why"><span class="big">6 biur</span><p>Kraków, Wieliczka, Zabierzów</p></div>
+        <div class="why"><span class="big">4,7 ★</span><p>średnio z 470 opinii w Google</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="zespol" style="padding-top:0">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Nasz zespół</span>
+        <h2>Ludzie, z którymi zrobisz prawo jazdy</h2>
+        <p>Instruktorzy, wykładowcy i biuro, które pomoże ci od pierwszego telefonu do egzaminu.</p>
+      </div>
+      <div class="team">
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Kierownik ośrodka</span><span class="ph">krótko o tym, kto prowadzi OES</span></div>
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Biuro obsługi kursanta</span><span class="ph">pomoc przy zapisie i numerze PKK</span></div>
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Wykładowca teorii</span><span class="ph">zajęcia z przepisów i pierwszej pomocy</span></div>
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Instruktor kat. B</span><span class="ph">np. od ilu lat uczy i co lubi w tej pracy</span></div>
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Instruktor kat. A</span><span class="ph">motocykle, AM, A1, A2 i A</span></div>
+        <div class="member"><span class="avatar"><svg width="34" height="34" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span><b>Imię i nazwisko</b><span class="role">Instruktor kat. C i C+E</span><span class="ph">ciężarówki i jazda z przyczepą</span></div>
+      </div>
+      <p class="team-note">Tu pojawią się zdjęcia, imiona i krótkie opisy waszych pracowników. Karty powyżej to tylko układ.</p>
+    </div>
+  </section>
+
+  <section class="fleet-sec">
+    <div class="wrap">
+      <div class="sec-head">
+        <span class="kicker">Na czym uczymy</span>
+        <h2>Nasze pojazdy</h2>
+        <p>Do każdej kategorii osobny pojazd, przygotowany do jazdy szkoleniowej.</p>
+      </div>
+      <div class="fleet">
+        <figure><img src="img/AM.webp" alt="Kategoria AM: skuter, quad, mikroauto" loading="lazy"><figcaption><b>AM</b>skuter, quad, mikroauto</figcaption></figure>
+        <figure><img src="img/A1.webp" alt="Kategoria A1 · A2 · A: Honda, Yamaha" loading="lazy"><figcaption><b>A1 · A2 · A</b>Honda, Yamaha</figcaption></figure>
+        <figure><img src="img/B.webp" alt="Kategoria B: Hyundai i20" loading="lazy"><figcaption><b>B</b>Hyundai i20</figcaption></figure>
+        <figure><img src="img/BE.webp" alt="Kategoria B+E: auto z przyczepą" loading="lazy"><figcaption><b>B+E</b>auto z przyczepą</figcaption></figure>
+        <figure><img src="img/C.webp" alt="Kategoria C: Mercedes Atego" loading="lazy"><figcaption><b>C</b>Mercedes Atego</figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <div class="cta-band">
+        <div><h2>Chcesz jeździć z nami?</h2><p>Zapisz się online albo przyjdź do najbliższego biura.</p></div>
+        <div class="btns"><a class="btn btn-light" href="index.html#zapis">Zapisz się</a><a class="btn btn-ghost" href="index.html#biura">Zobacz biura</a></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><b>OES Ośrodek Szkolenia Kierowców</b><br>ul. Wrocławska 48, Kraków</div>
+    <div>Tel. <b>501 294 854</b>, <b>12 633 49 77</b><br>biurowroclawska@oes.com.pl</div>
+    <div><a href="https://www.tiktok.com/@oes.szkola.nauki.jazdy">TikTok</a> · <a href="https://www.youtube.com/@OesPL">YouTube</a> · <a href="https://www.facebook.com/OESKRAKOW">Facebook</a> · <a href="https://www.instagram.com/oeskrakow/">Instagram</a></div>
+  </div>
+</footer>
+</body>
+</html>
