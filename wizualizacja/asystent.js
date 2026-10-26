@@ -13,7 +13,7 @@
   };
   // dział z pytaniami, na które szkoła musi jeszcze dać odpowiedzi: nie pokazujemy go w spisie tematów
   const HIDDEN = 'Do uzupełnienia przez OES';
-  const ZAPIS_KAT = ['AM', 'A1', 'A2', 'A', 'B1', 'B', 'B+E', 'C1', 'C1+E', 'C', 'C+E', 'T'];
+  const ZAPIS_KAT = ['AM', 'A1', 'A2', 'A', 'B1', 'B', 'B+E', 'C1', 'C1+E', 'C', 'C+E', 'D', 'T'];
   // słowa, które znaczą to samo dla wyszukiwania (porównujemy początki słów)
   const SYN = {
     KOSZT: ['cen', 'koszt', 'drog', 'tani', 'zlot', 'zl', 'pln', 'kasy'],
