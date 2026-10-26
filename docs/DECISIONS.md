@@ -25,6 +25,24 @@ Status wskazuje konkretny commit i źródła, a wyniki przeglądu kodu oddziela 
 Uzasadnienie: obecność pliku lub funkcji nie dowodzi jej poprawności ani gotowości produkcyjnej.
 Konsekwencja: nie deklarujemy uruchomionych testów, wdrożenia ani aktualności oferty bez dowodów.
 
+## D-005 — Bez osobnej podstrony „Cennik”
+Status: zatwierdzona, 2026-10-25, źródło: decyzja właściciela w rozmowie z Claude.
+Strona nie ma podstrony z pełnym cennikiem. Zostają ceny „od” przy kategoriach, a dokładną cenę klient ustala z biurem. Asystent przy każdej cenie dopisuje, że o zniżki i aktualne promocje trzeba zapytać w biurze.
+Uzasadnienie: szkoła często daje promocje indywidualnie, więc klient powinien skontaktować się bezpośrednio.
+
+## D-006 — Zwykłe emotki zamiast ikon Font Awesome
+Status: zatwierdzona, 2026-10-26, źródło: decyzja właściciela w rozmowie z Claude.
+Ikony w wizualizacji pozostają zwykłymi emotkami. Próba podmiany na Font Awesome została cofnięta, bo właścicielowi bardziej podobały się emotki.
+Konsekwencja: nie dodawać bibliotek ikon bez zgody właściciela.
+
+## D-007 — Kursy zawodowe w późniejszym etapie
+Status: zatwierdzona, 2026-10-25, źródło: decyzja właściciela w rozmowie z Claude.
+Kwalifikacja wstępna i okresowa (kod 95), ADR, HDS, kurs na instruktora i wózki widłowe zostaną dodane później, po decyzji zleceniodawcy. Na razie nie są prezentowane na stronie.
+
+## D-008 — Zdjęcia pojazdów do podmiany przed startem
+Status: zatwierdzona, 2026-10-26, źródło: ustalenie z właścicielem w rozmowie z Claude.
+Zdjęcie autobusu (kat. D, `wizualizacja/img/D.webp`) pochodzi z materiałów MORD, a zdjęcie ciągnika (kat. T, `wizualizacja/img/T.webp`) z internetu. Oba służą tylko do wizualizacji i przed publikacją strony trzeba je zastąpić własnymi zdjęciami szkoły.
+
 ## Obserwacje techniczne — bez przypisywania historycznej decyzji
 - Prototyp używa statycznych plików HTML/CSS/JavaScript. W bazowym drzewie brak package.json. Nie ustalono docelowego frameworka.
 - Asystent w asystent.js działa na lokalnym FAQ; nie jest integracją modelu AI.
