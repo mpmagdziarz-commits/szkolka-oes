@@ -43,6 +43,11 @@ Kwalifikacja wstępna i okresowa (kod 95), ADR, HDS, kurs na instruktora i wózk
 Status: zatwierdzona, 2026-10-26, źródło: ustalenie z właścicielem w rozmowie z Claude.
 Zdjęcie autobusu (kat. D, `wizualizacja/img/D.webp`) pochodzi z materiałów MORD, a zdjęcie ciągnika (kat. T, `wizualizacja/img/T.webp`) z internetu. Oba służą tylko do wizualizacji i przed publikacją strony trzeba je zastąpić własnymi zdjęciami szkoły.
 
+## D-009 — Skill Impeccable do przeglądu wyglądu
+Status: zatwierdzona, 2026-10-27, źródło: zgoda właściciela w rozmowie z Claude.
+Do repozytorium dodano skill Impeccable 4.8.0 (https://github.com/pbakaus/impeccable, licencja Apache 2.0) w `.claude/skills/impeccable/` oraz jego pomocnicze agenty w `.claude/agents/`. Pliki skopiowano z pakietu wtyczki Claude Code (`plugin/`), bez automatycznych hooków.
+Konsekwencja: Impeccable służy na razie do przeglądu wyglądu i listy propozycji; zmiany na stronie tylko za zgodą właściciela. Hooki (`/impeccable hooks on`) nie są włączone.
+
 ## Obserwacje techniczne — bez przypisywania historycznej decyzji
 - Prototyp używa statycznych plików HTML/CSS/JavaScript. W bazowym drzewie brak package.json. Nie ustalono docelowego frameworka.
 - Asystent w asystent.js działa na lokalnym FAQ; nie jest integracją modelu AI.
